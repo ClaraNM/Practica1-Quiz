@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Practica 1</string>
+    <string name="jugar">Jugar</string>
+    <string name="opciones">Opciones</string>
+    <string name="question_number">1/10</string>
+    <string name="timer">0:59</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="question_placeholder">TextView</string>
+    <string name="imagedesc_placeholder">Image placeholder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="numberquestion_answer">0</string>
+</resources>
