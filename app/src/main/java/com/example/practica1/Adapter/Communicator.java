@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Communicator {
+    //Almacena la lista de preguntas y fragmentos que salen para poder mostrar las respuestas en la pantalla de resultados. También almacena los aciertos.
     private static List<Question> Qlist = null;
     private static List<QuestionFragment> QFlist= new LinkedList<>();
     private static int hits=0;

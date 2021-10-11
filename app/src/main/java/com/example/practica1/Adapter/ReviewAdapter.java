@@ -46,6 +46,9 @@ public class ReviewAdapter extends RecyclerView.Adapter {
 
     @NonNull
     @Override
+    //0->Pregunta de respuestas imagenes
+    //1->Preguntas de texto
+    //2->Preguntas de número
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         View view;
