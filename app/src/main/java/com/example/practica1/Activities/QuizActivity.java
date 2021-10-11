@@ -36,7 +36,7 @@ public class QuizActivity extends AppCompatActivity {
     private final int poolSize = 5;
 
     // Lista de preguntas de la ronda
-    private List<Question> qtList = new ArrayList<>();
+    private List<Question> questionList;
 
     // Indice de la pregunta actual
     private int currentQuestion = -1;
@@ -70,8 +70,8 @@ public class QuizActivity extends AppCompatActivity {
 
         // Carga la lista de preguntas
         try {
-            qtList = QuestionDataBase.getQuestionPool(poolSize);
-            Communicator.setList(qtList);
+            questionList = QuestionDataBase.getQuestionPool(poolSize);
+            Communicator.setList(questionList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -89,7 +89,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 if(!questionChecked){
                     checkQuestion();
-                    if (currentFragment.getAnswer()==qtList.get(currentQuestion).getCorrectAnswer()){
+                    if (currentFragment.getAnswer()==questionList.get(currentQuestion).getCorrectAnswer()){
                         Communicator.addHit();
                     }
                 }
@@ -129,7 +129,7 @@ public class QuizActivity extends AppCompatActivity {
         // Si quedan, se carga la siguiente pregunta
         else{
             StartCountDown();
-            Question question = qtList.get(currentQuestion);
+            Question question = questionList.get(currentQuestion);
             if(question instanceof TextQuestion) {
                 replaceFragment(TextQuestionFragment.newInstance((TextQuestion) question));
                 Communicator.addFragment(currentFragment);
