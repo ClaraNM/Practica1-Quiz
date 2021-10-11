@@ -24,7 +24,9 @@ import com.example.practica1.Fragment.NumberQuestionFragment;
 import com.example.practica1.Fragment.QuestionFragment;
 import com.example.practica1.Fragment.TextQuestionFragment;
 import com.example.practica1.R;
+import com.example.practica1.Adapter.Communicator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,7 +36,7 @@ public class QuizActivity extends AppCompatActivity {
     private final int poolSize = 5;
 
     // Lista de preguntas de la ronda
-    private List<Question> questionList;
+    private List<Question> qtList = new ArrayList<>();
 
     // Indice de la pregunta actual
     private int currentQuestion = -1;
@@ -51,8 +53,6 @@ public class QuizActivity extends AppCompatActivity {
     // Fragmento actual para visualizar la pregunta
     private QuestionFragment currentFragment;
 
-    // Numero de aciertos
-    private int hits;
 
     // Notificacion si se deja una pregunta sin responder
     private Toast advice;
@@ -70,7 +70,8 @@ public class QuizActivity extends AppCompatActivity {
 
         // Carga la lista de preguntas
         try {
-            questionList = QuestionDataBase.getQuestionPool(poolSize);
+            qtList = QuestionDataBase.getQuestionPool(poolSize);
+            Communicator.setList(qtList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,8 +89,13 @@ public class QuizActivity extends AppCompatActivity {
 
                 if(!questionChecked){
                     checkQuestion();
+                    if (currentFragment.getAnswer()==qtList.get(currentQuestion).getCorrectAnswer()){
+                        Communicator.addHit();
+                    }
                 }
                 else{
+
+
                     goNextQuestion();
                 }
             }
@@ -116,21 +122,25 @@ public class QuizActivity extends AppCompatActivity {
         // Si no quedan preguntas se pasa a la pantalla de resultados
         currentQuestion++;
         if(currentQuestion >= poolSize){
+            finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }
 
         // Si quedan, se carga la siguiente pregunta
         else{
             StartCountDown();
-            Question question = questionList.get(currentQuestion);
+            Question question = qtList.get(currentQuestion);
             if(question instanceof TextQuestion) {
                 replaceFragment(TextQuestionFragment.newInstance((TextQuestion) question));
+                Communicator.addFragment(currentFragment);
             }
             else if(question instanceof ImageOptionsQuestion){
                 replaceFragment(ImageOptionsQuestionFragment.newInstance((ImageOptionsQuestion) question));
+                Communicator.addFragment(currentFragment);
             }
             else if(question instanceof NumberQuestion){
                 replaceFragment(NumberQuestionFragment.newInstance((NumberQuestion) question));
+                Communicator.addFragment(currentFragment);
             }
         }
         questionChecked = false;
