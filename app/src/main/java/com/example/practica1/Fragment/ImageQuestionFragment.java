@@ -13,28 +13,35 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.practica1.Data.Question;
-import com.example.practica1.R;
+import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.TextQuestion;
+import com.example.practica1.R;
 
-public class TextQuestionFragment extends QuestionFragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link ImageQuestionFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class ImageQuestionFragment extends QuestionFragment {
 
     private String optionA;
     private String optionB;
     private String optionC;
     private String optionD;
+    private int imageQuestionId;
 
     public static final String ARG_OP1 = "op1";
     public static final String ARG_OP2  = "op2";
     public static final String ARG_OP3  = "op3";
     public static final String ARG_OP4  = "op4";
+    public static final String ARG_IMAGEQUESTIONID  = "imageQuestionId";
 
-    public TextQuestionFragment() {
+    public ImageQuestionFragment() {
 
     }
 
-    public static TextQuestionFragment newInstance(TextQuestion question) {
-        TextQuestionFragment fragment = new TextQuestionFragment();
+    public static ImageQuestionFragment newInstance(ImageQuestion question) {
+        ImageQuestionFragment fragment = new ImageQuestionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_QUESTION, question.getQuestion());
         args.putInt(ARG_ANSWER, question.getCorrectAnswer());
@@ -42,6 +49,7 @@ public class TextQuestionFragment extends QuestionFragment {
         args.putString(ARG_OP2, question.getOp2());
         args.putString(ARG_OP3, question.getOp3());
         args.putString(ARG_OP4, question.getOp4());
+        args.putInt(ARG_IMAGEQUESTIONID, question.getImageQuestionId());
 
         fragment.setArguments(args);
         return fragment;
@@ -53,6 +61,7 @@ public class TextQuestionFragment extends QuestionFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             question = getArguments().getString(ARG_QUESTION);
+            imageQuestionId = getArguments().getInt(ARG_IMAGEQUESTIONID);
             optionA = getArguments().getString(ARG_OP1);
             optionB = getArguments().getString(ARG_OP2);
             optionC = getArguments().getString(ARG_OP3);
@@ -112,6 +121,4 @@ public class TextQuestionFragment extends QuestionFragment {
         rbcorrect.setBackgroundResource(R.drawable.radiobutton_right);
 
     }
-
-
 }
