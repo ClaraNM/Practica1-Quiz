@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -74,10 +75,13 @@ public class ImageQuestionFragment extends QuestionFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_text_question, container, false);
+        View root = inflater.inflate(R.layout.fragment_image_question, container, false);
 
         TextView textView = root.findViewById(R.id.question_text);
         textView.setText(question);
+
+        ImageView image = root.findViewById(R.id.image_question);
+        image.setImageResource(imageQuestionId);
 
         TextView op1 = root.findViewById(R.id.option1);
         op1.setText(optionA);

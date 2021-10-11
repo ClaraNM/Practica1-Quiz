@@ -49,5 +49,10 @@ public class QuestionDataBase {
         questionList.add(new NumberQuestion("Q14", 145));
         questionList.add(new NumberQuestion("Q15", 3));
         questionList.add(new NumberQuestion("Q16", 89));
+
+        questionList.add(new ImageQuestion("Q17", "I1", "I2", "I3", "I4", 2, R.drawable.perro1));
+        questionList.add(new ImageQuestion("Q18", "I1", "I2", "I3", "I4", 2, R.drawable.perro2));
+        questionList.add(new ImageQuestion("Q19", "I1", "I2", "I3", "I4", 2, R.drawable.perro3));
+        questionList.add(new ImageQuestion("Q20", "I1", "I2", "I3", "I4", 2, R.drawable.perro4));
     }
 }

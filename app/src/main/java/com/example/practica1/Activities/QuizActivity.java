@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.practica1.Data.ImageOptionsQuestion;
+import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
 import com.example.practica1.Data.TextQuestion;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
+import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
 import com.example.practica1.Fragment.QuestionFragment;
 import com.example.practica1.Fragment.TextQuestionFragment;
@@ -65,6 +67,7 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Communicator.setZero_QFList();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
@@ -94,8 +97,6 @@ public class QuizActivity extends AppCompatActivity {
                     }
                 }
                 else{
-
-
                     goNextQuestion();
                 }
             }
@@ -121,6 +122,7 @@ public class QuizActivity extends AppCompatActivity {
     private void goNextQuestion(){
         // Si no quedan preguntas se pasa a la pantalla de resultados
         currentQuestion++;
+        stopCountDown();
         if(currentQuestion >= poolSize){
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
@@ -140,6 +142,10 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if(question instanceof NumberQuestion){
                 replaceFragment(NumberQuestionFragment.newInstance((NumberQuestion) question));
+                Communicator.addFragment(currentFragment);
+            }
+            else if(question instanceof ImageQuestion){
+                replaceFragment(ImageQuestionFragment.newInstance((ImageQuestion) question));
                 Communicator.addFragment(currentFragment);
             }
         }
@@ -178,6 +184,11 @@ public class QuizActivity extends AppCompatActivity {
         int seconds = (int) (countDownTimeMillis / 1000 ) % 60;
         String time = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
         countDown.setText(time);
+    }
+
+    private void stopCountDown(){
+        if(countDownTimer != null)
+            countDownTimer.cancel();
     }
 
 

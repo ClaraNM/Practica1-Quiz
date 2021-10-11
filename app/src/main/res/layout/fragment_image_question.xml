@@ -29,13 +29,15 @@
             tools:text="" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_question"
             android:layout_width="326dp"
             android:layout_height="123dp"
             android:src="@drawable/ic_launcher_foreground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_text" />
+            app:layout_constraintTop_toBottomOf="@+id/question_text"
+            app:srcCompat="@drawable/perro1"
+            tools:ignore="ImageContrastCheck" />
 
         <RadioGroup
             android:id="@+id/option_group"
@@ -43,11 +45,11 @@
             android:layout_height="350dp"
             android:layout_margin="0dp"
             android:layout_marginStart="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.526"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView">
+            app:layout_constraintTop_toBottomOf="@+id/image_question">
 
 
             <RadioButton
