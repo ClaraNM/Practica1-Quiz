@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/numberQ_statement"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/purple_500"
+                android:gravity="center"
+                android:text="@string/statement"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
+
+            <View
+                android:id="@+id/numberQ_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignBottom="@id/numberQ_statement"
+                android:background="@color/purple_700" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/numberQ_card_1"
+                android:layout_marginEnd="5dp"
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/numberQ_line_1"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="#DEDCDD"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/numberQ_answer_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="0000000" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/numberQ_card_2"
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/numberQ_line_1"
+                android:layout_toEndOf="@id/numberQ_card_1"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/numberQ_answer_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    android:text="48654" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

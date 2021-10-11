@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/imageQ_statement"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/purple_500"
+                android:gravity="center"
+                android:text="@string/statement"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
+
+            <View
+                android:id="@+id/imageQ_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignBottom="@id/imageQ_statement"
+                android:background="@color/purple_700" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageQ_card_1"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/imageQ_line_1"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="15dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imageQ_answer_1"
+                    android:layout_width="145dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageQ_card_2"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/imageQ_line_1"
+                android:layout_toEndOf="@id/imageQ_card_1"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imageQ_answer_2"
+                    android:gravity="center"
+                    android:layout_width="145dp"
+                    android:layout_gravity="center"
+                    android:layout_height="85dp" />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageQ_card_3"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/imageQ_card_1"
+                app:cardElevation="2dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="15dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imageQ_answer_3"
+                    android:gravity="center"
+                    android:layout_width="145dp"
+                    android:layout_gravity="center"
+                    android:layout_height="85dp"/>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageQ_card_4"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/imageQ_card_2"
+                android:layout_toRightOf="@id/imageQ_card_3"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardUseCompatPadding="true"
+                tools:ignore="MissingConstraints">
+
+                <ImageView
+                    android:id="@+id/imageQ_answer_4"
+                    android:gravity="center"
+                    android:layout_width="145dp"
+                    android:layout_gravity="center"
+                    android:layout_height="85dp"/>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
