@@ -8,7 +8,7 @@
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="?attr/colorOnPrimary"
         app:cardCornerRadius="4dp"
@@ -21,9 +21,9 @@
 
 
             <TextView
-                android:id="@+id/textQ_statement"
+                android:id="@+id/imgQ_statement"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="?attr/colorPrimaryVariant"
@@ -33,84 +33,100 @@
                 android:textColor="@color/white" />
 
             <View
-                android:id="@+id/textQ_line_1"
+                android:id="@+id/imgQ_line_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_alignBottom="@id/textQ_statement"
+                android:layout_alignBottom="@id/imgQ_statement"
+                android:background="?attr/colorOnSecondary"/>
+
+            <ImageView
+                android:id="@+id/imgQ_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignTop="@id/imgQ_line_1"
+                android:layout_centerHorizontal="true" />
+
+            <View
+                android:id="@+id/imgQ_line_img"
+                android:layout_width="320dp"
+                android:layout_height="2dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/imgQ_image"
                 android:background="?attr/colorOnSecondary" />
 
             <TextView
-                android:id="@+id/textQ_answer_1"
+                android:id="@+id/imgQ_answer_1"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_below="@id/textQ_statement"
+                android:layout_below="@id/imgQ_line_img"
                 android:background="?attr/colorOnPrimary"
                 android:gravity="center"
                 android:paddingTop="2dp"
-                android:textSize="15sp"
                 android:text="respuesta primera"
                 android:textColor="?attr/colorPrimaryVariant"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
 
             <View
-                android:id="@+id/textQ_line_2"
+                android:id="@+id/imgQ_line_2"
                 android:layout_width="280dp"
                 android:layout_height="0.5dp"
+                android:layout_alignBottom="@id/imgQ_answer_1"
                 android:layout_centerHorizontal="true"
-                android:layout_alignBottom="@id/textQ_answer_1"
                 android:background="?attr/colorOnSecondary" />
 
             <TextView
-                android:id="@+id/textQ_answer_2"
+                android:id="@+id/imgQ_answer_2"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_below="@id/textQ_answer_1"
-                android:gravity="center"
-                android:textSize="15sp"
+                android:layout_below="@id/imgQ_answer_1"
                 android:background="?attr/colorOnPrimary"
+                android:gravity="center"
                 android:text="respuesta segunda"
                 android:textColor="?attr/colorPrimaryVariant"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
 
             <View
-                android:id="@+id/textQ_line_3"
+                android:id="@+id/imgQ_line_3"
                 android:layout_width="280dp"
                 android:layout_height="0.5dp"
+                android:layout_alignBottom="@id/imgQ_answer_2"
                 android:layout_centerHorizontal="true"
-                android:layout_alignBottom="@id/textQ_answer_2"
                 android:background="?attr/colorOnSecondary" />
 
             <TextView
-                android:id="@+id/textQ_answer_3"
+                android:id="@+id/imgQ_answer_3"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_below="@id/textQ_answer_2"
-                android:gravity="center"
-                android:textSize="15sp"
+                android:layout_below="@id/imgQ_answer_2"
                 android:background="?attr/colorOnPrimary"
+                android:gravity="center"
                 android:text="respuesta tercera"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="?attr/colorPrimaryVariant"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textSize="15sp" />
 
             <View
-                android:id="@+id/textQ_line_4"
+                android:id="@+id/imgQ_line_4"
                 android:layout_width="280dp"
                 android:layout_height="0.5dp"
                 android:layout_centerHorizontal="true"
-                android:layout_alignBottom="@id/textQ_answer_3"
+                android:layout_alignBottom="@id/imgQ_answer_3"
                 android:background="?attr/colorOnSecondary" />
 
             <TextView
-                android:id="@+id/textQ_answer_4"
+                android:id="@+id/imgQ_answer_4"
                 android:layout_width="match_parent"
                 android:layout_height="23dp"
-                android:layout_below="@id/textQ_answer_3"
+                android:layout_below="@id/imgQ_answer_3"
                 android:background="?attr/colorOnPrimary"
                 android:gravity="center"
-                android:textSize="15sp"
                 android:text="respuesta cuarta"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="?attr/colorPrimaryVariant"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textSize="15sp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

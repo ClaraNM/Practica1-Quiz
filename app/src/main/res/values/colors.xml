@@ -18,4 +18,28 @@
     <color name="blue">#FF647C90</color>
     <color name="jet_black">#FF746C70</color>
 
+    <!--    Colores nuevo tema oscuro   -->
+    <color name="primaryColor_Dark">#1c313a</color>
+    <color name="primaryLightColor_Dark">#718792</color>
+    <color name="primaryDarkColor_Dark">#455a64</color>
+    <color name="secondaryColor_Dark">#263238</color>
+    <color name="secondaryLightColor_Dark">#4f5b62</color>
+    <color name="secondaryDarkColor_Dark">#000a12</color>
+    <color name="primaryTextColor_Dark">#ffffff</color>
+    <color name="secondaryTextColor_Dark">#ffffff</color>
+    <color name="onPrimaryColor_Dark">#162932</color>
+    <color name="onBackgroundColor_Dark">#102027</color>
+
+
+    <!--    Colores para nuevo tema claro   -->
+    <color name="primaryColor_Light">#9c27b0</color>
+    <color name="primaryLightColor_Light">#d05ce3</color>
+    <color name="primaryDarkColor_Light">#6a0080</color>
+    <color name="secondaryColor_Light">#6a1b9a</color>
+    <color name="secondaryLightColor_Light">#9c4dcc</color>
+    <color name="secondaryDarkColor_Light">#38006b</color>
+    <color name="primaryTextColor_Light">#ffffff</color>
+    <color name="secondaryTextColor_Light">#ffffff</color>
+    <color name="onPrimaryColor_Light">#F5D7F7</color>
+    <color name="onBackgroundColor_Light">#f3e5f5</color>
 </resources>

@@ -18,5 +18,6 @@ public class Communicator {
     public static void setZero_QFList(){QFlist=new ArrayList<>();}
     public static void addFragment(QuestionFragment frag){QFlist.add(frag);}
     public static int getHits() {return hits;}
+    public static void setZero_Hits(){hits=0;}
     public static void addHit(){hits++;}
 }

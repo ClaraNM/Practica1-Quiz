@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="?attr/colorOnBackground"
+
     tools:context=".Activities.ResultsActivity">
 
     <TextView
@@ -12,24 +14,63 @@
         android:layout_margin="20dp"
         android:text="@string/result"
         android:textSize="40sp"
-        android:layout_gravity="top|center_horizontal" />
+        android:layout_gravity="top|center_horizontal"
+        android:textColor="?attr/colorPrimaryVariant"/>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    >
 
     <TextView
         android:id="@+id/result_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/score"
-        android:textSize="34sp"
-        android:layout_gravity="center_horizontal" />
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="34sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@id/result_score"
+        android:text=" de 5"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="34sp" />
+</RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    >
+
     <Button
         android:id="@+id/button_redoQuiz"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/blue"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:backgroundTint="?attr/colorPrimaryVariant"
         android:text="Volver a jugar" />
+
+    <Button
+        android:id="@+id/button_goStart"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/button_redoQuiz"
+        android:backgroundTint="?attr/colorPrimaryVariant"
+        android:text="Volver al inicio" />
+</RelativeLayout>
+
     <TextView
         android:id="@+id/result_subtitle"
         android:layout_width="wrap_content"
@@ -38,7 +79,8 @@
         android:layout_marginBottom="10dp"
         android:text="@string/reviewAnswers"
         android:textSize="24sp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:textColor="?attr/colorPrimaryVariant"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/result_review_recycler"

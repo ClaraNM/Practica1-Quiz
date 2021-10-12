@@ -1,6 +1,7 @@
 package com.example.practica1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -67,7 +68,13 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Practica1_Dark);
+        }else{
+            setTheme(R.style.Theme_Practica1_Light);
+        }
         Communicator.setZero_QFList();
+        Communicator.setZero_Hits();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 

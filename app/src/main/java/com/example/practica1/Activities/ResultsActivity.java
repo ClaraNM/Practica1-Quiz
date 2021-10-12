@@ -1,6 +1,7 @@
 package com.example.practica1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,9 +26,15 @@ public class ResultsActivity extends AppCompatActivity { private TextView score;
     private final List<Question> QuestList = Communicator.getList();
     private final List<QuestionFragment> QuestFragList = Communicator.getQFlist();
     private Button playAgain;
+    private Button goStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Practica1_Dark);
+        }else{
+            setTheme(R.style.Theme_Practica1_Light);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         score=findViewById(R.id.result_score);
@@ -44,6 +51,15 @@ public class ResultsActivity extends AppCompatActivity { private TextView score;
             public void onClick(View view) {
                 finish();
                 startActivity(new Intent(ResultsActivity.this, QuizActivity.class));
+            }
+        });
+
+        goStart=findViewById(R.id.button_goStart);
+        goStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(ResultsActivity.this, MainActivity.class));
             }
         });
 

@@ -11,102 +11,103 @@
         android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
+        app:cardElevation="5dp"
         app:cardUseCompatPadding="true"
         tools:ignore="MissingConstraints">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?attr/colorOnPrimary">
 
 
             <TextView
-                android:id="@+id/imageQ_statement"
+                android:id="@+id/imageOQ_statement"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:background="@color/purple_500"
+                android:background="?attr/colorPrimaryVariant"
                 android:gravity="center"
                 android:text="@string/statement"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white" />
 
             <View
-                android:id="@+id/imageQ_line_1"
+                android:id="@+id/imageOQ_line_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_alignBottom="@id/imageQ_statement"
-                android:background="@color/purple_700" />
+                android:layout_alignBottom="@id/imageOQ_statement"
+                android:background="?attr/colorOnSecondary" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageQ_card_1"
+                android:id="@+id/imageOQ_card_1"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/imageQ_line_1"
+                android:layout_below="@+id/imageOQ_line_1"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="15dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="?attr/colorOnBackground"
                 app:cardElevation="2dp"
                 app:cardUseCompatPadding="true"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageQ_answer_1"
+                    android:id="@+id/imageOQ_answer_1"
                     android:layout_width="145dp"
                     android:layout_height="85dp"
                     android:layout_gravity="center"
                     android:gravity="center" />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageQ_card_2"
+                android:id="@+id/imageOQ_card_2"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/imageQ_line_1"
-                android:layout_toEndOf="@id/imageQ_card_1"
+                android:layout_below="@+id/imageOQ_line_1"
+                android:layout_toEndOf="@id/imageOQ_card_1"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="?attr/colorOnBackground"
                 app:cardUseCompatPadding="true"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageQ_answer_2"
+                    android:id="@+id/imageOQ_answer_2"
                     android:gravity="center"
                     android:layout_width="145dp"
                     android:layout_gravity="center"
                     android:layout_height="85dp" />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageQ_card_3"
+                android:id="@+id/imageOQ_card_3"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/imageQ_card_1"
+                android:layout_below="@+id/imageOQ_card_1"
                 app:cardElevation="2dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="15dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="?attr/colorOnBackground"
                 app:cardUseCompatPadding="true"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageQ_answer_3"
+                    android:id="@+id/imageOQ_answer_3"
                     android:gravity="center"
                     android:layout_width="145dp"
                     android:layout_gravity="center"
                     android:layout_height="85dp"/>
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
-                android:id="@+id/imageQ_card_4"
+                android:id="@+id/imageOQ_card_4"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/imageQ_card_2"
-                android:layout_toRightOf="@id/imageQ_card_3"
+                android:layout_below="@+id/imageOQ_card_2"
+                android:layout_toRightOf="@id/imageOQ_card_3"
                 app:cardElevation="2dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="?attr/colorOnBackground"
                 app:cardUseCompatPadding="true"
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageQ_answer_4"
+                    android:id="@+id/imageOQ_answer_4"
                     android:gravity="center"
                     android:layout_width="145dp"
                     android:layout_gravity="center"

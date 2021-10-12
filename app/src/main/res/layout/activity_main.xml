@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="?attr/colorOnBackground"
     tools:context=".Activities.MainActivity">
 
     <LinearLayout
@@ -24,16 +24,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/jugar" />
+            android:backgroundTint="?attr/colorPrimaryVariant"
+            android:text="@string/jugar"
+            android:textSize="28sp"/>
 
-        <Button
-            android:id="@+id/button_options"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/buttonChangeTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:text="@string/cambiarTema" />
+
+
+
+        <Switch
+            android:id="@+id/theme_mode"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/opciones" />
+            android:layout_below="@id/buttonChangeTheme"
+            />
 
     </LinearLayout>
 

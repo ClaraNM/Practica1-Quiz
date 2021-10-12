@@ -39,13 +39,15 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_height="150dp"
+                    android:backgroundTint="?attr/colorPrimary">
 
                     <ImageButton
                         android:id="@+id/image_option1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
+                        android:backgroundTint="?attr/colorOnPrimary"
                         android:contentDescription="@string/imagedesc_placeholder"
                         android:scaleType="fitXY"
                         tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
@@ -53,13 +55,15 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_height="150dp"
+                    android:backgroundTint="?attr/colorPrimary">
 
                     <ImageButton
                         android:id="@+id/image_option2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
+                        android:backgroundTint="?attr/colorOnPrimary"
                         android:contentDescription="@string/imagedesc_placeholder"
                         android:scaleType="fitXY"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -74,13 +78,15 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_height="150dp"
+                    android:backgroundTint="?attr/colorPrimary">
 
                     <ImageButton
                         android:id="@+id/image_option3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
+                        android:backgroundTint="?attr/colorOnPrimary"
                         android:contentDescription="@string/imagedesc_placeholder"
                         android:scaleType="fitXY"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -88,8 +94,8 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
-                    android:layout_height="150dp">
-
+                    android:layout_height="150dp"
+                    android:backgroundTint="?attr/colorPrimary">
                     <ImageButton
                         android:id="@+id/image_option4"
                         android:layout_width="match_parent"
@@ -97,6 +103,7 @@
                         android:adjustViewBounds="true"
                         android:contentDescription="@string/imagedesc_placeholder"
                         android:scaleType="fitXY"
+                        android:backgroundTint="?attr/colorOnPrimary"
                         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
                 </androidx.cardview.widget.CardView>
 
