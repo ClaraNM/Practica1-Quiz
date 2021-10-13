@@ -38,9 +38,11 @@
                 android:gravity="center">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_option1"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:backgroundTint="?attr/colorPrimary">
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    >
 
                     <ImageButton
                         android:id="@+id/image_option1"
@@ -54,9 +56,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_option2"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:backgroundTint="?attr/colorPrimary">
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    >
 
                     <ImageButton
                         android:id="@+id/image_option2"
@@ -77,9 +81,11 @@
                 android:gravity="center">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_option3"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:backgroundTint="?attr/colorPrimary">
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    >
 
                     <ImageButton
                         android:id="@+id/image_option3"
@@ -93,9 +99,11 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card_option4"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:backgroundTint="?attr/colorPrimary">
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    >
                     <ImageButton
                         android:id="@+id/image_option4"
                         android:layout_width="match_parent"

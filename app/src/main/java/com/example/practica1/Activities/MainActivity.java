@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 import com.example.practica1.Data.QuestionDataBase;
@@ -18,16 +19,27 @@ public class MainActivity extends AppCompatActivity {
     //Buttons:
     private Button play_button;
     private Switch modeSw;
-
+    private  ImageView img_title ;
+    private  boolean theme=false; //false->Light true-> Dark
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             setTheme(R.style.Theme_Practica1_Dark);
+            theme=true;
         }else{
             setTheme(R.style.Theme_Practica1_Light);
+            theme=false;
         }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        img_title=findViewById(R.id.main_title_img);
+        if(theme ==true){
+            img_title.setImageResource(R.drawable.main_title_img_dark);
+        }else{
+            img_title.setImageResource(R.drawable.main_title_img_light);
+        }
         modeSw=findViewById(R.id.theme_mode);
         if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             modeSw.setChecked(true);

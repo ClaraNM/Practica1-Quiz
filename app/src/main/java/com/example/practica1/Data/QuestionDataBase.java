@@ -31,28 +31,28 @@ public class QuestionDataBase {
 
         questionList = new ArrayList<>();
 
-        questionList.add(new TextQuestion("Q1", "A1", "A2", "A3", "A4", 0));
-        questionList.add(new TextQuestion("Q2", "B1", "B2", "B3", "B4", 1));
-        questionList.add(new TextQuestion("Q3", "C1", "C2", "C3", "C4", 2));
-        questionList.add(new TextQuestion("Q4", "D1", "D2", "D3", "D4", 3));
-        questionList.add(new TextQuestion("Q5", "E1", "E2", "E3", "E4", 0));
-        questionList.add(new TextQuestion("Q6", "F1", "F2", "F3", "F4", 1));
-        questionList.add(new TextQuestion("Q7", "G1", "G2", "G3", "G4", 2));
-        questionList.add(new TextQuestion("Q8", "H1", "H2", "H3", "H4", 3));
+        questionList.add(new TextQuestion("¿Qué juego ganó el GOTY en 2020?", "Death Stranding", "Sekiro: Shadows Die Twice", "Hollow Knight", "Smash Bros Ultimate", 0));
+        questionList.add(new TextQuestion("¿En qué generación de Pokémon es introdujo la distinción entre movimientos físicos y especiales?", "Tercera generación", "Cuarta generación", "Segunda generación", "Quinta generación", 1));
+        questionList.add(new TextQuestion("¿Cuál es el nombre del hijo de Kratos?", "Alexios", "Einar", "Atreus", "Sigurd", 2));
+        questionList.add(new TextQuestion("¿En qué videojuego spin-off de Mario apareció por primera vez Mario bebé", "Mario Kart", "Mario & Luigi: Compañeros en el Tiempo", "Mario Golf", "Yoshi's Island", 3));
+        questionList.add(new TextQuestion("¿Qué juego ganó el premio a mejor juego independiente en 2019?", "Disco Elyseum", "Untitled Goose Game", "Hades", "Celeste", 0));
+        questionList.add(new TextQuestion("¿Cuál es la clase con la que tu personaje empieza desnudo en Dark Souls 1?", "Desamparado", "Marginado", "Vagabundo", "Ermitaño", 1));
+        questionList.add(new TextQuestion("¿Qué personaje del LoL salió antes?", "Nasus", "Nidalee", "Morgana", "Hermendiger", 2));
+        questionList.add(new TextQuestion("¿Cuál de los siguientes minijuegos no es una final de Fall Guys?", "Club de salto", "Sopa de tropezones", "Hielo fino", "Telesilla", 3));
 
-        questionList.add(new ImageOptionsQuestion("Q9", R.drawable.perro1, R.drawable.perro2, R.drawable.perro3, R.drawable.perro4, 0));
-        questionList.add(new ImageOptionsQuestion("Q10", R.drawable.perro1, R.drawable.perro2, R.drawable.perro3, R.drawable.perro4,  1));
-        questionList.add(new ImageOptionsQuestion("Q11", R.drawable.perro1, R.drawable.perro2, R.drawable.perro3, R.drawable.perro4,  2));
-        questionList.add(new ImageOptionsQuestion("Q12", R.drawable.perro1, R.drawable.perro2, R.drawable.perro3, R.drawable.perro4,  3));
+        questionList.add(new ImageOptionsQuestion("¿Cuál de estos pokemon tiene más defensa?", R.drawable.image_op_question_shuckle, R.drawable.image_op_question_celesteela, R.drawable.image_op_question_bastiodon, R.drawable.image_op_question_galarianstunkfish, 0));
+        questionList.add(new ImageOptionsQuestion("¿Quién sale en Resident Evil 2?", R.drawable.image_op_question_jill, R.drawable.image_op_question_adawong, R.drawable.image_op_question_mia, R.drawable.image_op_question_sheva,  1));
+        questionList.add(new ImageOptionsQuestion("¿Quién es Apollo Justice de la saga Ace Attorney?", R.drawable.image_op_question_godot, R.drawable.image_op_question_edgeworth, R.drawable.image_op_question_apollo, R.drawable.image_op_question_phoenix,  2));
+        questionList.add(new ImageOptionsQuestion("¿Quién de estos personajes de Nier Automata es A2?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3));
 
-        questionList.add(new NumberQuestion("Q13", 24));
-        questionList.add(new NumberQuestion("Q14", 145));
-        questionList.add(new NumberQuestion("Q15", 3));
-        questionList.add(new NumberQuestion("Q16", 89));
+        questionList.add(new NumberQuestion("¿Cuántos personajes hay en el Smash Bros Ultimate incluyendo los DLCs?", 82));
+        questionList.add(new NumberQuestion("Siguiendo la numeración de la saga principal de Metroid. ¿Qué número es el Metroid Dread?", 5));
+        questionList.add(new NumberQuestion("¿Cuántas entregas de Gears of War hay? Sin contar spin-offs", 6));
+        questionList.add(new NumberQuestion("¿Cuántos campeones de Demacia hay en el LoL?", 16));
 
-        questionList.add(new ImageQuestion("Q17", "I1", "I2", "I3", "I4", 2, R.drawable.perro1));
-        questionList.add(new ImageQuestion("Q18", "I1", "I2", "I3", "I4", 2, R.drawable.perro2));
-        questionList.add(new ImageQuestion("Q19", "I1", "I2", "I3", "I4", 2, R.drawable.perro3));
-        questionList.add(new ImageQuestion("Q20", "I1", "I2", "I3", "I4", 2, R.drawable.perro4));
+        questionList.add(new ImageQuestion("¿Quién es este personaje del Hollow Knight?", "Zote", "Tiso", "Cornifer", "Quirrel", 2, R.drawable.image_question_cornifer));
+        questionList.add(new ImageQuestion("¿Cuál es el color característico de este personaje de Sonic?", "Rosa", "Naranja", "Morado", "Amarillo", 0, R.drawable.image_question_amy_bnw));
+        questionList.add(new ImageQuestion("¿Cómo se llama este jefe del Dark Souls III?", "Campeón Gundyr", "Caballero esclavo Gael", "Alma de Cenizas", "Los vigilantes del Abismo", 3, R.drawable.image_question_vigilantes));
+        questionList.add(new ImageQuestion("¿Quién es este personaje del Animal Crossing?", "Calabazo", "Soponcio", "Zapirón", "Rufino", 1, R.drawable.image_question_soponcio));
     }
 }

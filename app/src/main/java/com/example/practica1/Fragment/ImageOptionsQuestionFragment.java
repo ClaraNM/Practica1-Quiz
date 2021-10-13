@@ -1,13 +1,20 @@
 package com.example.practica1.Fragment;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.example.practica1.Data.ImageOptionsQuestion;
@@ -106,7 +113,7 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             }
         });
 
-
+        fragmentLayout = root;
         return root;
     }
 
@@ -122,8 +129,40 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
 
     @Override
     public void ShowCorrection() {
-
-
+        CardView op1= this.fragmentLayout.findViewById(R.id.card_option1);
+        CardView op2= this.fragmentLayout.findViewById(R.id.card_option2);
+        CardView op3= fragmentLayout.findViewById(R.id.card_option3);
+        CardView op4= fragmentLayout.findViewById(R.id.card_option4);
+        switch (correctAnswer){
+            case 0:
+                op1.setCardBackgroundColor(Color.parseColor("#FF01949A"));
+                break;
+            case 1:
+                op2.setCardBackgroundColor(Color.parseColor("#FF01949A"));
+                break;
+            case 2:
+                op3.setCardBackgroundColor(Color.parseColor("#FF01949A"));
+                break;
+            case 3:
+                op4.setCardBackgroundColor(Color.parseColor("#FF01949A"));
+                break;
+        }
+        if (getAnswer()!=correctAnswer){
+            switch (getAnswer()){
+                case 0:
+                    op1.setCardBackgroundColor(Color.parseColor("#FFDB1F48"));
+                    break;
+                case 1:
+                    op2.setCardBackgroundColor(Color.parseColor("#FFDB1F48"));
+                    break;
+                case 2:
+                    op3.setCardBackgroundColor(Color.parseColor("#FFDB1F48"));
+                    break;
+                case 3:
+                    op4.setCardBackgroundColor(Color.parseColor("#FFDB1F48"));
+                    break;
+            }
+        }
     }
 
 }

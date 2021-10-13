@@ -21,7 +21,9 @@
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/question.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/question_number.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/radiobutton_base.xml" value="0.14270833333333333" />
-        <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/radiobutton_right.xml" value="0.2703125" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/radiobutton_wrong.xml" value="0.2703125" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.32525951557093424" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/activity_results.xml" value="0.4" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/fragment_image_options_question.xml" value="0.608955223880597" />
