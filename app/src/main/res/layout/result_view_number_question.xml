@@ -8,7 +8,7 @@
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:backgroundTint="?attr/colorOnPrimary"
         app:cardCornerRadius="4dp"
@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/numberQ_statement"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:background="?attr/colorPrimaryVariant"

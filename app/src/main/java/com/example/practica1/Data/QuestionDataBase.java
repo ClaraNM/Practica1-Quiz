@@ -32,11 +32,11 @@ public class QuestionDataBase {
         questionList = new ArrayList<>();
 
         questionList.add(new TextQuestion("¿Qué juego ganó el GOTY en 2020?", "Death Stranding", "Sekiro: Shadows Die Twice", "Hollow Knight", "Smash Bros Ultimate", 0));
-        questionList.add(new TextQuestion("¿En qué generación de Pokémon es introdujo la distinción entre movimientos físicos y especiales?", "Tercera generación", "Cuarta generación", "Segunda generación", "Quinta generación", 1));
+        questionList.add(new TextQuestion("¿En qué generación de Pokémon se introdujo la distinción entre movimientos físicos y especiales?", "Tercera generación", "Cuarta generación", "Segunda generación", "Quinta generación", 1));
         questionList.add(new TextQuestion("¿Cuál es el nombre del hijo de Kratos?", "Alexios", "Einar", "Atreus", "Sigurd", 2));
         questionList.add(new TextQuestion("¿En qué videojuego spin-off de Mario apareció por primera vez Mario bebé", "Mario Kart", "Mario & Luigi: Compañeros en el Tiempo", "Mario Golf", "Yoshi's Island", 3));
         questionList.add(new TextQuestion("¿Qué juego ganó el premio a mejor juego independiente en 2019?", "Disco Elyseum", "Untitled Goose Game", "Hades", "Celeste", 0));
-        questionList.add(new TextQuestion("¿Cuál es la clase con la que tu personaje empieza desnudo en Dark Souls 1?", "Desamparado", "Marginado", "Vagabundo", "Ermitaño", 1));
+        questionList.add(new TextQuestion("¿Con qué clase empieza tu personaje desnudo en Dark Souls 1?", "Desamparado", "Marginado", "Vagabundo", "Ermitaño", 1));
         questionList.add(new TextQuestion("¿Qué personaje del LoL salió antes?", "Nasus", "Nidalee", "Morgana", "Hermendiger", 2));
         questionList.add(new TextQuestion("¿Cuál de los siguientes minijuegos no es una final de Fall Guys?", "Club de salto", "Sopa de tropezones", "Hielo fino", "Telesilla", 3));
 
