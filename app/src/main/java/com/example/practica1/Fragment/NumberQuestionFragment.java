@@ -64,7 +64,7 @@ public class NumberQuestionFragment extends QuestionFragment {
 
     @Override
     public void ShowCorrection() {
-        EditText tv = fragmentLayout.findViewById(R.id.numberquestion_result);
+        TextView tv = fragmentLayout.findViewById(R.id.numberquestion_result);
         tv.setText(correctAnswer + "");
         tv.setTextColor(Color.WHITE);
         if(getAnswer() == correctAnswer){
