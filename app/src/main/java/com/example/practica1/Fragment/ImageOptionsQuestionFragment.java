@@ -78,38 +78,69 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
         textView.setText(question);
 
         ImageButton ib1 = root.findViewById(R.id.image_option1);
+        ImageButton ib2 = root.findViewById(R.id.image_option2);
+        ImageButton ib3 = root.findViewById(R.id.image_option3);
+        ImageButton ib4 = root.findViewById(R.id.image_option4);
+
+        CardView op1= root.findViewById(R.id.card_option1);
+        CardView op2= root.findViewById(R.id.card_option2);
+        CardView op3= root.findViewById(R.id.card_option3);
+        CardView op4= root.findViewById(R.id.card_option4);
+
+        op1.setCardBackgroundColor(Color.TRANSPARENT);
+        op2.setCardBackgroundColor(Color.TRANSPARENT);
+        op3.setCardBackgroundColor(Color.TRANSPARENT);
+        op4.setCardBackgroundColor(Color.TRANSPARENT);
+
         ib1.setImageResource(optionA);
         ib1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 0;
+                op1.setCardBackgroundColor(Color.WHITE);
+                op2.setCardBackgroundColor(Color.TRANSPARENT);
+                op3.setCardBackgroundColor(Color.TRANSPARENT);
+                op4.setCardBackgroundColor(Color.TRANSPARENT);
+
             }
         });
 
-        ImageButton ib2 = root.findViewById(R.id.image_option2);
+
         ib2.setImageResource(optionB);
         ib2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 1;
+                op1.setCardBackgroundColor(Color.TRANSPARENT);
+                op2.setCardBackgroundColor(Color.WHITE);
+                op3.setCardBackgroundColor(Color.TRANSPARENT);
+                op4.setCardBackgroundColor(Color.TRANSPARENT);
             }
         });
 
-        ImageButton ib3 = root.findViewById(R.id.image_option3);
+
         ib3.setImageResource(optionC);
         ib3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 2;
+                op1.setCardBackgroundColor(Color.TRANSPARENT);
+                op2.setCardBackgroundColor(Color.TRANSPARENT);
+                op3.setCardBackgroundColor(Color.WHITE);
+                op4.setCardBackgroundColor(Color.TRANSPARENT);
             }
         });
 
-        ImageButton ib4 = root.findViewById(R.id.image_option4);
+
         ib4.setImageResource(optionD);
         ib4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 3;
+                op1.setCardBackgroundColor(Color.TRANSPARENT);
+                op2.setCardBackgroundColor(Color.TRANSPARENT);
+                op3.setCardBackgroundColor(Color.TRANSPARENT);
+                op4.setCardBackgroundColor(Color.WHITE);
             }
         });
 

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.practica1.Data.NumberQuestion;
@@ -50,19 +51,20 @@ public class NumberQuestionFragment extends QuestionFragment {
 
     @Override
     public boolean isAnswered() {
-        TextView tv = fragmentLayout.findViewById(R.id.numberquestion_question_text);
-        return !tv.getText().toString().isEmpty();
+        EditText tv = fragmentLayout.findViewById(R.id.numberquestion_question_text);
+        String s = tv.getText().toString();
+        return !s.isEmpty() && !s.equals("");
     }
 
     @Override
     public int getAnswer() {
-        TextView tv = fragmentLayout.findViewById(R.id.numberquestion_question_text);
+        EditText tv = fragmentLayout.findViewById(R.id.numberquestion_question_text);
         return Integer.parseInt(tv.getText().toString());
     }
 
     @Override
     public void ShowCorrection() {
-        TextView tv = fragmentLayout.findViewById(R.id.numberquestion_result);
+        EditText tv = fragmentLayout.findViewById(R.id.numberquestion_result);
         tv.setText(correctAnswer + "");
         tv.setTextColor(Color.WHITE);
         if(getAnswer() == correctAnswer){

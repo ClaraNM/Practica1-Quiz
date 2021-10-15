@@ -85,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        advice = Toast.makeText(getApplicationContext(), "Selecciona una opción", Toast.LENGTH_LONG);
+        advice = Toast.makeText(getApplicationContext(), R.string.quiz_advice, Toast.LENGTH_LONG);
 
         // Establece las referencias del layout
         questionNumber = findViewById(R.id.question_number);
@@ -98,10 +98,12 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(!questionChecked){
-                    checkQuestion();
-                    if (currentFragment.getAnswer()==questionList.get(currentQuestion).getCorrectAnswer()){
-                        Communicator.addHit();
+                    if (checkQuestion()){
+                        if (currentFragment.getAnswer()==questionList.get(currentQuestion).getCorrectAnswer()){
+                            Communicator.addHit();
+                        }
                     }
+
                 }
                 else{
                     goNextQuestion();
@@ -114,14 +116,16 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     // Comprobar si alguna opcion está marcada y si lo está corregir la pregunta
-    private void checkQuestion(){
+    private boolean checkQuestion(){
         if(currentFragment.isAnswered()){
             currentFragment.ShowCorrection();
             questionChecked = true;
             button_continue.setText("Siguiente");
+            return true;
         }
         else{
             advice.show();
+            return false;
         }
     }
 
