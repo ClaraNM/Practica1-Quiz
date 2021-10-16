@@ -44,7 +44,6 @@ public class ReviewAdapter extends RecyclerView.Adapter {
             return 2;}
         else if (questions.get(position) instanceof ImageQuestion){
             return 3;}
-
         return 0;
     }
 
@@ -97,7 +96,7 @@ public class ReviewAdapter extends RecyclerView.Adapter {
                     break;
             }
 
-            if (questionAnswer.getAnswer()!=question.getCorrectAnswer()){
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()!=question.getCorrectAnswer()){
                 switch (questionAnswer.getAnswer()){
                     case 0:
                         ViewHolder_TxtQ.answer1.setBackgroundColor(Color.parseColor("#F58C8A"));
@@ -118,8 +117,9 @@ public class ReviewAdapter extends RecyclerView.Adapter {
             ViewHolder_NmbQ ViewHolder_NmbQ = (ViewHolder_NmbQ) holder;
             ViewHolder_NmbQ.textView.setText(question.getQuestion());
             ViewHolder_NmbQ.answer1.setText(String.valueOf(question.getCorrectAnswer()));
-            ViewHolder_NmbQ.answer2.setText(String.valueOf(questionAnswer.getAnswer()));
-            if (questionAnswer.getAnswer()==question.getCorrectAnswer()){
+            if(questionAnswer.isAnswered())
+                ViewHolder_NmbQ.answer2.setText(String.valueOf(questionAnswer.getAnswer()));
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()==question.getCorrectAnswer()){
                 ViewHolder_NmbQ.card_answer.setCardBackgroundColor(Color.parseColor("#ABFAA7"));
             }else{
                 ViewHolder_NmbQ.card_answer.setCardBackgroundColor(Color.parseColor("#F58C8A"));
@@ -145,7 +145,7 @@ public class ReviewAdapter extends RecyclerView.Adapter {
                     ViewHolder_ImgOQ.card4.setCardBackgroundColor(Color.parseColor("#ABFAA7"));
                     break;
             }
-            if (questionAnswer.getAnswer()!=question.getCorrectAnswer()){
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()!=question.getCorrectAnswer()){
                 switch (questionAnswer.getAnswer()){
                     case 0:
                         ViewHolder_ImgOQ.card1.setCardBackgroundColor(Color.parseColor("#F58C8A"));
@@ -185,7 +185,7 @@ public class ReviewAdapter extends RecyclerView.Adapter {
                     break;
             }
 
-            if (questionAnswer.getAnswer()!=question.getCorrectAnswer()){
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()!=question.getCorrectAnswer()){
                 switch (questionAnswer.getAnswer()){
                     case 0:
                         ViewHolder_ImgQ.answer1.setBackgroundColor(Color.parseColor("#F58C8A"));

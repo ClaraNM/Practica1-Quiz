@@ -103,7 +103,6 @@ public class QuizActivity extends AppCompatActivity {
                             Communicator.addHit();
                         }
                     }
-
                 }
                 else{
                     goNextQuestion();
@@ -176,7 +175,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private void StartCountDown(){
         countDownTimeMillis = startTime;
-        countDownTimer = new CountDownTimer(countDownTimeMillis, 1000) {
+        countDownTimer = new CountDownTimer(countDownTimeMillis/10, 1000) {
             @Override
             public void onTick(long l) {
                 countDownTimeMillis = l;
