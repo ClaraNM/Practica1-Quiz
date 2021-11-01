@@ -18,10 +18,20 @@
         <entry key="..\:/Android/Practica1/app/src/main/res/layout/fragment_number_question.xml" value="0.33" />
         <entry key="..\:/Android/Practica1/app/src/main/res/layout/fragment_text_question.xml" value="0.2657407407407407" />
         <entry key="..\:/Android/Practica1/app/src/main/res/layout/view_question.xml" value="0.3175925925925926" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/drawable/ic_baseline_fast_forward_24.xml" value="0.5703125" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/drawable/ic_fast_forward.xml" value="0.5703125" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/drawable/ic_fast_rewind.xml" value="0.5703125" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/drawable/ic_pause.xml" value="0.19907407407407407" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/drawable/ic_play.xml" value="0.19907407407407407" />
         <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.5541666666666667" />
         <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/activity_results.xml" value="0.5541666666666667" />
         <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/fragment_image_options_question.xml" value="0.5541666666666667" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/fragment_image_question.xml" value="0.55" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/fragment_sound_question.xml" value="0.33" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/fragment_text_question.xml" value="0.5359375" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/fragment_video_question.xml" value="0.25" />
+        <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/result_view_image_options_question.xml" value="0.30625" />
         <entry key="..\:/Proyects/GitHub/Practica-1-Quiz/app/src/main/res/layout/result_view_number_question.xml" value="0.353125" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/question.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/drawable/question_number.xml" value="0.14270833333333333" />

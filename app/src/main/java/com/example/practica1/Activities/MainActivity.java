@@ -1,5 +1,7 @@
 package com.example.practica1.Activities;
 
+
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Switch;
 
 import com.example.practica1.Data.QuestionDataBase;
@@ -16,6 +19,7 @@ import com.example.practica1.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String PACKAGE_NAME;
     //Buttons:
     private Button play_button;
     private Switch modeSw;
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private  boolean theme=false; //false->Light true-> Dark
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        PACKAGE_NAME = getPackageName();
+
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             setTheme(R.style.Theme_Practica1_Dark);
             theme=true;
@@ -54,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
         QuestionDataBase.InitializeDataBase(MainActivity.this);
 

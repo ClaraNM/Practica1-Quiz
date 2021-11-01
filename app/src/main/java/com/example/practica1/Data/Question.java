@@ -11,6 +11,7 @@ public abstract class Question {
         this.correctAnswer = correctAnswer;
     }
 
+
     public void setId(int id) {
         this.id = id;
     }

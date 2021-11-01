@@ -21,13 +21,17 @@ import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
+import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
 import com.example.practica1.Data.db.DbHelper;
+import com.example.practica1.Data.VideoQuestion;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
 import com.example.practica1.Fragment.QuestionFragment;
+import com.example.practica1.Fragment.SoundQuestionFragment;
 import com.example.practica1.Fragment.TextQuestionFragment;
+import com.example.practica1.Fragment.VideoQuestionFragment;
 import com.example.practica1.R;
 import com.example.practica1.Adapter.Communicator;
 
@@ -160,6 +164,14 @@ public class QuizActivity extends AppCompatActivity {
             }
             else if(question instanceof ImageQuestion){
                 replaceFragment(ImageQuestionFragment.newInstance((ImageQuestion) question));
+                Communicator.addFragment(currentFragment);
+            }
+            else if(question instanceof VideoQuestion){
+                replaceFragment(VideoQuestionFragment.newInstance((VideoQuestion) question));
+                Communicator.addFragment(currentFragment);
+            }
+            else if(question instanceof SoundQuestion){
+                replaceFragment(SoundQuestionFragment.newInstance((SoundQuestion) question));
                 Communicator.addFragment(currentFragment);
             }
         }
