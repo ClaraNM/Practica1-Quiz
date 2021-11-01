@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        QuestionDataBase.InitializeDataBase();
+        QuestionDataBase.InitializeDataBase(MainActivity.this);
 
         play_button = findViewById(R.id.button_startQuiz);
         play_button.setOnClickListener(new View.OnClickListener() {

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.example.practica1.Data.NumberQuestion;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
 import com.example.practica1.Data.TextQuestion;
+import com.example.practica1.Data.db.DbHelper;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
@@ -80,7 +82,9 @@ public class QuizActivity extends AppCompatActivity {
 
         // Carga la lista de preguntas
         try {
-            questionList = QuestionDataBase.getQuestionPool(poolSize);
+            do {
+                questionList = QuestionDataBase.getQuestionPool(poolSize, QuizActivity.this);
+            }while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
             e.printStackTrace();

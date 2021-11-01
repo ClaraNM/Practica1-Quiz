@@ -2,10 +2,10 @@ package com.example.practica1.Data;
 
 public class ImageOptionsQuestion extends Question {
 
-    private final int imageId1, imageId2, imageId3, imageId4;
+    private int imageId1, imageId2, imageId3, imageId4;
 
-    public ImageOptionsQuestion(String question, int imageId1, int imageId2, int imageId3, int imageId4, int correctAnswer) {
-        super(question, correctAnswer);
+    public ImageOptionsQuestion(int id,String question, int imageId1, int imageId2, int imageId3, int imageId4, int correctAnswer) {
+        super(id, question, correctAnswer);
         this.imageId1 = imageId1;
         this.imageId2 = imageId2;
         this.imageId3 = imageId3;
@@ -27,4 +27,8 @@ public class ImageOptionsQuestion extends Question {
     public int getImageId4() {
         return imageId4;
     }
+    public void setImageId1(int i){this.imageId1=i;}
+    public void setImageId2(int i){this.imageId2=i;}
+    public void setImageId3(int i){this.imageId3=i;}
+    public void setImageId4(int i){this.imageId4=i;}
 }
