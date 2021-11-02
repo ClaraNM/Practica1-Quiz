@@ -2,8 +2,8 @@ package com.example.practica1.Data;
 
 public class VideoQuestion extends Question {
 
-    private final int videoQuestionId;
-    private final String op1, op2, op3, op4;
+    private int videoQuestionId;
+    private String op1, op2, op3, op4;
     public VideoQuestion(int id, String question, String op1, String op2, String op3, String op4, int correctAnswer, int videoQuestionId) {
         super(id, question, correctAnswer);
         this.videoQuestionId = videoQuestionId;
@@ -16,6 +16,7 @@ public class VideoQuestion extends Question {
     public int getVideoQuestionId() {
         return videoQuestionId;
     }
+    public void setVideoQuestionId(int n){ this.videoQuestionId=n;}
 
     public String getOp1() {
         return op1;
@@ -32,4 +33,8 @@ public class VideoQuestion extends Question {
     public String getOp4() {
         return op4;
     }
+    public void setOp1(String s){this.op1=s;}
+    public void setOp2(String s){this.op2=s;}
+    public void setOp3(String s){this.op3=s;}
+    public void setOp4(String s){this.op4=s;}
 }

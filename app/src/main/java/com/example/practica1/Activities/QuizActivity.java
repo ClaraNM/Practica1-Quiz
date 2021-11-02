@@ -2,17 +2,14 @@ package com.example.practica1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +20,6 @@ import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
 import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
-import com.example.practica1.Data.db.DbHelper;
 import com.example.practica1.Data.VideoQuestion;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
@@ -35,7 +31,6 @@ import com.example.practica1.Fragment.VideoQuestionFragment;
 import com.example.practica1.R;
 import com.example.practica1.Adapter.Communicator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 

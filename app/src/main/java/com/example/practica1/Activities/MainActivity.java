@@ -19,6 +19,7 @@ import com.example.practica1.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private  boolean dbCreate=false;
     public static String PACKAGE_NAME;
     //Buttons:
     private Button play_button;
@@ -60,8 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        QuestionDataBase.InitializeDataBase(MainActivity.this);
+         if (dbCreate==false){
+             QuestionDataBase.InitializeDataBase(MainActivity.this);
+             dbCreate=true;
+         }
 
         play_button = findViewById(R.id.button_startQuiz);
         play_button.setOnClickListener(new View.OnClickListener() {

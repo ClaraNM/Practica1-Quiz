@@ -5,7 +5,7 @@ public class ImageQuestion extends Question {
     private int imageQuestionId;
     private String op1, op2, op3, op4;
 
-    public ImageQuestion(int id, String question, String op1, String op2, String op3, String op4, int correctAnswer, int imageQuestionId) {
+    public ImageQuestion(int id, String question,int imageQuestionId, String op1, String op2, String op3, String op4, int correctAnswer) {
         super(id,question, correctAnswer);
         this.imageQuestionId = imageQuestionId;
         this.op1 = op1;
