@@ -238,7 +238,7 @@ public class DbQuerys extends DbTables {
                     case 5:
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
-                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE video_ID = '"+randomQ+"'", null);
+                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
                                 question_V.setId(cursorQuestions.getInt(0));
@@ -369,7 +369,7 @@ public class DbQuerys extends DbTables {
                     case 5:
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
-                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE video_ID = '"+randomQ+"'", null);
+                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
                                 question_V.setId(cursorQuestions.getInt(0));
@@ -500,7 +500,7 @@ public class DbQuerys extends DbTables {
                     case 5:
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
-                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE video_ID = '"+randomQ+"'", null);
+                        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
                                 question_V.setId(cursorQuestions.getInt(0));

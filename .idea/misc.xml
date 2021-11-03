@@ -49,6 +49,14 @@
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/result_view_image_question.xml" value="0.536" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/result_view_number_question.xml" value="0.6" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/result_view_text_question.xml" value="0.6" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_image_options_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_image_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_sound_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_video_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_image_options_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_sound_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_text_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_video_question.xml" value="0.46370370370370373" />
       </map>
     </option>
   </component>

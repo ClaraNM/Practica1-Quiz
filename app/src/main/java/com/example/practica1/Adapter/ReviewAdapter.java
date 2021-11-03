@@ -1,25 +1,33 @@
 package com.example.practica1.Adapter;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.practica1.Activities.MainActivity;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
 import com.example.practica1.Data.Question;
+import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
+import com.example.practica1.Data.VideoQuestion;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
 import com.example.practica1.Fragment.QuestionFragment;
+import com.example.practica1.Fragment.SoundQuestionFragment;
 import com.example.practica1.Fragment.TextQuestionFragment;
+import com.example.practica1.Fragment.VideoQuestionFragment;
 import com.example.practica1.R;
 
 import java.util.List;
@@ -44,6 +52,10 @@ public class ReviewAdapter extends RecyclerView.Adapter {
             return 2;}
         else if (questions.get(position) instanceof ImageQuestion){
             return 3;}
+        else if (questions.get(position) instanceof SoundQuestion){
+            return 4;}
+        else if (questions.get(position) instanceof VideoQuestion){
+            return 5;}
         return 0;
     }
 
@@ -53,6 +65,8 @@ public class ReviewAdapter extends RecyclerView.Adapter {
     //1->Preguntas de texto
     //2->Preguntas de número
     //3->Preguntas de enunciado con imagen
+    //4->Preguntas de audio
+    //5->Preguntas de video
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         View view;
@@ -65,6 +79,12 @@ public class ReviewAdapter extends RecyclerView.Adapter {
         }else   if (viewType==3){
             view = layoutInflater.inflate(R.layout.result_view_image_question,parent,false);
             return  new ViewHolder_ImgQ(view);
+        }else if (viewType==4){
+            view=layoutInflater.inflate(R.layout.result_view_sound_question,parent,false);
+            return new ViewHolder_SoundQ(view);
+        }else if(viewType==5){
+            view=layoutInflater.inflate(R.layout.result_view_video_question,parent,false);
+            return new ViewHolder_VideoQ(view);
         }
         view=layoutInflater.inflate(R.layout.result_view_image_options_question,parent,false);
         return new ViewHolder_ImgOQ(view);
@@ -201,6 +221,85 @@ public class ReviewAdapter extends RecyclerView.Adapter {
                         break;
                 }
             }
+        }else if (question instanceof SoundQuestion && questionAnswer instanceof SoundQuestionFragment){
+            ViewHolder_SoundQ ViewHolder_SoundQ =(ViewHolder_SoundQ) holder;
+            ViewHolder_SoundQ.textView.setText(question.getQuestion());
+            ViewHolder_SoundQ.answer1.setText(((SoundQuestion) question).getOp1());
+            ViewHolder_SoundQ.answer2.setText(((SoundQuestion) question).getOp2());
+            ViewHolder_SoundQ.answer3.setText(((SoundQuestion) question).getOp3());
+            ViewHolder_SoundQ.answer4.setText(((SoundQuestion) question).getOp4());
+            switch (question.getCorrectAnswer()){
+                case 0:
+                    ViewHolder_SoundQ.answer1.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 1:
+                    ViewHolder_SoundQ.answer2.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 2:
+                    ViewHolder_SoundQ.answer3.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 3:
+                    ViewHolder_SoundQ.answer4.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+            }
+
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()!=question.getCorrectAnswer()){
+                switch (questionAnswer.getAnswer()){
+                    case 0:
+                        ViewHolder_SoundQ.answer1.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 1:
+                        ViewHolder_SoundQ.answer2.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 2:
+                        ViewHolder_SoundQ.answer3.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 3:
+                        ViewHolder_SoundQ.answer4.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                }
+            }
+        }else if (question instanceof VideoQuestion && questionAnswer instanceof VideoQuestionFragment){
+            String path = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + ((VideoQuestion) question).getVideoQuestionId();
+            Uri uri = Uri.parse(path);
+            ViewHolder_VideoQ ViewHolder_VideoQ =(ViewHolder_VideoQ) holder;
+            ViewHolder_VideoQ.textView.setText(question.getQuestion());
+            ViewHolder_VideoQ.video.setVideoURI(uri);
+            ViewHolder_VideoQ.answer1.setText(((VideoQuestion) question).getOp1());
+            ViewHolder_VideoQ.answer2.setText(((VideoQuestion) question).getOp2());
+            ViewHolder_VideoQ.answer3.setText(((VideoQuestion) question).getOp3());
+            ViewHolder_VideoQ.answer4.setText(((VideoQuestion) question).getOp4());
+            switch (question.getCorrectAnswer()){
+                case 0:
+                    ViewHolder_VideoQ.answer1.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 1:
+                    ViewHolder_VideoQ.answer2.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 2:
+                    ViewHolder_VideoQ.answer3.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+                case 3:
+                    ViewHolder_VideoQ.answer4.setBackgroundColor(Color.parseColor("#ABFAA7"));
+                    break;
+            }
+
+            if (questionAnswer.isAnswered() && questionAnswer.getAnswer()!=question.getCorrectAnswer()){
+                switch (questionAnswer.getAnswer()){
+                    case 0:
+                        ViewHolder_VideoQ.answer1.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 1:
+                        ViewHolder_VideoQ.answer2.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 2:
+                        ViewHolder_VideoQ.answer3.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                    case 3:
+                        ViewHolder_VideoQ.answer4.setBackgroundColor(Color.parseColor("#F58C8A"));
+                        break;
+                }
+            }
         }
     }
 
@@ -261,6 +360,30 @@ public class ReviewAdapter extends RecyclerView.Adapter {
             answer2=v.findViewById(R.id.imgQ_answer_2);
             answer3=v.findViewById(R.id.imgQ_answer_3);
             answer4=v.findViewById(R.id.imgQ_answer_4);
+        }
+    }
+    class ViewHolder_SoundQ extends RecyclerView.ViewHolder{
+        TextView textView,answer1,answer2,answer3,answer4;
+        public ViewHolder_SoundQ(@NonNull View v) {
+            super(v);
+            textView=v.findViewById(R.id.soundQ_statement);
+            answer1=v.findViewById(R.id.soundQ_answer_1);
+            answer2=v.findViewById(R.id.soundQ_answer_2);
+            answer3=v.findViewById(R.id.soundQ_answer_3);
+            answer4=v.findViewById(R.id.soundQ_answer_4);
+        }
+    }
+    class ViewHolder_VideoQ extends RecyclerView.ViewHolder{
+        TextView textView,answer1,answer2,answer3,answer4;
+        VideoView video;
+        public ViewHolder_VideoQ(@NonNull View v) {
+            super(v);
+            textView=v.findViewById(R.id.videoQ_statement);
+            video=v.findViewById(R.id.videoQ_video);
+            answer1=v.findViewById(R.id.videoQ_answer_1);
+            answer2=v.findViewById(R.id.videoQ_answer_2);
+            answer3=v.findViewById(R.id.videoQ_answer_3);
+            answer4=v.findViewById(R.id.videoQ_answer_4);
         }
     }
 }

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="370dp"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:backgroundTint="?attr/colorOnPrimary"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        tools:ignore="MissingConstraints">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/soundQ_statement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="?attr/colorPrimaryVariant"
+                android:gravity="center"
+                android:text="@string/statement"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white" />
+
+            <View
+                android:id="@+id/soundQ_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignBottom="@id/soundQ_statement"
+                android:background="?attr/colorOnSecondary"/>
+
+            <LinearLayout
+                android:id="@+id/soundQ_music_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/soundQ_line_1"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tv_current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+
+                <SeekBar
+                    android:id="@+id/seek_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_total_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/soundQ_music_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/soundQ_music_bar"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_rew"
+                    android:src="@drawable/ic_fast_rewind"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_play"
+                    android:src="@drawable/ic_play"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_pause"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_pause"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/btn_ff"
+                    android:src="@drawable/ic_fast_forward"/>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/soundQ_line_video"
+                android:layout_width="320dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/soundQ_music_play"
+                android:layout_centerHorizontal="true"
+                android:background="?attr/colorOnSecondary" />
+
+            <TextView
+                android:id="@+id/soundQ_answer_1"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_below="@id/soundQ_line_video"
+                android:background="?attr/colorOnPrimary"
+                android:gravity="center"
+                android:paddingTop="2dp"
+                android:text="respuesta primera"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/videoQ_line_2"
+                android:layout_width="280dp"
+                android:layout_height="0.5dp"
+                android:layout_alignBottom="@id/soundQ_answer_1"
+                android:layout_centerHorizontal="true"
+                android:background="?attr/colorOnSecondary" />
+
+            <TextView
+                android:id="@+id/soundQ_answer_2"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_below="@id/soundQ_answer_1"
+                android:background="?attr/colorOnPrimary"
+                android:gravity="center"
+                android:text="respuesta segunda"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/soundQ_line_3"
+                android:layout_width="280dp"
+                android:layout_height="0.5dp"
+                android:layout_alignBottom="@id/soundQ_answer_2"
+                android:layout_centerHorizontal="true"
+                android:background="?attr/colorOnSecondary" />
+
+            <TextView
+                android:id="@+id/soundQ_answer_3"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_below="@id/soundQ_answer_2"
+                android:background="?attr/colorOnPrimary"
+                android:gravity="center"
+                android:text="respuesta tercera"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/soundQ_line_4"
+                android:layout_width="280dp"
+                android:layout_height="0.5dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@id/soundQ_answer_3"
+                android:background="?attr/colorOnSecondary" />
+
+            <TextView
+                android:id="@+id/soundQ_answer_4"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:layout_below="@id/soundQ_answer_3"
+                android:background="?attr/colorOnPrimary"
+                android:gravity="center"
+                android:text="respuesta cuarta"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

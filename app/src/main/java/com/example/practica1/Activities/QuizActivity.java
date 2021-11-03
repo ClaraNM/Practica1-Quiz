@@ -81,9 +81,9 @@ public class QuizActivity extends AppCompatActivity {
 
         // Carga la lista de preguntas
         try {
-            do {
+            //do {
                 questionList = QuestionDataBase.getQuestionPool(poolSize, QuizActivity.this);
-            }while(questionList.size()<poolSize);
+            //}while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
             e.printStackTrace();
