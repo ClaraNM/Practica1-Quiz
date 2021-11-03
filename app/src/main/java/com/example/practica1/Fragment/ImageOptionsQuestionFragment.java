@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.example.practica1.Activities.QuizActivity;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.R;
 
@@ -69,6 +70,8 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
         }
     }
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -97,11 +100,9 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 0;
-                op1.setCardBackgroundColor(Color.WHITE);
-                op2.setCardBackgroundColor(Color.TRANSPARENT);
-                op3.setCardBackgroundColor(Color.TRANSPARENT);
-                op4.setCardBackgroundColor(Color.TRANSPARENT);
-
+                boolean hit = selectedImageIndex == correctAnswer;
+                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                ShowCorrection();
             }
         });
 
@@ -111,10 +112,9 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 1;
-                op1.setCardBackgroundColor(Color.TRANSPARENT);
-                op2.setCardBackgroundColor(Color.WHITE);
-                op3.setCardBackgroundColor(Color.TRANSPARENT);
-                op4.setCardBackgroundColor(Color.TRANSPARENT);
+                boolean hit = selectedImageIndex == correctAnswer;
+                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                ShowCorrection();
             }
         });
 
@@ -124,10 +124,9 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 2;
-                op1.setCardBackgroundColor(Color.TRANSPARENT);
-                op2.setCardBackgroundColor(Color.TRANSPARENT);
-                op3.setCardBackgroundColor(Color.WHITE);
-                op4.setCardBackgroundColor(Color.TRANSPARENT);
+                boolean hit = selectedImageIndex == correctAnswer;
+                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                ShowCorrection();
             }
         });
 
@@ -137,10 +136,9 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 3;
-                op1.setCardBackgroundColor(Color.TRANSPARENT);
-                op2.setCardBackgroundColor(Color.TRANSPARENT);
-                op3.setCardBackgroundColor(Color.TRANSPARENT);
-                op4.setCardBackgroundColor(Color.WHITE);
+                boolean hit = selectedImageIndex == correctAnswer;
+                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                ShowCorrection();
             }
         });
 

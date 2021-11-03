@@ -45,21 +45,11 @@ public class QuizActivity extends AppCompatActivity {
     // Indice de la pregunta actual
     private int currentQuestion = -1;
 
-    // Verdadero si se ha comprobado ya la pregunta actual
-    private boolean questionChecked;
-
-    // Botón de comprobar / avanzar pregunta
-    private Button button_continue;
-
     // Marcador del número de pregunta
     private TextView questionNumber;
 
     // Fragmento actual para visualizar la pregunta
     private QuestionFragment currentFragment;
-
-
-    // Notificacion si se deja una pregunta sin responder
-    private Toast advice;
 
     private CountDownTimer countDownTimer;
     private TextView countDown;
@@ -88,55 +78,29 @@ public class QuizActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        advice = Toast.makeText(getApplicationContext(), R.string.quiz_advice, Toast.LENGTH_LONG);
 
         // Establece las referencias del layout
         questionNumber = findViewById(R.id.question_number);
-        button_continue = findViewById(R.id.button_continuar);
         countDown = findViewById(R.id.countdown);
 
-        // Establece el método onclick del botón:
-        button_continue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(!questionChecked){
-                    if (checkQuestion()){
-                        if (currentFragment.getAnswer()==questionList.get(currentQuestion).getCorrectAnswer()){
-                            Communicator.addHit();
-                        }
-                    }
-                }
-                else{
-                    goNextQuestion();
-                }
-            }
-        });
-
         // Carga la primera pregunta:
+
         goNextQuestion();
     }
 
-    // Comprobar si alguna opcion está marcada y si lo está corregir la pregunta
-    private boolean checkQuestion(){
-        if(currentFragment.isAnswered()){
-            currentFragment.ShowCorrection();
-            questionChecked = true;
-            button_continue.setText("Siguiente");
-            return true;
-        }
-        else{
-            advice.show();
-            return false;
-        }
+    public void CheckAndContinue(boolean hit){
+        if(hit)
+            Communicator.addHit();
+        goNextQuestion();
     }
+
 
     // Cargar la siguiente pregunta
     private void goNextQuestion(){
         // Si no quedan preguntas se pasa a la pantalla de resultados
         currentQuestion++;
         stopCountDown();
-        if(currentQuestion >= poolSize){
+        if(currentQuestion >= questionList.size() || currentQuestion >= poolSize){
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }
@@ -145,11 +109,7 @@ public class QuizActivity extends AppCompatActivity {
         else{
             StartCountDown();
             Question question = questionList.get(currentQuestion);
-            if(question instanceof TextQuestion) {
-                replaceFragment(TextQuestionFragment.newInstance((TextQuestion) question));
-                Communicator.addFragment(currentFragment);
-            }
-            else if(question instanceof ImageOptionsQuestion){
+            if(question instanceof ImageOptionsQuestion){
                 replaceFragment(ImageOptionsQuestionFragment.newInstance((ImageOptionsQuestion) question));
                 Communicator.addFragment(currentFragment);
             }
@@ -169,9 +129,11 @@ public class QuizActivity extends AppCompatActivity {
                 replaceFragment(SoundQuestionFragment.newInstance((SoundQuestion) question));
                 Communicator.addFragment(currentFragment);
             }
+            else if(question instanceof TextQuestion) {
+                replaceFragment(TextQuestionFragment.newInstance((TextQuestion) question));
+                Communicator.addFragment(currentFragment);
+            }
         }
-        questionChecked = false;
-        button_continue.setText("Comprobar");
         questionNumber.setText("" + (currentQuestion + 1) + "/" + poolSize);
     }
 

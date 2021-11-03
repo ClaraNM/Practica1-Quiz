@@ -13,16 +13,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.practica1.Activities.QuizActivity;
 import com.example.practica1.Data.Question;
 import com.example.practica1.R;
 import com.example.practica1.Data.TextQuestion;
 
 public class TextQuestionFragment extends QuestionFragment {
 
-    private String optionA;
-    private String optionB;
-    private String optionC;
-    private String optionD;
+    protected String optionA;
+    protected String optionB;
+    protected String optionC;
+    protected String optionD;
 
     public static final String ARG_OP1 = "op1";
     public static final String ARG_OP2  = "op2";
@@ -36,15 +37,19 @@ public class TextQuestionFragment extends QuestionFragment {
     public static TextQuestionFragment newInstance(TextQuestion question) {
         TextQuestionFragment fragment = new TextQuestionFragment();
         Bundle args = new Bundle();
+        setArgs(args, question);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+    protected static void setArgs(Bundle args, TextQuestion question){
         args.putString(ARG_QUESTION, question.getQuestion());
         args.putInt(ARG_ANSWER, question.getCorrectAnswer());
         args.putString(ARG_OP1, question.getOp1());
         args.putString(ARG_OP2, question.getOp2());
         args.putString(ARG_OP3, question.getOp3());
         args.putString(ARG_OP4, question.getOp4());
-
-        fragment.setArguments(args);
-        return fragment;
     }
 
 
@@ -52,38 +57,59 @@ public class TextQuestionFragment extends QuestionFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            question = getArguments().getString(ARG_QUESTION);
-            optionA = getArguments().getString(ARG_OP1);
-            optionB = getArguments().getString(ARG_OP2);
-            optionC = getArguments().getString(ARG_OP3);
-            optionD = getArguments().getString(ARG_OP4);
-            correctAnswer = getArguments().getInt(ARG_ANSWER);
+           loadArgs();
         }
+    }
+
+    protected void loadArgs(){
+        question = getArguments().getString(ARG_QUESTION);
+        optionA = getArguments().getString(ARG_OP1);
+        optionB = getArguments().getString(ARG_OP2);
+        optionC = getArguments().getString(ARG_OP3);
+        optionD = getArguments().getString(ARG_OP4);
+        correctAnswer = getArguments().getInt(ARG_ANSWER);
+    }
+
+    protected int getFragmentLayoutId(){
+        return R.layout.fragment_text_question;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_text_question, container, false);
+        View root = inflater.inflate(getFragmentLayoutId(), container, false);
+        setUpLayout(root);
+        fragmentLayout = root;
+        return  root;
+    }
 
+    protected void setUpLayout(View root){
         TextView textView = root.findViewById(R.id.question_text);
         textView.setText(question);
 
-        TextView op1 = root.findViewById(R.id.option1);
-        op1.setText(optionA);
+        RadioButton op1 = root.findViewById(R.id.option1);
+        setUpRadioButton(op1, optionA);
 
-        TextView op2 = root.findViewById(R.id.option2);
-        op2.setText(optionB);
+        RadioButton op2 = root.findViewById(R.id.option2);
+        setUpRadioButton(op2, optionB);
 
-        TextView op3 = root.findViewById(R.id.option3);
-        op3.setText(optionC);
+        RadioButton op3 = root.findViewById(R.id.option3);
+        setUpRadioButton(op3, optionC);
 
-        TextView op4 = root.findViewById(R.id.option4);
-        op4.setText(optionD);
+        RadioButton op4 = root.findViewById(R.id.option4);
+        setUpRadioButton(op4, optionD);
+    }
 
-        fragmentLayout = root;
-        return  root;
+    private void setUpRadioButton(RadioButton button, String text){
+        button.setText(text);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean hit = getAnswer() == correctAnswer;
+                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+            }
+        });
     }
 
     @Override
