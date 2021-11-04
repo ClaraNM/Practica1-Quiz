@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbTables extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
-    private static final String DATABASE_NOMBRE="questions.db";
+    private static final String DATABASE_NOMBRE="quiz_database.db";
   // public static final String TABLE_QUESTIONS="t_questions";
     public static final String TABLE_TEXT_QUESTIONS="t_text_questions";
     public static final String TABLE_NUMBER_QUESTIONS="t_number_questions";
@@ -16,6 +16,7 @@ public class DbTables extends SQLiteOpenHelper {
     public static final String TABLE_IMAGE_QUESTIONS="t_image_questions";
     public static final String TABLE_SOUND_QUESTIONS="t_sound_questions";
     public static final String TABLE_VIDEO_QUESTIONS="t_video_questions";
+    public static final String TABLE_RANKING="t_ranking";
 
 
     public DbTables(@Nullable Context context) {
@@ -68,7 +69,6 @@ public class DbTables extends SQLiteOpenHelper {
                 "imgOpQ_op4 INTEGER NOT NULL,"+
                 "imgOpQ_correctAnswer INTEGER NOT NULL)"
         );
-
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_SOUND_QUESTIONS+"("+
                 "soundQ_ID INTEGER PRIMARY KEY ,"+
                 "soundQ_statement STRING NOT NULL,"+
@@ -89,8 +89,12 @@ public class DbTables extends SQLiteOpenHelper {
                 "videoQ_op4 STRING NOT NULL,"+
                 "videoQ_correctAnswer INTEGER NOT NULL)"
         );
-
-
+        sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_RANKING+"("+
+                "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "profile_name STRING NOT NULL," +
+                "profile_score INTEGER NOT NULL" +
+                ")"
+        );
     }
 
     @Override

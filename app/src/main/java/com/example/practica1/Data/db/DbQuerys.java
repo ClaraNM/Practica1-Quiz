@@ -10,11 +10,13 @@ import androidx.annotation.Nullable;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
+import com.example.practica1.Data.Profile;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
 import com.example.practica1.Data.VideoQuestion;
 
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +79,7 @@ public class DbQuerys extends DbTables {
     }
     public void insertSoundQuestion(SoundQuestion question){
         db.execSQL("INSERT INTO " +TABLE_SOUND_QUESTIONS+
-                " (soundQ_ID,soundQ_statement,soundQ_sound, soundQ_op1,soundQ_op2,soundQ_op3,soundQ_op4,soundQ_correctAnswer) " +
+                " (soundQ_ID,soundQ_statement,soundQ_sound,soundQ_op1,soundQ_op2,soundQ_op3,soundQ_op4,soundQ_correctAnswer) " +
                 " SELECT * FROM (SELECT '"+question.getId()+"' AS soundQ_ID, '"+question.getQuestion()+"' AS soundQ_statement," +
                 "'"+question.getSoundQuestionId()+"' AS soundQ_sound,'"+question.getOp1()+"' AS soundQ_op1," +
                 "'"+question.getOp2()+"' AS soundQ_op2,'"+question.getOp3()+"' AS soundQ_op3,'"+question.getOp4()+"' AS soundQ_op4," +
@@ -87,7 +89,6 @@ public class DbQuerys extends DbTables {
                 ") LIMIT 1");
 
     }
-
     public void insertVideoQuestion(VideoQuestion question){
         db.execSQL("INSERT INTO " +TABLE_VIDEO_QUESTIONS+
                 " (videoQ_ID,videoQ_statement,videoQ_video,videoQ_op1,videoQ_op2,videoQ_op3,videoQ_op4,videoQ_correctAnswer) " +
@@ -100,38 +101,41 @@ public class DbQuerys extends DbTables {
                 ") LIMIT 1");
 
     }
+    public void insertProfile(Profile profile){
+        db.execSQL("INSERT INTO " +TABLE_RANKING+
+                " (profile_name, profile_score) " +
+                " VALUES ('"+profile.getName()+"', '"+profile.getScore()+"')");
+
+    }
+
+
+    public List<Profile> getRanking(){
+        List<Profile> ranking = new LinkedList<>();
+        Profile profile=new Profile(null,0);
+        Cursor cursorRanking = null;
+        cursorRanking=db.rawQuery("SELECT * FROM "+TABLE_RANKING+" ORDER BY profile_score desc",null);
+        if (cursorRanking.moveToFirst()){
+            do {
+                profile.setName(cursorRanking.getString(1));
+                profile.setScore(cursorRanking.getInt(2));
+                Profile addProfile=new Profile(profile.getName(),profile.getScore());
+                ranking.add(addProfile);
+
+            }while (cursorRanking.moveToNext());
+        }
+        cursorRanking.close();
+
+        return ranking;
+    }
 
     public List<Question> getQuestionPool(int size){
         Random random= new Random();
-
         List<Question> questionList = new ArrayList<Question>();
-
         Cursor cursorQuestions = null;
-        //PRUEBA DE Q SE GUARDAN TODAS EN LA TABLA DE SUS PREGUNTAS
-
-       List<Question> questionListPrueba = new ArrayList<Question>();
-       TextQuestion question=new TextQuestion(0,null,null,null,null,null,0);
-        cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS , null);
-        if (cursorQuestions.moveToFirst()){
-            do {
-                question.setId(cursorQuestions.getInt(0));
-                question.setQuestion(cursorQuestions.getString(1));
-                question.setOp1(cursorQuestions.getString(2));
-                question.setOp2(cursorQuestions.getString(3));
-                question.setOp3(cursorQuestions.getString(4));
-                question.setOp4(cursorQuestions.getString(5));
-                question.setCorrectAnswer(cursorQuestions.getInt(6));
-
-                questionListPrueba.add(question);
-            }while (cursorQuestions.moveToNext());
-        }
-        cursorQuestions.close();
-        for (int i = 0; i < 8; i++) {
-            Log.d("CREATION",questionListPrueba.get(i).getQuestion()+"/n");
-        }
 
         if (size==10){
             for (int i = 0; i < size; i++) {
+
                 //0->Pregunta de respuestas imagenes
                 //1->Preguntas de texto
                 //2->Preguntas de número
@@ -141,10 +145,14 @@ public class DbQuerys extends DbTables {
 
                 int randomTypeQ= random.nextInt(6);
                 int randomQ= 0;
+                int j=0;
+                int previousSize=0;
                 switch (randomTypeQ){
                     case 0:
                         ImageOptionsQuestion question_IO =new ImageOptionsQuestion(0,null,0,0,0,0,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE imgOpQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -156,7 +164,18 @@ public class DbQuerys extends DbTables {
                                 question_IO.setImageId4(cursorQuestions.getInt(5));
                                 question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_IO);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_IO.getQuestion()) {
+                                            questionList.add(question_IO);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else {
+                                    questionList.add(question_IO);
+                                }
+
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -164,6 +183,8 @@ public class DbQuerys extends DbTables {
                     case 1:
                         TextQuestion question_T=new TextQuestion(0,null,null,null,null,null,0);
                         randomQ=random.nextInt(8);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE textQ_ID = '"+randomQ+"'",null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -175,7 +196,17 @@ public class DbQuerys extends DbTables {
                                 question_T.setOp4(cursorQuestions.getString(5));
                                 question_T.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_T);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_T.getQuestion()) {
+                                            questionList.add(question_T);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_T);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -183,6 +214,8 @@ public class DbQuerys extends DbTables {
                     case 2:
                         NumberQuestion question_N= new NumberQuestion(0,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE numberQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -190,7 +223,16 @@ public class DbQuerys extends DbTables {
                                 question_N.setQuestion(cursorQuestions.getString(1));
                                 question_N.setCorrectAnswer(cursorQuestions.getInt(2));
 
-                                questionList.add(question_N);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_N.getQuestion()) {
+                                            questionList.add(question_N);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_N);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -198,6 +240,8 @@ public class DbQuerys extends DbTables {
                     case 3:
                         ImageQuestion question_I=new ImageQuestion(0,null,0,null,null,null,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -209,9 +253,17 @@ public class DbQuerys extends DbTables {
                                 question_I.setOp3(cursorQuestions.getString(5));
                                 question_I.setOp4(cursorQuestions.getString(6));
                                 question_I.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_I.getQuestion() ) {
+                                            questionList.add(question_I);
 
-
-                                questionList.add(question_I);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_I);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -219,6 +271,8 @@ public class DbQuerys extends DbTables {
                     case 4:
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -230,17 +284,26 @@ public class DbQuerys extends DbTables {
                                 question_S.setOp3(cursorQuestions.getString(5));
                                 question_S.setOp4(cursorQuestions.getString(6));
                                 question_S.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_S.getQuestion() ) {
+                                            questionList.add(question_S);
 
-
-                                questionList.add(question_S);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_S);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
                     case 5:
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -252,19 +315,26 @@ public class DbQuerys extends DbTables {
                                 question_V.setOp3(cursorQuestions.getString(5));
                                 question_V.setOp4(cursorQuestions.getString(6));
                                 question_V.setCorrectAnswer(cursorQuestions.getInt(7));
-
-
-                                questionList.add(question_V);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_V.getQuestion() ) {
+                                            questionList.add(question_V);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_V);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
                 }
             }
 
         }else if(size==15){
             for (int i = 0; i < size; i++) {
+
                 //0->Pregunta de respuestas imagenes
                 //1->Preguntas de texto
                 //2->Preguntas de número
@@ -274,10 +344,14 @@ public class DbQuerys extends DbTables {
 
                 int randomTypeQ= random.nextInt(6);
                 int randomQ= 0;
+                int j=0;
+                int previousSize=0;
                 switch (randomTypeQ){
                     case 0:
                         ImageOptionsQuestion question_IO =new ImageOptionsQuestion(0,null,0,0,0,0,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE imgOpQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -289,7 +363,18 @@ public class DbQuerys extends DbTables {
                                 question_IO.setImageId4(cursorQuestions.getInt(5));
                                 question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_IO);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_IO.getQuestion()) {
+                                            questionList.add(question_IO);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else {
+                                    questionList.add(question_IO);
+                                }
+
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -297,6 +382,8 @@ public class DbQuerys extends DbTables {
                     case 1:
                         TextQuestion question_T=new TextQuestion(0,null,null,null,null,null,0);
                         randomQ=random.nextInt(8);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE textQ_ID = '"+randomQ+"'",null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -308,7 +395,17 @@ public class DbQuerys extends DbTables {
                                 question_T.setOp4(cursorQuestions.getString(5));
                                 question_T.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_T);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_T.getQuestion()) {
+                                            questionList.add(question_T);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_T);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -316,6 +413,8 @@ public class DbQuerys extends DbTables {
                     case 2:
                         NumberQuestion question_N= new NumberQuestion(0,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE numberQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -323,7 +422,16 @@ public class DbQuerys extends DbTables {
                                 question_N.setQuestion(cursorQuestions.getString(1));
                                 question_N.setCorrectAnswer(cursorQuestions.getInt(2));
 
-                                questionList.add(question_N);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_N.getQuestion()) {
+                                            questionList.add(question_N);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_N);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -331,6 +439,8 @@ public class DbQuerys extends DbTables {
                     case 3:
                         ImageQuestion question_I=new ImageQuestion(0,null,0,null,null,null,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -342,17 +452,26 @@ public class DbQuerys extends DbTables {
                                 question_I.setOp3(cursorQuestions.getString(5));
                                 question_I.setOp4(cursorQuestions.getString(6));
                                 question_I.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_I.getQuestion() ) {
+                                            questionList.add(question_I);
 
-
-                                questionList.add(question_I);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_I);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
                     case 4:
-
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -364,18 +483,26 @@ public class DbQuerys extends DbTables {
                                 question_S.setOp3(cursorQuestions.getString(5));
                                 question_S.setOp4(cursorQuestions.getString(6));
                                 question_S.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_S.getQuestion() ) {
+                                            questionList.add(question_S);
 
-
-                                questionList.add(question_S);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_S);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
                     case 5:
-
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -387,20 +514,26 @@ public class DbQuerys extends DbTables {
                                 question_V.setOp3(cursorQuestions.getString(5));
                                 question_V.setOp4(cursorQuestions.getString(6));
                                 question_V.setCorrectAnswer(cursorQuestions.getInt(7));
-
-
-                                questionList.add(question_V);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (questionList.get(j).getQuestion() != question_V.getQuestion() ) {
+                                            questionList.add(question_V);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_V);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
-
                 }
             }
 
         }else{
             for (int i = 0; i < size; i++) {
+
                 //0->Pregunta de respuestas imagenes
                 //1->Preguntas de texto
                 //2->Preguntas de número
@@ -410,10 +543,14 @@ public class DbQuerys extends DbTables {
 
                 int randomTypeQ= random.nextInt(6);
                 int randomQ= 0;
+                int j=0;
+                int previousSize=0;
                 switch (randomTypeQ){
                     case 0:
                         ImageOptionsQuestion question_IO =new ImageOptionsQuestion(0,null,0,0,0,0,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE imgOpQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -425,7 +562,18 @@ public class DbQuerys extends DbTables {
                                 question_IO.setImageId4(cursorQuestions.getInt(5));
                                 question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_IO);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (!questionList.contains(question_IO)) {
+                                            questionList.add(question_IO);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else {
+                                    questionList.add(question_IO);
+                                }
+
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -433,6 +581,8 @@ public class DbQuerys extends DbTables {
                     case 1:
                         TextQuestion question_T=new TextQuestion(0,null,null,null,null,null,0);
                         randomQ=random.nextInt(8);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE textQ_ID = '"+randomQ+"'",null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -444,7 +594,17 @@ public class DbQuerys extends DbTables {
                                 question_T.setOp4(cursorQuestions.getString(5));
                                 question_T.setCorrectAnswer(cursorQuestions.getInt(6));
 
-                                questionList.add(question_T);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (!questionList.contains(question_T)) {
+                                            questionList.add(question_T);
+
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_T);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -452,6 +612,8 @@ public class DbQuerys extends DbTables {
                     case 2:
                         NumberQuestion question_N= new NumberQuestion(0,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE numberQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -459,7 +621,16 @@ public class DbQuerys extends DbTables {
                                 question_N.setQuestion(cursorQuestions.getString(1));
                                 question_N.setCorrectAnswer(cursorQuestions.getInt(2));
 
-                                questionList.add(question_N);
+                                if (questionList.size()>0) {
+                                do {
+                                    if (!questionList.contains(question_N)) {
+                                        questionList.add(question_N);
+                                    }
+                                    j++;
+                                } while (j < questionList.size() && previousSize == questionList.size());
+                            }else{
+                                    questionList.add(question_N);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
@@ -467,6 +638,8 @@ public class DbQuerys extends DbTables {
                     case 3:
                         ImageQuestion question_I=new ImageQuestion(0,null,0,null,null,null,null,0);
                         randomQ=random.nextInt(4);
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -478,17 +651,26 @@ public class DbQuerys extends DbTables {
                                 question_I.setOp3(cursorQuestions.getString(5));
                                 question_I.setOp4(cursorQuestions.getString(6));
                                 question_I.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (!questionList.contains(question_I) ) {
+                                            questionList.add(question_I);
 
-
-                                questionList.add(question_I);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_I);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
                     case 4:
-
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -500,19 +682,26 @@ public class DbQuerys extends DbTables {
                                 question_S.setOp3(cursorQuestions.getString(5));
                                 question_S.setOp4(cursorQuestions.getString(6));
                                 question_S.setCorrectAnswer(cursorQuestions.getInt(7));
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (!questionList.contains(question_S) ) {
+                                            questionList.add(question_S);
 
-
-                                questionList.add(question_S);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_S);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
-
                     case 5:
-
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
+                        j=0;
+                        previousSize=questionList.size();
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
                         if (cursorQuestions.moveToFirst()){
                             do {
@@ -524,14 +713,20 @@ public class DbQuerys extends DbTables {
                                 question_V.setOp3(cursorQuestions.getString(5));
                                 question_V.setOp4(cursorQuestions.getString(6));
                                 question_V.setCorrectAnswer(cursorQuestions.getInt(7));
-
-
-                                questionList.add(question_V);
+                                if (questionList.size()>0) {
+                                    do {
+                                        if (!questionList.contains(question_V)) {
+                                            questionList.add(question_V);
+                                        }
+                                        j++;
+                                    } while (j < questionList.size() && previousSize == questionList.size());
+                                }else{
+                                    questionList.add(question_V);
+                                }
                             }while (cursorQuestions.moveToNext());
                         }
                         cursorQuestions.close();
                         break;
-
                 }
             }
 

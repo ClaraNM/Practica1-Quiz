@@ -43,7 +43,15 @@
         android:textColor="?attr/colorPrimaryVariant"
         android:textSize="34sp" />
 </RelativeLayout>
-
+<Button
+    android:id="@+id/btn_ranking"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="RANKING"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="10dp"
+    android:backgroundTint="?attr/colorPrimaryVariant"
+    />
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

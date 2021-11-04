@@ -11,7 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.practica1.Activities.MainActivity;
+import com.example.practica1.Data.Profile;
+import com.example.practica1.Data.db.DbQuerys;
 import com.example.practica1.R;
+
+import java.util.List;
 
 public class MainMenuFragment extends Fragment {
 
@@ -64,8 +68,19 @@ public class MainMenuFragment extends Fragment {
         profiles_button.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) {activity.loadGameActivity(); }
         });
+        DbQuerys dbQuerys = new DbQuerys(this.getActivity());
         ranking_button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {activity.loadGameActivity(); }
+            @Override
+            public void onClick(View view) {
+                List<Profile> listaRanking= dbQuerys.getRanking();
+
+                RankingFragment rankingFragment=new RankingFragment(listaRanking);
+                rankingFragment.show(getParentFragmentManager(),"ranking_fragment");
+            }
+
+            // @Override public void onClick(View view) {activity.loadGameActivity();
+
+
         });
         return root;
     }

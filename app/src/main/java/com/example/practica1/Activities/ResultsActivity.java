@@ -5,17 +5,22 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.practica1.Adapter.Communicator;
 import com.example.practica1.Adapter.ReviewAdapter;
+import com.example.practica1.Data.Profile;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
+import com.example.practica1.Data.db.DbQuerys;
 import com.example.practica1.Fragment.QuestionFragment;
+import com.example.practica1.Fragment.RankingFragment;
 import com.example.practica1.R;
 
 import java.util.List;
@@ -27,6 +32,8 @@ public class ResultsActivity extends AppCompatActivity { private TextView score;
     private final List<QuestionFragment> QuestFragList = Communicator.getQFlist();
     private Button playAgain;
     private Button goStart;
+    private Button ranking;
+   // Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,20 @@ public class ResultsActivity extends AppCompatActivity { private TextView score;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new ReviewAdapter(QuestList,QuestFragList);
         recyclerView.setAdapter(adapter);
+
+        DbQuerys dbQuerys = new DbQuerys(this);
+        ranking=findViewById(R.id.btn_ranking);
+        ranking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+    List<Profile> listaRanking= dbQuerys.getRanking();
+
+                RankingFragment rankingFragment=new RankingFragment(listaRanking);
+                rankingFragment.show(getSupportFragmentManager(),"ranking_fragment");
+
+            }
+        }
+        );
 
         playAgain=findViewById(R.id.button_redoQuiz);
         playAgain.setOnClickListener(new View.OnClickListener() {

@@ -16,11 +16,13 @@ import android.widget.TextView;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
+import com.example.practica1.Data.Profile;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Data.QuestionDataBase;
 import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
 import com.example.practica1.Data.VideoQuestion;
+import com.example.practica1.Data.db.DbQuerys;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
@@ -71,9 +73,10 @@ public class QuizActivity extends AppCompatActivity {
 
         // Carga la lista de preguntas
         try {
-            //do {
+            //Asegura que sale una lista con el tamaño pedido de preguntas
+            do {
                 questionList = QuestionDataBase.getQuestionPool(poolSize, QuizActivity.this);
-            //}while(questionList.size()<poolSize);
+            }while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -112,6 +115,10 @@ public class QuizActivity extends AppCompatActivity {
         if(currentQuestion >= questionList.size() || currentQuestion >= poolSize){
             long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
             System.out.println(elapsedMillis + "");
+            DbQuerys dbQuerys = new DbQuerys(this);
+            Profile profile=Communicator.getNewProfile();
+            profile.setScore(Communicator.getHits());
+            dbQuerys.insertProfile(profile);
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }
