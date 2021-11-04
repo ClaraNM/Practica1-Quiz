@@ -1,70 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
     android:background="?attr/colorOnBackground"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Activities.MainActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        android:layout_marginTop="180dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/main_title_img"
-            android:layout_width="280dp"
-            android:layout_height="150dp"
-            android:src="@drawable/main_title_img_light"
-            android:scaleType="fitXY"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/main_menu"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="400dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-
-        <Button
-            android:id="@+id/button_startQuiz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="5dp"
-            android:backgroundTint="?attr/colorPrimaryVariant"
-            android:text="@string/jugar"
-            android:textSize="28sp"/>
-
-    <TextView
-        android:id="@+id/buttonChangeTheme"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:textColor="?attr/colorPrimaryVariant"
-        android:text="@string/cambiarTema" />
+        android:layout_height="match_parent"
 
-
-
-        <Switch
-            android:id="@+id/theme_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/buttonChangeTheme"
-            />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:layout="@layout/fragment_main_menu" />
+</LinearLayout>

@@ -15,6 +15,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="numberquestion_answer">0</string>
     <string name="quiz_advice">Selecciona una respuesta</string>
+    <string name="opciones">OPCIONES</string>
+    <string name="perfiles">PERFILES</string>
+    <string name="clasificaci_n">RANKING</string>
 
 
 </resources>

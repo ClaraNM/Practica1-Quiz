@@ -4,17 +4,19 @@ package com.example.practica1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.Switch;
 
 import com.example.practica1.Data.QuestionDataBase;
+import com.example.practica1.Fragment.MainMenuFragment;
+import com.example.practica1.Fragment.OptionsFragment;
 import com.example.practica1.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private Button play_button;
     private Switch modeSw;
     private  ImageView img_title ;
-    private  boolean theme=false; //false->Light true-> Dark
+    public boolean theme=false; //false->Light true-> Dark
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        PACKAGE_NAME = getPackageName();
 
+        PACKAGE_NAME = getPackageName();
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
             setTheme(R.style.Theme_Practica1_Dark);
             theme=true;
@@ -37,17 +41,21 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.Theme_Practica1_Light);
             theme=false;
         }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadMainMenuFragment();
 
-        img_title=findViewById(R.id.main_title_img);
+        //img_title=findViewById(R.id.main_title_img);
+        /*
         if(theme ==true){
             img_title.setImageResource(R.drawable.main_title_img_dark);
         }else{
             img_title.setImageResource(R.drawable.main_title_img_light);
         }
-        modeSw=findViewById(R.id.theme_mode);
+        */
+        // Cambio de modo dark/light
+        //modeSw=findViewById(R.id.theme_mode);
+        /*
         if (AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             modeSw.setChecked(true);
         }
@@ -61,22 +69,50 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+         */
          if (dbCreate==false){
              QuestionDataBase.InitializeDataBase(MainActivity.this);
              dbCreate=true;
          }
-
-        play_button = findViewById(R.id.button_startQuiz);
-        play_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                startActivity(new Intent(MainActivity.this, QuizActivity.class));
-            }
-        });
-
-
-
-
     }
+
+    public void loadGameActivity(){
+        finish();
+        startActivity(new Intent(MainActivity.this, QuizActivity.class));
+    }
+
+    public void loadMainMenuFragment(){
+            MainMenuFragment fragment = MainMenuFragment.newInstance();
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.fragmentContainerView, fragment);
+            ft.commit();
+    }
+
+    public void loadOptionsFragment(){
+        boolean b = AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES;
+        OptionsFragment fragment = OptionsFragment.newInstance(b);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.replace(R.id.fragmentContainerView, fragment);
+        ft.commit();
+    }
+
+    private void loadProfilesFragment(){
+        // TO DO
+    }
+
+    private void loadRankingFragment(){
+        // TO DO
+    }
+
+    public void ChangeTheme(boolean b){
+        if (b){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }else{
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+
 }
