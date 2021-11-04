@@ -8,10 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
@@ -44,15 +41,19 @@ public class QuizActivity extends AppCompatActivity {
 
     // Indice de la pregunta actual
     private int currentQuestion = -1;
-
+    private int hits = 0;
+    private int fails = 0;
     // Marcador del número de pregunta
-    private TextView questionNumber;
+    private TextView tv_questionNumber;
+    private TextView tv_hitCounter;
+    private TextView tv_failCounter;
+    private TextView countDown;
 
     // Fragmento actual para visualizar la pregunta
     private QuestionFragment currentFragment;
 
     private CountDownTimer countDownTimer;
-    private TextView countDown;
+
     private long countDownTimeMillis;
     private final long startTime = 60000;
 
@@ -80,7 +81,9 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         // Establece las referencias del layout
-        questionNumber = findViewById(R.id.question_number);
+        tv_questionNumber = findViewById(R.id.question_number);
+        tv_hitCounter = findViewById(R.id.tv_hitCounter);
+        tv_failCounter = findViewById(R.id.tv_failCounter);
         countDown = findViewById(R.id.countdown);
 
         // Carga la primera pregunta:
@@ -89,8 +92,15 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     public void CheckAndContinue(boolean hit){
-        if(hit)
+        if(hit){
             Communicator.addHit();
+            hits++;
+            tv_hitCounter.setText(""+hits);
+        }
+        else{
+            fails++;
+            tv_failCounter.setText(""+fails);
+        }
         goNextQuestion();
     }
 
@@ -134,7 +144,7 @@ public class QuizActivity extends AppCompatActivity {
                 Communicator.addFragment(currentFragment);
             }
         }
-        questionNumber.setText("" + (currentQuestion + 1) + "/" + poolSize);
+        tv_questionNumber.setText("" + (currentQuestion + 1) + "/" + poolSize);
     }
 
     // Remplaza el fragmento de layout de la pregunta
