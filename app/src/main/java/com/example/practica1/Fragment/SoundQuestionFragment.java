@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class SoundQuestionFragment extends TextQuestionFragment {
 
     private int soundQuestionId;
+    private MediaPlayer mediaplayer;
 
     public static final String ARG_SOUNDQUESTIONID  = "imageQuestionId";
 
@@ -92,7 +93,7 @@ public class SoundQuestionFragment extends TextQuestionFragment {
         btn_play = root.findViewById(R.id.btn_play);
         btn_pause = root.findViewById(R.id.btn_pause);
         btn_ff = root.findViewById(R.id.btn_ff);
-        MediaPlayer mediaplayer = MediaPlayer.create(this.getContext(), soundQuestionId);
+        mediaplayer = MediaPlayer.create(this.getContext(), soundQuestionId);
 
         Runnable runnable = new Runnable() {
             @Override
@@ -192,4 +193,11 @@ public class SoundQuestionFragment extends TextQuestionFragment {
         String str = String.format("%02d:%02d", time / 60000, (time / 1000) % 60);
         return str;
     }
+
+    @Override
+    public int getAnswer(){
+        mediaplayer.stop();
+        return super.getAnswer();
+    }
+
 }

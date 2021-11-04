@@ -77,7 +77,7 @@ public class DbQuerys extends DbTables {
     }
     public void insertSoundQuestion(SoundQuestion question){
         db.execSQL("INSERT INTO " +TABLE_SOUND_QUESTIONS+
-                " (soundQ_ID,soundQ_statement,soundQ_op1,soundQ_op2,soundQ_op3,soundQ_op4,soundQ_correctAnswer, soundQ_sound) " +
+                " (soundQ_ID,soundQ_statement,soundQ_sound, soundQ_op1,soundQ_op2,soundQ_op3,soundQ_op4,soundQ_correctAnswer) " +
                 " SELECT * FROM (SELECT '"+question.getId()+"' AS soundQ_ID, '"+question.getQuestion()+"' AS soundQ_statement," +
                 "'"+question.getSoundQuestionId()+"' AS soundQ_sound,'"+question.getOp1()+"' AS soundQ_op1," +
                 "'"+question.getOp2()+"' AS soundQ_op2,'"+question.getOp3()+"' AS soundQ_op3,'"+question.getOp4()+"' AS soundQ_op4," +

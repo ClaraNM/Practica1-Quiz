@@ -25,6 +25,7 @@ import com.example.practica1.R;
 public class VideoQuestionFragment extends TextQuestionFragment {
 
     private int videoQuestionId;
+    private VideoView video;
     public static final String ARG_VIDEOQUESTIONID  = "imageQuestionId";
 
     public VideoQuestionFragment() {
@@ -71,7 +72,7 @@ public class VideoQuestionFragment extends TextQuestionFragment {
     protected void setUpLayout(View root){
 
         super.setUpLayout(root);
-        VideoView video = root.findViewById(R.id.video_question);
+        video = root.findViewById(R.id.video_question);
         String path = "android.resource://" + MainActivity.PACKAGE_NAME + "/" + videoQuestionId;
         Uri uri = Uri.parse(path);
         video.setVideoURI(uri);
@@ -81,5 +82,11 @@ public class VideoQuestionFragment extends TextQuestionFragment {
         video.requestFocus();
         video.start();
 
+    }
+
+    @Override
+    public int getAnswer(){
+        video.pause();
+        return super.getAnswer();
     }
 }
