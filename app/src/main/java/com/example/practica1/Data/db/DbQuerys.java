@@ -75,7 +75,6 @@ public class DbQuerys extends DbTables {
                 ") LIMIT 1");
 
     }
-    /*
     public void insertSoundQuestion(SoundQuestion question){
         db.execSQL("INSERT INTO " +TABLE_SOUND_QUESTIONS+
                 " (soundQ_ID,soundQ_statement,soundQ_op1,soundQ_op2,soundQ_op3,soundQ_op4,soundQ_correctAnswer, soundQ_sound) " +
@@ -87,8 +86,8 @@ public class DbQuerys extends DbTables {
                 "    SELECT soundQ_ID FROM "+ TABLE_SOUND_QUESTIONS +" WHERE soundQ_ID = '"+question.getId()+"'\n" +
                 ") LIMIT 1");
 
-    }*/
-    /*
+    }
+
     public void insertVideoQuestion(VideoQuestion question){
         db.execSQL("INSERT INTO " +TABLE_VIDEO_QUESTIONS+
                 " (videoQ_ID,videoQ_statement,videoQ_video,videoQ_op1,videoQ_op2,videoQ_op3,videoQ_op4,videoQ_correctAnswer) " +
@@ -101,7 +100,7 @@ public class DbQuerys extends DbTables {
                 ") LIMIT 1");
 
     }
-    */
+
     public List<Question> getQuestionPool(int size){
         Random random= new Random();
 
@@ -109,7 +108,7 @@ public class DbQuerys extends DbTables {
 
         Cursor cursorQuestions = null;
         //PRUEBA DE Q SE GUARDAN TODAS EN LA TABLA DE SUS PREGUNTAS
-       /*
+
        List<Question> questionListPrueba = new ArrayList<Question>();
        TextQuestion question=new TextQuestion(0,null,null,null,null,null,0);
         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS , null);
@@ -130,7 +129,7 @@ public class DbQuerys extends DbTables {
         for (int i = 0; i < 8; i++) {
             Log.d("CREATION",questionListPrueba.get(i).getQuestion()+"/n");
         }
-*/
+
         if (size==10){
             for (int i = 0; i < size; i++) {
                 //0->Pregunta de respuestas imagenes
@@ -218,7 +217,6 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
                     case 4:
-                        /*
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
@@ -239,9 +237,8 @@ public class DbQuerys extends DbTables {
                         }
                         cursorQuestions.close();
                         break;
-                         */
+
                     case 5:
-                        /*
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
@@ -263,7 +260,6 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
 
-                         */
                 }
             }
 
@@ -354,7 +350,7 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
                     case 4:
-                        /*
+
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
@@ -376,9 +372,8 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
 
-                         */
                     case 5:
-                        /*
+
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
@@ -400,7 +395,7 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
 
-                         */
+
                 }
             }
 
@@ -491,7 +486,7 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
                     case 4:
-                        /*
+
                         SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0; //Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'", null);
@@ -513,9 +508,9 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
 
-                         */
+
                     case 5:
-                        /*
+
                         VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0);
                         randomQ=0;//Como no hay varias por ahora aqui no hay random
                         cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'", null);
@@ -537,7 +532,6 @@ public class DbQuerys extends DbTables {
                         cursorQuestions.close();
                         break;
 
-                         */
                 }
             }
 

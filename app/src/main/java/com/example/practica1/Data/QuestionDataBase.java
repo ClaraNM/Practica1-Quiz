@@ -57,9 +57,9 @@ public class QuestionDataBase {
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(2,"¿Quién es Apollo Justice de la saga Ace Attorney?", R.drawable.image_op_question_godot, R.drawable.image_op_question_edgeworth, R.drawable.image_op_question_apollo, R.drawable.image_op_question_phoenix,  2));
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(3,"¿Quién de estos personajes de Nier Automata es A2?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3));
 
-        //dbQuerys.insertSoundQuestion(new SoundQuestion(0,"pregunta", "OP1", "OP2", "OP3", "OP4", 0, R.raw.song));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(0,"pregunta", "OP1", "OP2", "OP3", "OP4", 0, R.raw.song));
 
-        //dbQuerys.insertVideoQuestion(new VideoQuestion(0,"pregunta", "OP1", "OP2", "OP3", "OP4", 0, R.raw.video));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(0,"pregunta", "OP1", "OP2", "OP3", "OP4", 0, R.raw.video));
 
     }
 

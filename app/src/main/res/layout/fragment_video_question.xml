@@ -1,87 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.VideoQuestionFragment">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/question_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/question"
+        android:text="@string/question_placeholder"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="" />
 
-        <TextView
-            android:id="@+id/question_text"
-            android:layout_width="369dp"
+    <VideoView
+        android:id="@+id/video_question"
+        android:layout_width="192dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question_text" />
+
+    <RadioGroup
+        android:id="@+id/option_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="10dp">
+
+
+        <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/question"
-            android:text="@string/question_placeholder"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="" />
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radiobutton_base"
+            android:textColor="?attr/colorPrimaryVariant"
+            android:textSize="14sp"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
-        <VideoView
-            android:id="@+id/video_question"
-            android:layout_width="192dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_text" />
+        <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radiobutton_base"
+            android:textColor="?attr/colorPrimaryVariant" />
 
-        <RadioGroup
-            android:id="@+id/option_group"
-            android:layout_width="325dp"
-            android:layout_height="350dp"
-            android:layout_margin="0dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.526"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/video_question">
+        <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radiobutton_base"
+            android:textColor="?attr/colorPrimaryVariant" />
 
+        <RadioButton
+            android:id="@+id/option4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/radiobutton_base"
+            android:textColor="?attr/colorPrimaryVariant" />
+    </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/option1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:background="@drawable/radiobutton_base"
-                android:textColor="?attr/colorPrimaryVariant"
-                tools:ignore="DuplicateSpeakableTextCheck" />
-
-            <RadioButton
-                android:id="@+id/option2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:background="@drawable/radiobutton_base"
-                android:textColor="?attr/colorPrimaryVariant" />
-
-            <RadioButton
-                android:id="@+id/option3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:background="@drawable/radiobutton_base"
-                android:textColor="?attr/colorPrimaryVariant" />
-
-            <RadioButton
-                android:id="@+id/option4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:background="@drawable/radiobutton_base"
-                android:textColor="?attr/colorPrimaryVariant" />
-
-        </RadioGroup>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</LinearLayout><?xml version="1.0" encoding="utf-8"?>

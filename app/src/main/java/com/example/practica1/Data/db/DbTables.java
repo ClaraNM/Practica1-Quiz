@@ -14,8 +14,8 @@ public class DbTables extends SQLiteOpenHelper {
     public static final String TABLE_NUMBER_QUESTIONS="t_number_questions";
     public static final String TABLE_IMAGE_OP_QUESTIONS="t_image_op_questions";
     public static final String TABLE_IMAGE_QUESTIONS="t_image_questions";
-    //public static final String TABLE_SOUND_QUESTIONS="t_sound_questions";
-    //public static final String TABLE_VIDEO_QUESTIONS="t_video_questions";
+    public static final String TABLE_SOUND_QUESTIONS="t_sound_questions";
+    public static final String TABLE_VIDEO_QUESTIONS="t_video_questions";
 
 
     public DbTables(@Nullable Context context) {
@@ -68,7 +68,7 @@ public class DbTables extends SQLiteOpenHelper {
                 "imgOpQ_op4 INTEGER NOT NULL,"+
                 "imgOpQ_correctAnswer INTEGER NOT NULL)"
         );
-        /*
+
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_SOUND_QUESTIONS+"("+
                 "soundQ_ID INTEGER PRIMARY KEY ,"+
                 "soundQ_statement STRING NOT NULL,"+
@@ -90,7 +90,7 @@ public class DbTables extends SQLiteOpenHelper {
                 "videoQ_correctAnswer INTEGER NOT NULL)"
         );
 
-         */
+
     }
 
     @Override
@@ -100,8 +100,8 @@ public class DbTables extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_NUMBER_QUESTIONS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_IMAGE_QUESTIONS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_IMAGE_OP_QUESTIONS);
-        //sqLiteDatabase.execSQL("DROP TABLE " + TABLE_SOUND_QUESTIONS);
-        //sqLiteDatabase.execSQL("DROP TABLE " + TABLE_VIDEO_QUESTIONS);
+        sqLiteDatabase.execSQL("DROP TABLE " + TABLE_SOUND_QUESTIONS);
+        sqLiteDatabase.execSQL("DROP TABLE " + TABLE_VIDEO_QUESTIONS);
 
         onCreate(sqLiteDatabase);
 

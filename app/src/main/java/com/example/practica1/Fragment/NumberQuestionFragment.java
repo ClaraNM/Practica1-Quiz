@@ -8,9 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.practica1.Activities.QuizActivity;
 import com.example.practica1.Data.NumberQuestion;
 import com.example.practica1.R;
 
@@ -43,9 +45,20 @@ public class NumberQuestionFragment extends QuestionFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_number_question, container, false);
-        fragmentLayout = root;
         TextView textView = root.findViewById(R.id.question_text);
         textView.setText(question);
+
+        Button checkButton = root.findViewById(R.id.button_check);
+        checkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isAnswered()){
+                    boolean hit = getAnswer() == correctAnswer;
+                    ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                }
+            }
+        });
+        fragmentLayout = root;
         return  root;
     }
 
