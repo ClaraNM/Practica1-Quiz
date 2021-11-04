@@ -8,6 +8,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
+import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.practica1.Data.ImageOptionsQuestion;
@@ -30,6 +33,7 @@ import com.example.practica1.Adapter.Communicator;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -47,15 +51,10 @@ public class QuizActivity extends AppCompatActivity {
     private TextView tv_questionNumber;
     private TextView tv_hitCounter;
     private TextView tv_failCounter;
-    private TextView countDown;
+    private Chronometer chronometer;
 
     // Fragmento actual para visualizar la pregunta
     private QuestionFragment currentFragment;
-
-    private CountDownTimer countDownTimer;
-
-    private long countDownTimeMillis;
-    private final long startTime = 60000;
 
 
     @Override
@@ -84,7 +83,8 @@ public class QuizActivity extends AppCompatActivity {
         tv_questionNumber = findViewById(R.id.question_number);
         tv_hitCounter = findViewById(R.id.tv_hitCounter);
         tv_failCounter = findViewById(R.id.tv_failCounter);
-        countDown = findViewById(R.id.countdown);
+        chronometer = findViewById(R.id.chronometer);
+        chronometer.start();
 
         // Carga la primera pregunta:
 
@@ -109,15 +109,15 @@ public class QuizActivity extends AppCompatActivity {
     private void goNextQuestion(){
         // Si no quedan preguntas se pasa a la pantalla de resultados
         currentQuestion++;
-        stopCountDown();
         if(currentQuestion >= questionList.size() || currentQuestion >= poolSize){
+            long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
+            System.out.println(elapsedMillis + "");
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }
 
         // Si quedan, se carga la siguiente pregunta
         else{
-            StartCountDown();
             Question question = questionList.get(currentQuestion);
             if(question instanceof ImageOptionsQuestion){
                 replaceFragment(ImageOptionsQuestionFragment.newInstance((ImageOptionsQuestion) question));
@@ -155,34 +155,4 @@ public class QuizActivity extends AppCompatActivity {
         ft.replace(R.id.fragmentContainerView, fragment);
         ft.commit();
     }
-
-    private void StartCountDown(){
-        countDownTimeMillis = startTime;
-        countDownTimer = new CountDownTimer(countDownTimeMillis, 1000) {
-            @Override
-            public void onTick(long l) {
-                countDownTimeMillis = l;
-                updateCountDownDisplay();
-            }
-
-            @Override
-            public void onFinish() {
-                goNextQuestion();
-            }
-        }.start();
-    }
-
-    private void updateCountDownDisplay(){
-        int minutes = (int) countDownTimeMillis / 60000;
-        int seconds = (int) (countDownTimeMillis / 1000 ) % 60;
-        String time = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
-        countDown.setText(time);
-    }
-
-    private void stopCountDown(){
-        if(countDownTimer != null)
-            countDownTimer.cancel();
-    }
-
-
 }
