@@ -89,4 +89,6 @@ public class VideoQuestionFragment extends TextQuestionFragment {
         video.pause();
         return super.getAnswer();
     }
+
+
 }

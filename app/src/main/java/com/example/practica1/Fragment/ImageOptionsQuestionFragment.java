@@ -100,9 +100,7 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 0;
-                boolean hit = selectedImageIndex == correctAnswer;
-                ((QuizActivity)getActivity()).CheckAndContinue(hit);
-                ShowCorrection();
+                correctionCorroutine();
             }
         });
 
@@ -112,9 +110,7 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 1;
-                boolean hit = selectedImageIndex == correctAnswer;
-                ((QuizActivity)getActivity()).CheckAndContinue(hit);
-                ShowCorrection();
+                correctionCorroutine();
             }
         });
 
@@ -124,9 +120,7 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 2;
-                boolean hit = selectedImageIndex == correctAnswer;
-                ((QuizActivity)getActivity()).CheckAndContinue(hit);
-                ShowCorrection();
+                correctionCorroutine();
             }
         });
 
@@ -136,9 +130,7 @@ public class ImageOptionsQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 selectedImageIndex = 3;
-                boolean hit = selectedImageIndex == correctAnswer;
-                ((QuizActivity)getActivity()).CheckAndContinue(hit);
-                ShowCorrection();
+                correctionCorroutine();
             }
         });
 

@@ -53,8 +53,7 @@ public class NumberQuestionFragment extends QuestionFragment {
             @Override
             public void onClick(View view) {
                 if(isAnswered()){
-                    boolean hit = getAnswer() == correctAnswer;
-                    ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                    correctionCorroutine();
                 }
             }
         });

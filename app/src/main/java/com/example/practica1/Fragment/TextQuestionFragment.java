@@ -106,8 +106,7 @@ public class TextQuestionFragment extends QuestionFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean hit = getAnswer() == correctAnswer;
-                ((QuizActivity)getActivity()).CheckAndContinue(hit);
+                correctionCorroutine();
             }
         });
     }
