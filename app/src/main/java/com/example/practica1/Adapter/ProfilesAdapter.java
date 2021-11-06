@@ -20,7 +20,8 @@ import java.util.List;
 
 public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHolder_Profile>{
     List<AccountProfile> profiles;
-    private List<ViewHolder_Profile> profile_holders = new ArrayList<>();
+    List<ViewHolder_Profile> profile_holders = new ArrayList<>();
+    public int selected_profile = -1;
     public ProfilesAdapter(List<AccountProfile> profiles){
         this.profiles=profiles;
     }
@@ -44,7 +45,6 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 Communicator.setAccountProfile(profile);
                 Toast.makeText(view.getContext(), "Perfil seleccionado : " + profile.getName() + ".", Toast.LENGTH_SHORT).show();
                 Selectprofile(position);
-
             }
         });
     }
@@ -57,6 +57,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 profile_holders.get(i).boton_seleccionar_perfil.setText("SELECCIONADO");
             }
         }
+        selected_profile = id;
     }
 
     public int getItemCount() {

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private  boolean dbCreate=false;
     public static String PACKAGE_NAME;
+    public static final int REQUEST_CAM = 1;
     //Buttons:
     private Button play_button;
     private Switch modeSw;
