@@ -16,7 +16,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.Toast;
 
+import com.example.practica1.Adapter.Communicator;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.Profile;
 import com.example.practica1.Data.QuestionDataBase;
@@ -90,8 +92,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadGameActivity(){
-        finish();
-        startActivity(new Intent(MainActivity.this, QuizActivity.class));
+        if(Communicator.getAccountProfile().getName() == ""){
+            Toast.makeText(this.getApplicationContext(), "Selecciona un perfil antes de jugar", Toast.LENGTH_LONG).show();
+        }
+        else{
+            finish();
+            startActivity(new Intent(MainActivity.this, QuizActivity.class));
+        }
     }
 
     public void loadMainMenuFragment(){

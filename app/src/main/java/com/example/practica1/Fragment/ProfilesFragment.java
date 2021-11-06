@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.practica1.Activities.MainActivity;
 import com.example.practica1.Adapter.ProfilesAdapter;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.R;
@@ -27,15 +29,22 @@ public class ProfilesFragment extends Fragment {
 
 
     public ProfilesFragment(List<AccountProfile> list){
-        System.out.println("PROFILESFRAGMENT: Creando lista con " + list.size() + " perfiles.");
         this.profileList=list;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        System.out.println("PROFILESFRAGMENT: Inflando vista con " + profileList.size() + " perfiles.");
+        MainActivity activity = ((MainActivity)getActivity());
         View v = inflater.inflate(R.layout.fragment_profiles, container, false);
+        Button btn_atras = v.findViewById(R.id.btn_atras);
+        btn_atras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.loadMainMenuFragment();
+            }
+        });
+
         recyclerView=v.findViewById(R.id.ranking_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));

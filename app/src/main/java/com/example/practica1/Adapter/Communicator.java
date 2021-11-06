@@ -1,5 +1,6 @@
 package com.example.practica1.Adapter;
 
+import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.Profile;
 import com.example.practica1.Data.Question;
 import com.example.practica1.Fragment.QuestionFragment;
@@ -13,9 +14,10 @@ public class Communicator {
     private static List<Question> Qlist = new ArrayList<>();
     private static List<QuestionFragment> QFlist= new ArrayList<>();
     private static Profile newProfile= new Profile(null,0);
+    private static AccountProfile accountProfile = new AccountProfile("");
     private static int hits=0;
     public static void setList(List<Question>  newQList) { Qlist = newQList; }
-    public static List<Question>  getList() { return Qlist; }
+    public static List<Question> getList() { return Qlist; }
     public static List<QuestionFragment> getQFlist() {return QFlist; }
     public static void setZero_QFList(){QFlist=new ArrayList<>();}
     public static void addFragment(QuestionFragment frag){QFlist.add(frag);}
@@ -27,8 +29,11 @@ public class Communicator {
     public static void setNewProfile(Profile profile){
         newProfile=profile;
     }
-
     public static Profile getNewProfile() {
         return newProfile;
     }
+
+    // Información del perfil de la cuenta del jugador
+    public static void setAccountProfile(AccountProfile profile){ accountProfile = profile; }
+    public static  AccountProfile getAccountProfile(){ return accountProfile;}
 }
