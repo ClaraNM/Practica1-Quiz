@@ -20,6 +20,7 @@
     <string name="clasificaci_n">RANKING</string>
 
     <!--Preferences-->
-<string name="setting_Qcuantity">Cantidad de preguntas</string>
+    <string name="setting_Qcuantity">Cantidad de preguntas</string>
+    <string name="nombre">Nombre</string>
 
 </resources>

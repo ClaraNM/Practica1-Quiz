@@ -68,7 +68,7 @@ public class MainMenuFragment extends Fragment {
             @Override public void onClick(View view) {activity.loadOptionsFragment(); }
         });
         profiles_button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {activity.loadGameActivity(); }
+            @Override public void onClick(View view) {activity.loadProfilesFragment(); }
         });
         DbQuerys dbQuerys = new DbQuerys(this.getActivity());
         ranking_button.setOnClickListener(new View.OnClickListener() {
