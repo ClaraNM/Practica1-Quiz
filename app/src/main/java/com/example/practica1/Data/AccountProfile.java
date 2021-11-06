@@ -5,12 +5,21 @@ import java.util.Date;
 public class AccountProfile {
     // int imageId;
     private String name;
+    private String picture_URI;
     private int maxScore;
     private Date last_game_date;
 
-    public AccountProfile(String name){
+    public AccountProfile(String name , String picture_URI){
         this.name=name;
+        this.picture_URI = picture_URI;
         this.maxScore = 0;
+        this.last_game_date = null;
+    }
+
+    public AccountProfile(String name, String picture_URI, int maxScore){
+        this.name=name;
+        this.picture_URI = picture_URI;
+        this.maxScore = maxScore;
         this.last_game_date = null;
     }
 
@@ -40,6 +49,14 @@ public class AccountProfile {
         else{
             return last_game_date.toString();
         }
+    }
+
+    public String getPicture_URI() {
+        return picture_URI;
+    }
+
+    public void setPicture_URI(String picture_URI) {
+        this.picture_URI = picture_URI;
     }
 
     public void setLast_game_date(Date last_game_date) {

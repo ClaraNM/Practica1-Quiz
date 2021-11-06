@@ -14,7 +14,7 @@ public class Communicator {
     private static List<Question> Qlist = new ArrayList<>();
     private static List<QuestionFragment> QFlist= new ArrayList<>();
     private static Profile newProfile= new Profile(null,0);
-    private static AccountProfile accountProfile = new AccountProfile("");
+    private static AccountProfile accountProfile = null;
     private static int hits=0;
     public static void setList(List<Question>  newQList) { Qlist = newQList; }
     public static List<Question> getList() { return Qlist; }

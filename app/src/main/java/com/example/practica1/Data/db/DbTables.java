@@ -17,6 +17,7 @@ public class DbTables extends SQLiteOpenHelper {
     public static final String TABLE_SOUND_QUESTIONS="t_sound_questions";
     public static final String TABLE_VIDEO_QUESTIONS="t_video_questions";
     public static final String TABLE_RANKING="t_ranking";
+    public static final String TABLE_PROFILES="t_profiles";
 
 
     public DbTables(@Nullable Context context) {
@@ -114,6 +115,13 @@ public class DbTables extends SQLiteOpenHelper {
                 "profile_time INTEGER NOT NULL" +
                 ")"
         );
+        sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_PROFILES+"("+
+                "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "profile_name STRING NOT NULL," +
+                "profile_pic_URI STRING NOT NULL," +
+                "profile_max_score INTEGER NOT NULL" +
+                ")"
+        );
     }
 
     @Override
@@ -125,8 +133,6 @@ public class DbTables extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_IMAGE_OP_QUESTIONS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_SOUND_QUESTIONS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_VIDEO_QUESTIONS);
-
         onCreate(sqLiteDatabase);
-
     }
 }

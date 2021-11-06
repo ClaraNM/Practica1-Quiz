@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
@@ -113,6 +114,31 @@ public class DbQuerys extends DbTables {
                 " (profile_name, profile_score) " +
                 " VALUES ('"+profile.getName()+"', '"+profile.getScore()+"')");
 
+    }
+
+    public void insertAccountProfile(AccountProfile profile){
+        db.execSQL("INSERT INTO " +TABLE_PROFILES+
+                " (profile_name, profile_pic_URI, profile_max_score) "+
+                " VALUES ('"+profile.getName()+"', '"+profile.getPicture_URI()+"', '"+profile.getMaxScore()+"')");
+
+    }
+
+    public List<AccountProfile> getAccountList(){
+        List<AccountProfile> accountList = new LinkedList<>();
+        AccountProfile accountProfile = new AccountProfile(null, null, 0);
+        Cursor cursorProfiles = null;
+        cursorProfiles=db.rawQuery("SELECT * FROM " + TABLE_PROFILES+" ORDER BY profile_ID desc", null);
+        if(cursorProfiles.moveToFirst()){
+            do{
+                accountProfile.setName(cursorProfiles.getString(1));
+                accountProfile.setPicture_URI(cursorProfiles.getString(2));
+                accountProfile.setMaxScore(cursorProfiles.getInt(3));
+                AccountProfile addProfile = new AccountProfile(accountProfile.getName(), accountProfile.getPicture_URI(), accountProfile.getMaxScore());
+                accountList.add(addProfile);
+            }while (cursorProfiles.moveToNext());
+        }
+        cursorProfiles.close();
+        return accountList;
     }
 
 

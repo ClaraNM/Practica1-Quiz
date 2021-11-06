@@ -1,11 +1,13 @@
 package com.example.practica1.Adapter;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.R;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +40,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
         AccountProfile profile = profiles.get(position);
         holder.name.setText(profile.getName());
         holder.score.setText(profile.getMaxScore() + "");
+        holder.picture.setImageURI(Uri.parse(profile.getPicture_URI()));
         holder.last_game_date.setText(profile.getDateAsString());
         holder.boton_seleccionar_perfil.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -67,6 +71,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
 
     class ViewHolder_Profile extends RecyclerView.ViewHolder{
         public TextView name;
+        public ImageView picture;
         public TextView score;
         public TextView last_game_date;
         public Button boton_seleccionar_perfil;
@@ -74,6 +79,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
         public ViewHolder_Profile(View v) {
             super(v);
             name=v.findViewById(R.id.tv_nombre);
+            picture=v.findViewById(R.id.iv_profilePic);
             score=v.findViewById(R.id.tv_score);
             last_game_date=v.findViewById(R.id.tv_date);
             boton_seleccionar_perfil=v.findViewById(R.id.btn_seleccionar_perfil);

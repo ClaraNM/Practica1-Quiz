@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.accounts.Account;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -121,21 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadProfilesFragment(){
         DbQuerys dbQuerys = new DbQuerys(this);
-        //List<AccountProfile> listaRanking= dbQuerys.getProfiles();
-        List<AccountProfile> listaRanking= new ArrayList<>();
-        AccountProfile default_profile = new AccountProfile("Perfil de prueba 1");
-        AccountProfile default_profile2 = new AccountProfile("Perfil de prueba 2");
-        AccountProfile default_profile3 = new AccountProfile("Perfil de prueba 3");
-        AccountProfile default_profile4 = new AccountProfile("Perfil de prueba 4");
-        AccountProfile default_profile5 = new AccountProfile("Perfil de prueba 5");
-        AccountProfile default_profile6 = new AccountProfile("Perfil de prueba 6");
-        listaRanking.add(default_profile);
-        listaRanking.add(default_profile2);
-        listaRanking.add(default_profile3);
-        listaRanking.add(default_profile4);
-        listaRanking.add(default_profile5);
-        listaRanking.add(default_profile6);
-        System.out.println("MAIN ACTIVITY: Creando ranking con perfil de prueba: " + default_profile.getName());
+        List<AccountProfile> listaRanking= dbQuerys.getAccountList();
         ProfilesFragment fragment = new ProfilesFragment(listaRanking);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
