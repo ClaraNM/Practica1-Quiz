@@ -19,5 +19,7 @@
     <string name="perfiles">PERFILES</string>
     <string name="clasificaci_n">RANKING</string>
 
+    <!--Preferences-->
+<string name="setting_Qcuantity">Cantidad de preguntas</string>
 
 </resources>

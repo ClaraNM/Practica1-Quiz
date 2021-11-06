@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -58,6 +60,9 @@ public class QuizActivity extends AppCompatActivity {
     // Fragmento actual para visualizar la pregunta
     private QuestionFragment currentFragment;
 
+    //Settings
+    private boolean hardmode=false;
+    private int hardmode_int=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +80,8 @@ public class QuizActivity extends AppCompatActivity {
         try {
             //Asegura que sale una lista con el tamaño pedido de preguntas
             do {
-                questionList = QuestionDataBase.getQuestionPool(poolSize, QuizActivity.this);
+                settings();
+                questionList = QuestionDataBase.getQuestionPool(poolSize,hardmode_int, QuizActivity.this);
             }while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
@@ -161,5 +167,12 @@ public class QuizActivity extends AppCompatActivity {
         FragmentTransaction ft = manager.beginTransaction();
         ft.replace(R.id.fragmentContainerView, fragment);
         ft.commit();
+    }
+    private  void settings(){
+
+        SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this);
+        hardmode= sp.getBoolean("pref_change_dificulty",true);
+        if (hardmode==false){hardmode_int=0;}
+        else{   hardmode_int=1;     }
     }
 }

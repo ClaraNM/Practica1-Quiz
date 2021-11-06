@@ -43,12 +43,19 @@ public class DbTables extends SQLiteOpenHelper {
                 "textQ_op2 STRING NOT NULL,"+
                 "textQ_op3 STRING NOT NULL,"+
                 "textQ_op4 STRING NOT NULL,"+
-                "textQ_correctAnswer INTEGER NOT NULL)"
+                "textQ_correctAnswer INTEGER NOT NULL," +
+                "textQ_dificulty INTEGER NOT NULL,"+
+                "textQ_theme INTEGER NOT NULL"+
+                ")"
+
                 );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_NUMBER_QUESTIONS+"("+
                 "numberQ_ID INTEGER PRIMARY KEY ,"+
                 "numberQ_statement STRING NOT NULL,"+
-                "numberQ_correctAnswer INTEGER NOT NULL)"
+                "numberQ_correctAnswer INTEGER NOT NULL," +
+                "numberQ_dificulty INTEGER NOT NULL,"+
+                "numberQ_theme INTEGER NOT NULL"+
+                ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_IMAGE_QUESTIONS+"("+
                 "imgQ_ID INTEGER PRIMARY KEY ,"+
@@ -58,7 +65,10 @@ public class DbTables extends SQLiteOpenHelper {
                 "imgQ_op2 STRING NOT NULL,"+
                 "imgQ_op3 STRING NOT NULL,"+
                 "imgQ_op4 STRING NOT NULL,"+
-                "imgQ_correctAnswer INTEGER NOT NULL)"
+                "imgQ_correctAnswer INTEGER NOT NULL,"+
+                "imgQ_dificulty INTEGER NOT NULL,"+
+                "imgQ_theme INTEGER NOT NULL"+
+                ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_IMAGE_OP_QUESTIONS+"("+
                 "imgOpQ_ID INTEGER PRIMARY KEY ,"+
@@ -67,7 +77,10 @@ public class DbTables extends SQLiteOpenHelper {
                 "imgOpQ_op2 INTEGER NOT NULL,"+
                 "imgOpQ_op3 INTEGER NOT NULL,"+
                 "imgOpQ_op4 INTEGER NOT NULL,"+
-                "imgOpQ_correctAnswer INTEGER NOT NULL)"
+                "imgOpQ_correctAnswer INTEGER NOT NULL," +
+                "imgOpQ_dificulty INTEGER NOT NULL,"+
+                "imgOpQ_theme INTEGER NOT NULL"+
+                ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_SOUND_QUESTIONS+"("+
                 "soundQ_ID INTEGER PRIMARY KEY ,"+
@@ -77,7 +90,9 @@ public class DbTables extends SQLiteOpenHelper {
                 "soundQ_op2 STRING NOT NULL,"+
                 "soundQ_op3 STRING NOT NULL,"+
                 "soundQ_op4 STRING NOT NULL,"+
-                "soundQ_correctAnswer INTEGER NOT NULL)"
+                "soundQ_correctAnswer INTEGER NOT NULL," +
+                "soundQ_dificulty INTEGER NOT NULL,"+
+                "soundQ_theme INTEGER NOT NULL"+")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_VIDEO_QUESTIONS+"("+
                 "videoQ_ID INTEGER PRIMARY KEY ,"+
@@ -87,12 +102,16 @@ public class DbTables extends SQLiteOpenHelper {
                 "videoQ_op2 STRING NOT NULL,"+
                 "videoQ_op3 STRING NOT NULL,"+
                 "videoQ_op4 STRING NOT NULL,"+
-                "videoQ_correctAnswer INTEGER NOT NULL)"
+                "videoQ_correctAnswer INTEGER NOT NULL,"+
+                "videoQ_dificulty INTEGER NOT NULL,"+
+                "videoQ_theme INTEGER NOT NULL"+
+                ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_RANKING+"("+
                 "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "profile_name STRING NOT NULL," +
-                "profile_score INTEGER NOT NULL" +
+                "profile_score INTEGER NOT NULL," +
+                "profile_time INTEGER NOT NULL" +
                 ")"
         );
     }

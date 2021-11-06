@@ -3,6 +3,8 @@ package com.example.practica1.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,5 +86,6 @@ public class MainMenuFragment extends Fragment {
         });
         return root;
     }
+
 
 }

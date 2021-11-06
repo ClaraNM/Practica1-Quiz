@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+    <PreferenceCategory
+        android:title="Cantidad de preguntas"
+        >
+
+        <androidx.preference.DropDownPreference
+            android:key="pref_DD_QCuantity"
+            android:title="Cantidad de preguntas"
+            android:entryValues="@array/array_QCuantity"
+            android:summary="DropDown para elegir cuantas pregs"
+            />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Temáticas a elegir">
+
+        <CheckBoxPreference
+            android:key="pref_checkbox1"
+            android:title="TripleAAA"
+            android:summary="TripleAAA"
+            android:defaultValue="true"
+            />
+        <CheckBoxPreference
+            android:key="pref_checkbox2"
+            android:title="Indie"
+            android:defaultValue="true"
+            android:summary="Indie"
+
+            />
+        <CheckBoxPreference
+            android:key="pref_checkbox3"
+            android:title="Industria"
+            android:summary="Industria"
+            android:defaultValue="true"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Dificultad">
+
+        <SwitchPreferenceCompat
+            android:key="pref_change_dificulty"
+            android:title="Cambiar la dificultad"
+            android:summary="Permite activar el modo dificil"
+            />
+
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Tema Claro/Oscuro">
+        <SwitchPreferenceCompat
+            android:key="pref_change_theme"
+            android:title="Cambiar de tema"
+            android:summary="Permite alternar entre el tema clro y el oscuro"
+            />
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

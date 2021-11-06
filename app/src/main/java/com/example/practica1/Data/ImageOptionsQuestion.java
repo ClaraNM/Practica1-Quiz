@@ -4,8 +4,8 @@ public class ImageOptionsQuestion extends Question {
 
     private int imageId1, imageId2, imageId3, imageId4;
 
-    public ImageOptionsQuestion(int id,String question, int imageId1, int imageId2, int imageId3, int imageId4, int correctAnswer) {
-        super(id, question, correctAnswer);
+    public ImageOptionsQuestion(int id,String question, int imageId1, int imageId2, int imageId3, int imageId4, int correctAnswer, int dificulty, int theme) {
+        super(id, question, correctAnswer, dificulty, theme);
         this.imageId1 = imageId1;
         this.imageId2 = imageId2;
         this.imageId3 = imageId3;

@@ -6,8 +6,8 @@ public abstract class TextOptionQuestion extends Question {
 
     private String op1, op2, op3, op4;
 
-    public TextOptionQuestion(int id, String question, String op1, String op2, String op3, String op4, int correctAnswer) {
-        super(id, question, correctAnswer);
+    public TextOptionQuestion(int id, String question, String op1, String op2, String op3, String op4, int correctAnswer, int dificulty, int theme) {
+        super(id, question, correctAnswer,dificulty,theme);
         this.op1 = op1;
         this.op2 = op2;
         this.op3 = op3;
