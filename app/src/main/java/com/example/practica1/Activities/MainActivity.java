@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadGameActivity(){
-        if(Communicator.getAccountProfile().getName() == ""){
+        if(Communicator.getAccountProfile() == null || Communicator.getAccountProfile().getName() == ""){
             Toast.makeText(this.getApplicationContext(), "Selecciona un perfil antes de jugar", Toast.LENGTH_LONG).show();
         }
         else{
