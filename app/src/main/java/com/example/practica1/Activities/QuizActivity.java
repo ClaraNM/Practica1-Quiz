@@ -128,7 +128,6 @@ private String chosenOpQ=null;
         if(currentQuestion >= questionList.size() || currentQuestion >= poolSize){
             long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
             System.out.println(elapsedMillis + "");
-
             DbQuerys dbQuerys = new DbQuerys(this);
             Profile profile=Communicator.getNewProfile();
             //La puntuacion tambien depende del tiempo
@@ -137,13 +136,17 @@ private String chosenOpQ=null;
             profile.setTime(chronometer.getText().toString());
             dbQuerys.insertProfile(profile);
 
-            DbTables dbHelper = new DbTables(this);
-            AccountProfile accountProfile = Communicator.getAccountProfile();
-            accountProfile.setTotal_games(accountProfile.getTotal_games() + 1);
-            int max_score = Math.max(score, accountProfile.getMaxScore());
-            String date = new Date().toString();
-            dbHelper.UpdateAccountProfileData(accountProfile.getName(), accountProfile.getTotal_games(), max_score, date);
-            accountProfile.setMaxScore(max_score);
+
+            if(Communicator.getAccountProfile() != null){
+                DbTables dbHelper = new DbTables(this);
+                AccountProfile accountProfile = Communicator.getAccountProfile();
+                accountProfile.setTotal_games(accountProfile.getTotal_games() + 1);
+                int max_score = Math.max(score, accountProfile.getMaxScore());
+                String date = new Date().toString();
+                dbHelper.UpdateAccountProfileData(accountProfile.getName(), accountProfile.getTotal_games(), max_score, date);
+                accountProfile.setMaxScore(max_score);
+            }
+
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }

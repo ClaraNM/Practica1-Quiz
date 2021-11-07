@@ -72,7 +72,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 Communicator.selectedProfileId = position;
                 Toast.makeText(view.getContext(), "Perfil seleccionado : " + profile.getName() + ".", Toast.LENGTH_SHORT).show();
                 Selectprofile(position);
-                Profile p=new Profile(null,0,null);
+                Profile p=new Profile("---",0,null);
                 p.setName(profile.getName());
                 Communicator.setNewProfile(p);
             }
