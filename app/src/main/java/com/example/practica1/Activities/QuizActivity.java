@@ -37,6 +37,7 @@ import com.example.practica1.Fragment.VideoQuestionFragment;
 import com.example.practica1.R;
 import com.example.practica1.Adapter.Communicator;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -140,7 +141,8 @@ private String chosenOpQ=null;
             AccountProfile accountProfile = Communicator.getAccountProfile();
             accountProfile.setTotal_games(accountProfile.getTotal_games() + 1);
             int max_score = Math.max(score, accountProfile.getMaxScore());
-            dbHelper.UpdateAccountProfileData(accountProfile.getName(), accountProfile.getTotal_games(), max_score);
+            String date = new Date().toString();
+            dbHelper.UpdateAccountProfileData(accountProfile.getName(), accountProfile.getTotal_games(), max_score, date);
             accountProfile.setMaxScore(max_score);
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));

@@ -507,14 +507,14 @@ public class DbQuerys extends DbTables {
 
     public void insertAccountProfile(AccountProfile profile){
         db.execSQL("INSERT INTO " +TABLE_PROFILES+
-                " (profile_name, profile_pic_URI, profile_total_games, profile_max_score) "+
-                " VALUES ('"+profile.getName()+"', '"+profile.getPicture_URI()+"', '"+profile.getTotal_games()+"', '"+profile.getMaxScore()+"')");
+                " (profile_name, profile_pic_URI, profile_total_games, profile_max_score, profile_date_last_game) "+
+                " VALUES ('"+profile.getName()+"', '"+profile.getPicture_URI()+"', '"+profile.getTotal_games()+"', '"+profile.getMaxScore()+"', '"+profile.getLast_game_date()+"')");
 
     }
 
     public List<AccountProfile> getAccountList(){
         List<AccountProfile> accountList = new LinkedList<>();
-        AccountProfile accountProfile = new AccountProfile(null, null, 0, 0);
+        AccountProfile accountProfile = new AccountProfile(null, null, 0, 0, null);
         Cursor cursorProfiles = null;
         cursorProfiles=db.rawQuery("SELECT * FROM " + TABLE_PROFILES+" ORDER BY profile_ID desc", null);
         if(cursorProfiles.moveToFirst()){
@@ -523,14 +523,14 @@ public class DbQuerys extends DbTables {
                 accountProfile.setPicture_URI(cursorProfiles.getString(2));
                 accountProfile.setTotal_games(cursorProfiles.getInt(3));
                 accountProfile.setMaxScore(cursorProfiles.getInt(4));
-                AccountProfile addProfile = new AccountProfile(accountProfile.getName(), accountProfile.getPicture_URI(), accountProfile.getTotal_games(), accountProfile.getMaxScore());
+                accountProfile.setLast_game_date(cursorProfiles.getString(5));
+                AccountProfile addProfile = new AccountProfile(accountProfile.getName(), accountProfile.getPicture_URI(), accountProfile.getTotal_games(), accountProfile.getMaxScore(), accountProfile.getLast_game_date());
                 accountList.add(addProfile);
             }while (cursorProfiles.moveToNext());
         }
         cursorProfiles.close();
         return accountList;
     }
-
 
     public List<Profile> getRanking(){
         List<Profile> ranking = new LinkedList<>();

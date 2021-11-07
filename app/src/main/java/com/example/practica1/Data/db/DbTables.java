@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.sql.Date;
+
 public class DbTables extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
     private static final String DATABASE_NOMBRE="quiz_database.db";
@@ -121,8 +123,9 @@ public class DbTables extends SQLiteOpenHelper {
                 "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "profile_name STRING NOT NULL," +
                 "profile_pic_URI STRING NOT NULL," +
-                "profile_total_games INTEGER NOT NULL," +
-                "profile_max_score INTEGER NOT NULL" +
+                "profile_total_games INTEGER," +
+                "profile_max_score INTEGER," +
+                "profile_date_last_game STRING" +
                 ")"
         );
     }
@@ -139,11 +142,12 @@ public class DbTables extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public boolean UpdateAccountProfileData(String name, int num_games, int maxScore){
+    public boolean UpdateAccountProfileData(String name, int num_games, int maxScore, String date){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("profile_total_games", num_games);
         values.put("profile_max_score", maxScore);
+        values.put("profile_date_last_game", date);
         Cursor cursor = db.rawQuery("Select * from " + TABLE_PROFILES + " where profile_name = ?", new String[] { name} );
         if(cursor.getCount() > 0) {
             long res = db.update(TABLE_PROFILES, values, "profile_name=?", new String[]{name});
@@ -158,8 +162,7 @@ public class DbTables extends SQLiteOpenHelper {
 
     public boolean DeleteAccountProfileData(String name){
         SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery("Select * from " + TABLE_PROFILES + " where name = ?", new String[] { name} );
+        Cursor cursor = db.rawQuery("Select * from " + TABLE_PROFILES + " where profile_name = ?", new String[] { name} );
         if(cursor.getCount() > 0) {
             long res = db.delete(TABLE_PROFILES, "profile_name=?", new String[]{name});
             if (res == -1)

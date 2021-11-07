@@ -36,6 +36,7 @@ import com.example.practica1.Adapter.Communicator;
 import com.example.practica1.Adapter.ProfilesAdapter;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.db.DbQuerys;
+import com.example.practica1.Data.db.DbTables;
 import com.example.practica1.R;
 
 import java.io.File;
@@ -151,7 +152,7 @@ public class ProfilesFragment extends Fragment {
             public void onClick(View view) {
                 if(Communicator.getSelectedProfileId() != -1){
                     profileList.get(Communicator.getSelectedProfileId()).setPicture_URI(currentPicturePath);
-                    if(currentPicturePath != null || !currentPicturePath.isEmpty()){
+                    if(currentPicturePath != null && !currentPicturePath.isEmpty()){
                         Uri uri = Uri.parse(currentPicturePath);
                         iv_profile.setImageURI(uri);
                     }
@@ -211,7 +212,11 @@ public class ProfilesFragment extends Fragment {
     }
 
     private void DeleteProfile(){
+        String name = Communicator.getAccountProfile().getName();
+        DbTables dbhelper = new DbTables(this.getActivity());
+        dbhelper.DeleteAccountProfileData(name);
         profileList.remove(Communicator.getSelectedProfileId());
+
         SetRecycleView(root);
         Toast.makeText(getContext(), "Perfil borrado", Toast.LENGTH_SHORT);
     }

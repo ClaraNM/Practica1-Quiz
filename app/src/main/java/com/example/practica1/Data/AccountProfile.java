@@ -1,6 +1,6 @@
 package com.example.practica1.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class AccountProfile {
     // int imageId;
@@ -8,7 +8,7 @@ public class AccountProfile {
     private String picture_URI;
     private int total_games;
     private int maxScore;
-    private Date last_game_date;
+    private String last_game_date;
 
     public AccountProfile(String name , String picture_URI){
         this.name=name;
@@ -17,12 +17,12 @@ public class AccountProfile {
         this.last_game_date = null;
     }
 
-    public AccountProfile(String name, String picture_URI, int total_games, int maxScore){
+    public AccountProfile(String name, String picture_URI, int total_games, int maxScore, String date){
         this.name=name;
         this.picture_URI = picture_URI;
         this.total_games = total_games;
         this.maxScore = maxScore;
-        this.last_game_date = null;
+        this.last_game_date = date;
     }
 
     public String getName() {
@@ -41,7 +41,7 @@ public class AccountProfile {
         this.maxScore = maxScore;
     }
 
-    public Date getLast_game_date() {
+    public String getLast_game_date() {
         return last_game_date;
     }
 
@@ -49,7 +49,7 @@ public class AccountProfile {
         if(last_game_date == null)
             return "--/--/--";
         else{
-            return last_game_date.toString();
+            return last_game_date;
         }
     }
 
@@ -69,7 +69,7 @@ public class AccountProfile {
         this.total_games = total_games;
     }
 
-    public void setLast_game_date(Date last_game_date) {
+    public void setLast_game_date(String last_game_date) {
         this.last_game_date = last_game_date;
     }
 }

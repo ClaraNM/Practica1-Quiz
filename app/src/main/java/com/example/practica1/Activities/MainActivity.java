@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Partida sin perfil")
                     .setMessage("¿Quieres jugar sin seleccionar un perfil?\n La puntuación final no se guardará.")
-                    .setPositiveButton("Adelante", new DialogInterface.OnClickListener() {
+                    .setPositiveButton("Adelante! ", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             finish();

@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="175dp"
         android:layout_margin="5dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="5dp"
@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <ImageView
@@ -127,8 +127,7 @@
                     <Button
                         android:id="@+id/btn_seleccionar_perfil"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:text="Seleccionar"
                         android:textSize="8sp"
                         tools:ignore="TouchTargetSizeCheck" />
