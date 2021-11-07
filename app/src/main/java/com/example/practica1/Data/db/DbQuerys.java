@@ -118,22 +118,23 @@ public class DbQuerys extends DbTables {
 
     public void insertAccountProfile(AccountProfile profile){
         db.execSQL("INSERT INTO " +TABLE_PROFILES+
-                " (profile_name, profile_pic_URI, profile_max_score) "+
-                " VALUES ('"+profile.getName()+"', '"+profile.getPicture_URI()+"', '"+profile.getMaxScore()+"')");
+                " (profile_name, profile_pic_URI, profile_total_games, profile_max_score) "+
+                " VALUES ('"+profile.getName()+"', '"+profile.getPicture_URI()+"', '"+profile.getTotal_games()+"', '"+profile.getMaxScore()+"')");
 
     }
 
     public List<AccountProfile> getAccountList(){
         List<AccountProfile> accountList = new LinkedList<>();
-        AccountProfile accountProfile = new AccountProfile(null, null, 0);
+        AccountProfile accountProfile = new AccountProfile(null, null, 0, 0);
         Cursor cursorProfiles = null;
         cursorProfiles=db.rawQuery("SELECT * FROM " + TABLE_PROFILES+" ORDER BY profile_ID desc", null);
         if(cursorProfiles.moveToFirst()){
             do{
                 accountProfile.setName(cursorProfiles.getString(1));
                 accountProfile.setPicture_URI(cursorProfiles.getString(2));
-                accountProfile.setMaxScore(cursorProfiles.getInt(3));
-                AccountProfile addProfile = new AccountProfile(accountProfile.getName(), accountProfile.getPicture_URI(), accountProfile.getMaxScore());
+                accountProfile.setTotal_games(cursorProfiles.getInt(3));
+                accountProfile.setMaxScore(cursorProfiles.getInt(4));
+                AccountProfile addProfile = new AccountProfile(accountProfile.getName(), accountProfile.getPicture_URI(), accountProfile.getTotal_games(), accountProfile.getMaxScore());
                 accountList.add(addProfile);
             }while (cursorProfiles.moveToNext());
         }

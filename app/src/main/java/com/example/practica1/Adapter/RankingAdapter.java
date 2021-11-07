@@ -30,7 +30,6 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder_Rank holder, int position) {
         holder.name.setText(rankingofProfiles.get(position).getName());
         holder.score.setText(Integer.toString(rankingofProfiles.get(position).getScore()) );
-        Log.d("ADAPTER",position+"|"+rankingofProfiles.get(position).getName()+" | "+Integer.toString(rankingofProfiles.get(position).getScore()));
     }
 
     public int getItemCount() {
@@ -50,4 +49,4 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
 
         }
     }
-    }
+}

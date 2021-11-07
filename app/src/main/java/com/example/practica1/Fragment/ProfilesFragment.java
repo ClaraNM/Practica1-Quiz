@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.practica1.Activities.MainActivity;
+import com.example.practica1.Adapter.Communicator;
 import com.example.practica1.Adapter.ProfilesAdapter;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.db.DbQuerys;
@@ -48,12 +49,12 @@ public class ProfilesFragment extends Fragment {
     private RecyclerView recyclerView;
     private View root;
     private ImageView iv_profile;
+
     private ProfilesAdapter adapter;
     private List<AccountProfile> profileList;
     private static int REQUEST_RESULT = 1234;
 
     String currentPicturePath;
-
 
     public ProfilesFragment(List<AccountProfile> list){
         this.profileList=list;
@@ -67,6 +68,8 @@ public class ProfilesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profiles, container, false);
 
         iv_profile = v.findViewById(R.id.iv_profile);
+
+        //  BOTÓN DE ACTIVAR LA CAMARA
         Button btn_camera = v.findViewById(R.id.btn_camera);
         btn_camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +90,7 @@ public class ProfilesFragment extends Fragment {
 
         EditText name_profile_edit_text = v.findViewById(R.id.edit_text_profile_name);
 
+        //  BOTÓN DE VOLVER AL MENÚ PRINCIPAL
         Button btn_atras = v.findViewById(R.id.btn_atras);
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +99,12 @@ public class ProfilesFragment extends Fragment {
             }
         });
 
+        //  BOTÓN DE ELIMINAR EL PERFIL SELECCIONADO
         Button btn_borrar_perfil = v.findViewById(R.id.btn_borrar_perfil);
         btn_borrar_perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(adapter.selected_profile != -1){
+                if(Communicator.getSelectedProfileId() != -1){
                     AlertDialog dialog = new AlertDialog.Builder(getContext())
                             .setTitle("Borrar perfil")
                             .setMessage("¿Seguro que quieres borrar el perfil?")
@@ -107,6 +112,8 @@ public class ProfilesFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     DeleteProfile();
+                                    Communicator.selectedProfileId = -1;
+                                    Communicator.setAccountProfile(null);
                                 }
                             })
                             .setNegativeButton("Cancel", null)
@@ -115,7 +122,7 @@ public class ProfilesFragment extends Fragment {
             }
         });
 
-
+        //  BOTÓN DE CREAR UN NUEVO PERFIL
         Button btn_nuevo_perfil = v.findViewById(R.id.btn_nuevo_perfil);
         btn_nuevo_perfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +140,25 @@ public class ProfilesFragment extends Fragment {
                     Toast.makeText(getContext(), "Introduce un nombre para crear el perfil", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        //  BOTÓN DE CAMBIAR LA FOTO DEL PERFIL SELECCIONADO
+        Button btn_editar_perfil = v.findViewById(R.id.btn_cambir_foto);
+        btn_editar_perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Communicator.getSelectedProfileId() != -1){
+                    profileList.get(Communicator.getSelectedProfileId()).setPicture_URI(currentPicturePath);
+                    if(currentPicturePath != null || !currentPicturePath.isEmpty()){
+                        Uri uri = Uri.parse(currentPicturePath);
+                        iv_profile.setImageURI(uri);
+                    }
+                    SetRecycleView(root);
+                }
+                else{
+                    Toast.makeText(getContext(), "Selecciona un perfil para editarlo", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         root = v;
@@ -183,9 +209,8 @@ public class ProfilesFragment extends Fragment {
         }
     }
 
-
     private void DeleteProfile(){
-        profileList.remove(adapter.selected_profile);
+        profileList.remove(Communicator.getSelectedProfileId());
         SetRecycleView(root);
         Toast.makeText(getContext(), "Perfil borrado", Toast.LENGTH_SHORT);
     }
@@ -205,6 +230,5 @@ public class ProfilesFragment extends Fragment {
         File img = File.createTempFile(filename, ".jpg", storageDir);
         currentPicturePath = img.getAbsolutePath();
         return img;
-
     }
 }

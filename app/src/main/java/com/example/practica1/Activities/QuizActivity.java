@@ -124,7 +124,8 @@ public class QuizActivity extends AppCompatActivity {
             DbQuerys dbQuerys = new DbQuerys(this);
             Profile profile=Communicator.getNewProfile();
             profile.setScore(Communicator.getHits());
-            dbQuerys.insertProfile(profile);
+            if(profile.getName()!= null)
+                dbQuerys.insertProfile(profile);
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }

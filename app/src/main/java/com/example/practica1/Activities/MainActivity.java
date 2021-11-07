@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.accounts.Account;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -95,7 +97,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadGameActivity(){
         if(Communicator.getAccountProfile() == null || Communicator.getAccountProfile().getName() == ""){
-            Toast.makeText(this.getApplicationContext(), "Selecciona un perfil antes de jugar", Toast.LENGTH_LONG).show();
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("Partida sin perfil")
+                    .setMessage("¿Quieres jugar sin seleccionar un perfil?\n La puntuación final no se guardará.")
+                    .setPositiveButton("Adelante", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                            startActivity(new Intent(MainActivity.this, QuizActivity.class));
+                        }
+                    })
+                    .setNegativeButton("No!", null)
+                    .show();
         }
         else{
             finish();

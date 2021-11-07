@@ -119,6 +119,7 @@ public class DbTables extends SQLiteOpenHelper {
                 "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "profile_name STRING NOT NULL," +
                 "profile_pic_URI STRING NOT NULL," +
+                "profile_total_games INTEGER NOT NULL," +
                 "profile_max_score INTEGER NOT NULL" +
                 ")"
         );
