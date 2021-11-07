@@ -112,7 +112,7 @@ public class DbTables extends SQLiteOpenHelper {
                 "profile_ID INTEGER PRIMARY KEY AUTOINCREMENT,"+
                 "profile_name STRING NOT NULL," +
                 "profile_score INTEGER NOT NULL," +
-                "profile_time INTEGER NOT NULL" +
+                "profile_time STRING NOT NULL" +
                 ")"
         );
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_PROFILES+"("+

@@ -1,10 +1,12 @@
 package com.example.practica1.Fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
 
 import android.preference.PreferenceFragment;
 import android.view.LayoutInflater;
@@ -19,26 +21,23 @@ import com.example.practica1.R;
 
 public class OptionsFragment extends PreferenceFragmentCompat {
 
-    private boolean isDarkTheme;
+    /*private boolean isDarkTheme;
     private static final String ARG_THEME = "theme";
-    public OptionsFragment() {
+   /* public OptionsFragment() {
 
     }
-
+*//*
     public static OptionsFragment newInstance(Boolean b) {
         OptionsFragment fragment = new OptionsFragment();
         Bundle args = new Bundle();
         args.putBoolean(ARG_THEME, b);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            isDarkTheme = getArguments().getBoolean(ARG_THEME);
-        }
     }
 
     @Override
@@ -62,17 +61,17 @@ public class OptionsFragment extends PreferenceFragmentCompat {
             }
         });
 
-        Switch theme_switch = root.findViewById(R.id.switch1);
+        //Switch theme_switch = root.findViewById(R.id.switch1);
 
-        if(isDarkTheme)
-            theme_switch.setChecked(true);
+      //  if(isDarkTheme)
+      //      theme_switch.setChecked(true);
 
-        theme_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-               activity.ChangeTheme(b);
-            }
-        });
+        //theme_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+          //  @Override
+            //public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+              // activity.ChangeTheme(b);
+            //}
+        //});
 
         return root;
 

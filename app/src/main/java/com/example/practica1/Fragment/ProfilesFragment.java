@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.practica1.Activities.MainActivity;
+import com.example.practica1.Adapter.Communicator;
 import com.example.practica1.Adapter.ProfilesAdapter;
 import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.db.DbQuerys;
@@ -91,6 +92,7 @@ public class ProfilesFragment extends Fragment {
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 activity.loadMainMenuFragment();
             }
         });

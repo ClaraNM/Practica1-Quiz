@@ -8,7 +8,7 @@
     android:background="?attr/colorOnBackground"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity">
+    tools:context=".Fragment.MainMenuFragment">
 
     <ImageView
         android:id="@+id/main_title_img"

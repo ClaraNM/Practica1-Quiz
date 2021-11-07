@@ -9,9 +9,15 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import android.accounts.Account;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
@@ -28,6 +34,7 @@ import com.example.practica1.Fragment.MainMenuFragment;
 import com.example.practica1.Fragment.OptionsFragment;
 import com.example.practica1.Fragment.ProfilesFragment;
 import com.example.practica1.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this);
+        ChangeTheme(sp.getBoolean("pref_change_theme",false));
 
         PACKAGE_NAME = getPackageName();
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
@@ -60,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadMainMenuFragment();
+        loadOptionsNav();
+       // loadMainMenuFragment();
 
         //img_title=findViewById(R.id.main_title_img);
         /*
@@ -111,13 +121,21 @@ public class MainActivity extends AppCompatActivity {
             ft.commit();
     }
 
-    public void loadOptionsFragment(){
+    public void loadOptionsNav(){
+        //NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        FragmentManager manager = getSupportFragmentManager();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+        NavHostFragment navHostFragment = (NavHostFragment) manager.findFragmentById(R.id.fragmentContainerView);
+         NavController navController = navHostFragment.getNavController();
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        NavigationUI.setupActionBarWithNavController(this, navController);
+
         boolean b = AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES;
-        OptionsFragment fragment = OptionsFragment.newInstance(b);
+       /* OptionsFragment fragment = OptionsFragment.newInstance(b);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         ft.replace(R.id.fragmentContainerView, fragment);
-        ft.commit();
+        ft.commit();*/
     }
 
     public void loadProfilesFragment(){
@@ -137,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         }
     }
-
+public boolean onSupportNavigateUp() {
+    NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
+        return navController.navigateUp() || super.onSupportNavigateUp();
+    }
 
 }

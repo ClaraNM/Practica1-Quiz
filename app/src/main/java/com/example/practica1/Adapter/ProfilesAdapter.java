@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practica1.Data.AccountProfile;
+import com.example.practica1.Data.Profile;
 import com.example.practica1.R;
 
 import java.net.URI;
@@ -49,6 +50,9 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 Communicator.setAccountProfile(profile);
                 Toast.makeText(view.getContext(), "Perfil seleccionado : " + profile.getName() + ".", Toast.LENGTH_SHORT).show();
                 Selectprofile(position);
+                Profile p=new Profile(null,0,null);
+                p.setName(profile.getName());
+                Communicator.setNewProfile(p);
             }
         });
     }
@@ -59,6 +63,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 profile_holders.get(i).boton_seleccionar_perfil.setText("SELECIONAR");
             else{
                 profile_holders.get(i).boton_seleccionar_perfil.setText("SELECCIONADO");
+
             }
         }
         selected_profile = id;

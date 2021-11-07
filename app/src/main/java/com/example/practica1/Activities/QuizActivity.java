@@ -42,7 +42,7 @@ import java.util.Timer;
 public class QuizActivity extends AppCompatActivity {
 
     // Total de preguntas de la ronda
-    private final int poolSize = 5;
+    private int poolSize = 5;
 
     // Lista de preguntas de la ronda
     private List<Question> questionList;
@@ -62,6 +62,10 @@ public class QuizActivity extends AppCompatActivity {
 
     //Settings
     private boolean hardmode=false;
+    private boolean tAAA=false;
+    private boolean indie=false;
+    private boolean industry=false;
+private String chosenOpQ=null;
     private int hardmode_int=0;
 
     @Override
@@ -81,7 +85,7 @@ public class QuizActivity extends AppCompatActivity {
             //Asegura que sale una lista con el tamaño pedido de preguntas
             do {
                 settings();
-                questionList = QuestionDataBase.getQuestionPool(poolSize,hardmode_int, QuizActivity.this);
+                questionList = QuestionDataBase.getQuestionPool(poolSize,hardmode_int,tAAA,indie,industry, QuizActivity.this);
             }while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
@@ -123,7 +127,9 @@ public class QuizActivity extends AppCompatActivity {
             System.out.println(elapsedMillis + "");
             DbQuerys dbQuerys = new DbQuerys(this);
             Profile profile=Communicator.getNewProfile();
-            profile.setScore(Communicator.getHits());
+            //La puntuacion tambien depende del tiempo
+            profile.setScore((Communicator.getHits()*1000)/((int)elapsedMillis/1000));
+            profile.setTime(chronometer.getText().toString());
             dbQuerys.insertProfile(profile);
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
@@ -172,7 +178,15 @@ public class QuizActivity extends AppCompatActivity {
 
         SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this);
         hardmode= sp.getBoolean("pref_change_dificulty",true);
+        chosenOpQ=sp.getString("pref_DD_QCuantity","");
+        tAAA=sp.getBoolean("pref_checkbox1",true);
+        indie=sp.getBoolean("pref_checkbox2",true);
+        industry=sp.getBoolean("pref_checkbox3",true);
+
         if (hardmode==false){hardmode_int=0;}
         else{   hardmode_int=1;     }
+
+        poolSize=Integer.parseInt(chosenOpQ);
+
     }
 }
