@@ -95,6 +95,7 @@ public class ProfilesFragment extends Fragment {
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 activity.loadMainMenuFragment();
             }
         });

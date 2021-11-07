@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practica1.Data.AccountProfile;
+import com.example.practica1.Data.Profile;
 import com.example.practica1.R;
 
 import org.w3c.dom.Text;
@@ -71,6 +72,9 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
                 Communicator.selectedProfileId = position;
                 Toast.makeText(view.getContext(), "Perfil seleccionado : " + profile.getName() + ".", Toast.LENGTH_SHORT).show();
                 Selectprofile(position);
+                Profile p=new Profile(null,0,null);
+                p.setName(profile.getName());
+                Communicator.setNewProfile(p);
             }
         });
     }
@@ -83,6 +87,7 @@ public class ProfilesAdapter extends RecyclerView.Adapter<ProfilesAdapter.ViewHo
             }
             else{
                 profile_holders.get(i).boton_seleccionar_perfil.setText("SELECCIONADO");
+
             }
         }
     }

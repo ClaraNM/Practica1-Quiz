@@ -14,7 +14,7 @@ public class Communicator {
     //Almacena la lista de preguntas y fragmentos que salen para poder mostrar las respuestas en la pantalla de resultados. También almacena los aciertos.
     private static List<Question> Qlist = new ArrayList<>();
     private static List<QuestionFragment> QFlist= new ArrayList<>();
-    private static Profile newProfile= new Profile(null,0);
+    private static Profile newProfile= new Profile(null,0, null);
     private static AccountProfile accountProfile = null;
     public static int selectedProfileId = -1;
     private static int hits=0;
