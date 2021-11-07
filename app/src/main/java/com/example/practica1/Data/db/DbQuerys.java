@@ -359,12 +359,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_SOUND_QUESTIONS ,null);
-      //  if(cursor.moveToFirst()){
-      //      do{
+
                 count=cursor.getCount();
-      //      cursor.moveToNext();
-      //      }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -372,12 +369,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_SOUND_QUESTIONS+" WHERE soundQ_theme='"+t+"'" ,null);
-      //  if(cursor.moveToFirst()){
-      //      do{
+
                 count=cursor.getCount();
-        //    cursor.moveToNext();
-        //    }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -385,12 +379,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_SOUND_QUESTIONS +" WHERE soundQ_theme='"+0+"' OR soundQ_theme='"+1+"'",null);
-       // if(cursor.moveToFirst()){
-        //    do{
+
                 count=cursor.getCount();
-        //    cursor.moveToNext();
-       //     }while (!cursor.isAfterLast());
-       // }
+
         cursor.close();
         return count;
     }
@@ -398,12 +389,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_SOUND_QUESTIONS  +" WHERE soundQ_theme='"+0+"' OR soundQ_theme='"+2+"'",null);
-      //  if(cursor.moveToFirst()){
-      //      do{
+
                 count=cursor.getCount();
-       //     cursor.moveToNext();
-       //     }while (!cursor.isAfterLast());
-       // }
+
         cursor.close();
         return count;
     }
@@ -411,12 +399,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_SOUND_QUESTIONS  +" WHERE soundQ_theme='"+1+"' OR soundQ_theme='"+2+"'",null);
-       // if(cursor.moveToFirst()){
-       //     do{
+
                 count=cursor.getCount();
-        //    cursor.moveToNext();
-        //    }while (!cursor.isAfterLast());
-        //}
+
         cursor.close();
         return count;
     }
@@ -437,12 +422,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_VIDEO_QUESTIONS ,null);
-        //if(cursor.moveToFirst()){
-         //   do{
+
                 count=cursor.getCount();
-         //   cursor.moveToNext();
-         //   }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -450,12 +432,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_VIDEO_QUESTIONS+" WHERE videoQ_theme='"+t+"'" ,null);
-        //if(cursor.moveToFirst()){
-        //    do{
+
                 count=cursor.getCount();
-          //  cursor.moveToNext();
-          //  }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -463,12 +442,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_VIDEO_QUESTIONS +" WHERE videoQ_theme='"+0+"' OR videoQ_theme='"+1+"'",null);
-       // if(cursor.moveToFirst()){
-        //    do{
+
                 count=cursor.getCount();
-           // cursor.moveToNext();
-          //  }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -476,12 +452,9 @@ public class DbQuerys extends DbTables {
         int count=0;
         Cursor cursor = null;
         cursor=db.rawQuery ("SELECT * FROM " +TABLE_VIDEO_QUESTIONS  +" WHERE videoQ_theme='"+0+"' OR videoQ_theme='"+2+"'",null);
-       // if(cursor.moveToFirst()){
-        //    do{
+
                 count=cursor.getCount();
-          //  cursor.moveToNext();
-          //  }while (!cursor.isAfterLast());
-      //  }
+
         cursor.close();
         return count;
     }
@@ -551,6 +524,8 @@ public class DbQuerys extends DbTables {
 
         return ranking;
     }
+
+
     public List<Question> getOnlyAAA(){
         int j=0;
         int t=0;
@@ -571,7 +546,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                                questionAAAList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionAAAList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -589,6 +565,8 @@ public class DbQuerys extends DbTables {
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
                     questionAAAList.add(question_N);
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionAAAList.add(addQN);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -609,7 +587,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionAAAList.add(question_IO);
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionAAAList.add(addQIO);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -631,7 +610,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionAAAList.add(question_I);
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionAAAList.add(addQI);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -653,7 +633,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionAAAList.add(question_S);
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionAAAList.add(addQS);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -675,7 +656,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionAAAList.add(question_V);
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionAAAList.add(addQV);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -703,7 +685,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                    questionIndieList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionIndieList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -720,7 +703,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionIndieList.add(question_N);
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionIndieList.add(addQN);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -741,8 +725,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionIndieList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionIndieList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -763,8 +747,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionIndieList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionIndieList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -785,8 +769,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionIndieList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionIndieList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -807,8 +791,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionIndieList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionIndieList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -835,7 +819,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                    questionIndustryList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionIndustryList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -852,8 +837,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionIndustryList.add(question_N);
-
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionIndustryList.add(addQN);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -873,8 +858,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionIndustryList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionIndustryList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -895,8 +880,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionIndustryList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionIndustryList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -917,8 +902,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionIndustryList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionIndustryList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -939,8 +924,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionIndustryList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionIndustryList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -968,7 +953,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -985,8 +971,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionList.add(question_N);
-
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionList.add(addQN);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1006,8 +992,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1028,8 +1014,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1050,8 +1036,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1072,8 +1058,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1101,7 +1087,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -1118,8 +1105,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionList.add(question_N);
-
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionList.add(addQN);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1139,8 +1126,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1161,8 +1148,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1183,8 +1170,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1205,8 +1192,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1234,8 +1221,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-
-                    questionList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -1252,8 +1239,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionList.add(question_N);
-
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionList.add(addQN);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1273,8 +1260,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1295,8 +1282,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1317,8 +1304,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1339,8 +1326,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1366,7 +1353,8 @@ public class DbQuerys extends DbTables {
                     q_T.setCorrectAnswer(cursorQuestions.getInt(6));
                     q_T.setDificulty(cursorQuestions.getInt(7));
                     q_T.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(q_T);
+                    TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                    questionList.add(addTQ);
 
                 }while (cursorQuestions.moveToNext());
             }
@@ -1383,8 +1371,8 @@ public class DbQuerys extends DbTables {
                     question_N.setCorrectAnswer(cursorQuestions.getInt(2));
                     question_N.setDificulty(cursorQuestions.getInt(3));
                     question_N.setTheme(cursorQuestions.getInt(4));
-                    questionList.add(question_N);
-
+                    NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                    questionList.add(addQN);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1404,8 +1392,8 @@ public class DbQuerys extends DbTables {
                     question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
                     question_IO.setDificulty(cursorQuestions.getInt(7));
                     question_IO.setTheme(cursorQuestions.getInt(8));
-                    questionList.add(question_IO);
-
+                    ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                    questionList.add(addQIO);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1426,8 +1414,8 @@ public class DbQuerys extends DbTables {
                     question_I.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_I.setDificulty(cursorQuestions.getInt(8));
                     question_I.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_I);
-
+                    ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                    questionList.add(addQI);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1448,8 +1436,8 @@ public class DbQuerys extends DbTables {
                     question_S.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_S.setDificulty(cursorQuestions.getInt(8));
                     question_S.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_S);
-
+                    SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                    questionList.add(addQS);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1470,8 +1458,8 @@ public class DbQuerys extends DbTables {
                     question_V.setCorrectAnswer(cursorQuestions.getInt(7));
                     question_V.setDificulty(cursorQuestions.getInt(8));
                     question_V.setTheme(cursorQuestions.getInt(9));
-                    questionList.add(question_V);
-
+                    VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                    questionList.add(addQV);
                 }while (cursorQuestions.moveToNext());
             }
             cursorQuestions.close();
@@ -1480,572 +1468,6 @@ public class DbQuerys extends DbTables {
     }
 
 
-
-   /* public List<Question> getQuestionPool(int dificulty, boolean AAA, boolean indie, boolean industry){
-        //Random random= new Random();
-        List<Question> questionList = new ArrayList<Question>();
-        Cursor cursorQuestions = null;
-
-            for (int i = 0; i < 6; i++) {
-
-                //0->Pregunta de respuestas imagenes
-                //1->Preguntas de texto
-                //2->Preguntas de número
-                //3->Preguntas de enunciado con imagen
-                //4->Preguntas de sonido
-                //5->Preguntas de video
-
-                //int randomTypeQ= random.nextInt(6);
-                int j=0;
-                int previousSize=0;
-                switch (i){
-                    case 0:
-                        ImageOptionsQuestion question_IO =new ImageOptionsQuestion(0,null,0,0,0,0,0, 0,0);
-                        //randomQ=random.nextInt(this.getMaxImageOpQuestion());
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE (imgOpQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE (imgOpQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"') AND (imgOpQ_theme='"+0+"'OR imgOpQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"') AND (imgOpQ_theme='"+0+"'OR imgOpQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"') AND (imgOpQ_theme='"+0+"'OR imgOpQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"') AND (imgOpQ_theme='"+0+"'OR imgOpQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"' )AND (imgOpQ_theme='"+1+"'OR imgOpQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"' )AND (imgOpQ_theme='"+1+"'OR imgOpQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"' AND imgOpQ_theme='"+0+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"'AND imgOpQ_theme='"+0+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"'AND imgOpQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"'AND imgOpQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"'AND imgOpQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"'AND imgOpQ_theme='"+2+"')", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE ( imgOpQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }
-
-                       // cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE imgOpQ_ID ='"+randomQ+"'", null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_IO.setId(cursorQuestions.getInt(0));
-                                question_IO.setQuestion(cursorQuestions.getString(1));
-                                question_IO.setImageId1(cursorQuestions.getInt(2));
-                                question_IO.setImageId2(cursorQuestions.getInt(3));
-                                question_IO.setImageId3(cursorQuestions.getInt(4));
-                                question_IO.setImageId4(cursorQuestions.getInt(5));
-                                question_IO.setCorrectAnswer(cursorQuestions.getInt(6));
-                                question_IO.setDificulty(cursorQuestions.getInt(7));
-                                question_IO.setTheme(cursorQuestions.getInt(8));
-
-                                if (questionList.size()>0) {
-                                    do {
-                                        if (!questionList.get(j).getQuestion().equals(question_IO.getQuestion())) {
-                                            questionList.add(question_IO);
-
-                                        }
-                                        j++;
-                                    } while (j < questionList.size() && previousSize == questionList.size());
-                                }else {
-                                    questionList.add(question_IO);
-                                }
-
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                    case 1:
-                        TextQuestion question_T=new TextQuestion(0,null,null,null,null,null,0, 0,0);
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE ( textQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE ( textQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE ( textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+0+"'OR textQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE ( textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+0+"'OR textQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+0+"'OR textQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+0+"'OR textQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+1+"'OR textQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"') AND (textQ_theme='"+1+"'OR textQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"' AND textQ_theme='"+0+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"'AND textQ_theme='"+0+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"'AND textQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"'AND textQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"'AND textQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (  textQ_dificulty='"+dificulty+"'AND textQ_theme='"+2+"')", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE ( textQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (textQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }
-                       // cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE textQ_ID = '"+randomQ+"'",null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_T.setId(cursorQuestions.getInt(0));
-                                question_T.setQuestion(cursorQuestions.getString(1));
-                                question_T.setOp1(cursorQuestions.getString(2));
-                                question_T.setOp2(cursorQuestions.getString(3));
-                                question_T.setOp3(cursorQuestions.getString(4));
-                                question_T.setOp4(cursorQuestions.getString(5));
-                                question_T.setCorrectAnswer(cursorQuestions.getInt(6));
-                                question_T.setDificulty(cursorQuestions.getInt(7));
-                                question_T.setTheme(cursorQuestions.getInt(8));
-
-
-                                if (questionList.size()>0) {
-                                    do {
-                                        if (!questionList.get(j).getQuestion().equals(question_T.getQuestion())) {
-                                            questionList.add(question_T);
-
-                                        }
-                                        j++;
-                                    } while (j < questionList.size() && previousSize == questionList.size());
-                                }else{
-                                    questionList.add(question_T);
-                                }
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                    case 2:
-                        NumberQuestion question_N= new NumberQuestion(0,null,0, 0,0);
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"') AND (numberQ_theme='"+0+"'OR numberQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"')AND (numberQ_theme='"+0+"'OR numberQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"') AND (numberQ_theme='"+0+"'OR numberQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"') AND (numberQ_theme='"+0+"'OR numberQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"') AND (numberQ_theme='"+1+"'OR numberQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"') AND (numberQ_theme='"+1+"'OR numberQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"' AND numberQ_theme='"+0+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"'AND numberQ_theme='"+0+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"'AND numberQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"'AND numberQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"'AND numberQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"'AND numberQ_theme='"+2+"')", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE ( numberQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }
-                     //   cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE numberQ_ID = '"+randomQ+"'",null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_N.setId(cursorQuestions.getInt(0));
-                                question_N.setQuestion(cursorQuestions.getString(1));
-                                question_N.setCorrectAnswer(cursorQuestions.getInt(2));
-                                question_N.setDificulty(cursorQuestions.getInt(3));
-                                question_N.setTheme(cursorQuestions.getInt(4));
-
-                                if (questionList.size()>0) {
-                                do {
-                                    if (!questionList.get(j).getQuestion().equals(question_N.getQuestion())) {
-                                        questionList.add(question_N);
-                                    }
-                                    j++;
-                                } while (j < questionList.size() && previousSize == questionList.size());
-                            }else{
-                                    questionList.add(question_N);
-                                }
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                    case 3:
-                        ImageQuestion question_I=new ImageQuestion(0,null,0,null,null,null,null,0, 0,0);
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE (imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE (imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"')", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+0+"'OR imgQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+0+"'OR imgQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+0+"'OR imgQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+0+"'OR imgQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+1+"'OR imgQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"') AND (imgQ_theme='"+1+"'OR imgQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" (WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"' AND imgQ_theme='"+0+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'AND imgQ_theme='"+0+"'", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'AND imgQ_theme='"+1+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'AND imgQ_theme='"+1+"'", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'AND imgQ_theme='"+2+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'AND imgQ_theme='"+2+"'", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID ='"+randomQ+"' AND imgQ_dificulty='"+dificulty+"'", null);
-                            }
-                        }
-                    //    cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE imgQ_ID = '"+randomQ+"'",null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_I.setId(cursorQuestions.getInt(0));
-                                question_I.setQuestion(cursorQuestions.getString(1));
-                                question_I.setImageQuestionId(cursorQuestions.getInt(2));
-                                question_I.setOp1(cursorQuestions.getString(3));
-                                question_I.setOp2(cursorQuestions.getString(4));
-                                question_I.setOp3(cursorQuestions.getString(5));
-                                question_I.setOp4(cursorQuestions.getString(6));
-                                question_I.setCorrectAnswer(cursorQuestions.getInt(7));
-                                question_I.setDificulty(cursorQuestions.getInt(8));
-                                question_I.setTheme(cursorQuestions.getInt(9));
-
-                                if (questionList.size()>0) {
-                                    do {
-                                        if (!questionList.get(j).getQuestion().equals(question_I.getQuestion()) ) {
-                                            questionList.add(question_I);
-
-                                        }
-                                        j++;
-                                    } while (j < questionList.size() && previousSize == questionList.size());
-                                }else{
-                                    questionList.add(question_I);
-                                }
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                    case 4:
-                        SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0, 0,0);
-                        randomQ=random.nextInt(this.getMaxSoundQuestion());
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND (soundQ_theme='"+0+"'OR soundQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND (soundQ_theme='"+0+"'OR soundQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND (soundQ_theme='"+0+"'OR soundQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND (soundQ_theme='"+0+"'OR soundQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND (soundQ_theme='"+1+"'OR soundQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND (soundQ_theme='"+1+"'OR soundQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"' AND soundQ_theme='"+0+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND soundQ_theme='"+0+"'", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND soundQ_theme='"+1+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND soundQ_theme='"+1+"'", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND soundQ_theme='"+2+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'AND soundQ_theme='"+2+"'", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID ='"+randomQ+"' AND soundQ_dificulty='"+dificulty+"'", null);
-                            }
-                        }
-                    //    cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE soundQ_ID = '"+randomQ+"'",null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_S.setId(cursorQuestions.getInt(0));
-                                question_S.setQuestion(cursorQuestions.getString(1));
-                                question_S.setSoundQuestionId(cursorQuestions.getInt(2));
-                                question_S.setOp1(cursorQuestions.getString(3));
-                                question_S.setOp2(cursorQuestions.getString(4));
-                                question_S.setOp3(cursorQuestions.getString(5));
-                                question_S.setOp4(cursorQuestions.getString(6));
-                                question_S.setCorrectAnswer(cursorQuestions.getInt(7));
-                                question_S.setDificulty(cursorQuestions.getInt(8));
-                                question_S.setTheme(cursorQuestions.getInt(9));
-
-                                if (questionList.size()>0) {
-                                    do {
-                                        if (!questionList.get(j).getQuestion().equals(question_S.getQuestion()) ) {
-                                            questionList.add(question_S);
-
-                                        }
-                                        j++;
-                                    } while (j < questionList.size() && previousSize == questionList.size());
-                                }else{
-                                    questionList.add(question_S);
-                                }
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                    case 5:
-                        VideoQuestion question_V =new VideoQuestion(0,null,null,null,null,null,0,0, 0,0);
-                        randomQ=random.nextInt(this.getMaxVideoQuestion());
-                        j=0;
-                        previousSize=questionList.size();
-                        if (AAA==true && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'", null);
-                            }
-                        }else if (AAA==true && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND (videoQ_theme='"+0+"'OR videoQ_theme='"+1+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND (videoQ_theme='"+0+"'OR videoQ_theme='"+1+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND (videoQ_theme='"+0+"'OR videoQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND (videoQ_theme='"+0+"'OR videoQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND (videoQ_theme='"+1+"'OR videoQ_theme='"+2+"')", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND (videoQ_theme='"+1+"'OR videoQ_theme='"+2+"')", null);
-                            }
-                        }else if (AAA==true && indie==false && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"' AND videoQ_theme='"+0+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND videoQ_theme='"+0+"'", null);
-                            }
-                        }else if (AAA==false && indie==true && industry==false){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND videoQ_theme='"+1+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND videoQ_theme='"+1+"'", null);
-                            }
-                        }else if (AAA==false && indie==false && industry==true){
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND videoQ_theme='"+2+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'AND videoQ_theme='"+2+"'", null);
-                            }
-                        }else{
-                            if (dificulty==1){
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'", null);
-
-                            }else{
-                                cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID ='"+randomQ+"' AND videoQ_dificulty='"+dificulty+"'", null);
-                            }
-                        }
-                    //    cursorQuestions=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE videoQ_ID = '"+randomQ+"'",null);
-
-                        if (cursorQuestions.moveToFirst()){
-                            do {
-                                question_V.setId(cursorQuestions.getInt(0));
-                                question_V.setQuestion(cursorQuestions.getString(1));
-                                question_V.setVideoQuestionId(cursorQuestions.getInt(2));
-                                question_V.setOp1(cursorQuestions.getString(3));
-                                question_V.setOp2(cursorQuestions.getString(4));
-                                question_V.setOp3(cursorQuestions.getString(5));
-                                question_V.setOp4(cursorQuestions.getString(6));
-                                question_V.setCorrectAnswer(cursorQuestions.getInt(7));
-                                question_V.setDificulty(cursorQuestions.getInt(8));
-                                question_V.setTheme(cursorQuestions.getInt(9));
-
-                                if (questionList.size()>0) {
-                                    do {
-                                        if (!questionList.get(j).getQuestion().equals(question_V.getQuestion())) {
-                                            questionList.add(question_V);
-                                        }
-                                        j++;
-                                    } while (j < questionList.size() && previousSize == questionList.size());
-                                }else{
-                                    questionList.add(question_V);
-                                }
-                            }while (cursorQuestions.moveToNext());
-                        }
-                        cursorQuestions.close();
-                        break;
-                }
-            }
-
-        }*/
 
 
 }

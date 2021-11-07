@@ -22,42 +22,42 @@ public class QuestionDataBase {
             questionListAux=dbQuerys.getAAA_Indie();
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxAAA_IndieTextQuestion()+dbQuerys.getMaxAAA_IndieNumberQuestion()+dbQuerys.getMaxAAA_IndieImgQuestion()+dbQuerys.getMaxAAA_IndieImgOpQuestion()+dbQuerys.getMaxAAA_IndieSoundQuestion()+dbQuerys.getMaxAAA_IndieVideoQuestion()));
+                    //randomQ=r.nextInt((dbQuerys.getMaxAAA_IndieTextQuestion()+dbQuerys.getMaxAAA_IndieNumberQuestion()+dbQuerys.getMaxAAA_IndieImgQuestion()+dbQuerys.getMaxAAA_IndieImgOpQuestion()+dbQuerys.getMaxAAA_IndieSoundQuestion()+dbQuerys.getMaxAAA_IndieVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else{
                 for (int i = 0; i < size; i++) {
-                randomQ=r.nextInt((dbQuerys.getMaxAAA_IndieTextQuestion()+dbQuerys.getMaxAAA_IndieNumberQuestion()+dbQuerys.getMaxAAA_IndieImgQuestion()+dbQuerys.getMaxAAA_IndieImgOpQuestion()+dbQuerys.getMaxAAA_IndieSoundQuestion()+dbQuerys.getMaxAAA_IndieVideoQuestion()));
-                if (questionListAux.get(randomQ).getDificulty()==0){
-                    if (questionList.size()>0) {
-                        if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                    }else{ questionList.add(questionListAux.get(randomQ)); }
-                } else{ i--;}
+                //randomQ=r.nextInt((dbQuerys.getMaxAAA_IndieTextQuestion()+dbQuerys.getMaxAAA_IndieNumberQuestion()+dbQuerys.getMaxAAA_IndieImgQuestion()+dbQuerys.getMaxAAA_IndieImgOpQuestion()+dbQuerys.getMaxAAA_IndieSoundQuestion()+dbQuerys.getMaxAAA_IndieVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
+                    if (questionListAux.get(randomQ).getDificulty()==0){
+                    questionList.add(questionListAux.get(randomQ));
+                    questionListAux.remove(randomQ);
+                } else{ i--;questionListAux.remove(randomQ);}
             }
             }
         }else if ( c1==true &&  c2==false &&  c3==true){
             questionListAux=dbQuerys.getAAA_Industry();
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxAAA_IndustryTextQuestion()+dbQuerys.getMaxAAA_IndustryNumberQuestion()+dbQuerys.getMaxAAA_IndustryImgQuestion()+dbQuerys.getMaxAAA_IndustryImgOpQuestion()+dbQuerys.getMaxAAA_IndustrySoundQuestion()+dbQuerys.getMaxAAA_IndustryVideoQuestion()));
+                    //randomQ=r.nextInt((dbQuerys.getMaxAAA_IndustryTextQuestion()+dbQuerys.getMaxAAA_IndustryNumberQuestion()+dbQuerys.getMaxAAA_IndustryImgQuestion()+dbQuerys.getMaxAAA_IndustryImgOpQuestion()+dbQuerys.getMaxAAA_IndustrySoundQuestion()+dbQuerys.getMaxAAA_IndustryVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else {
                 for (int i = 0; i < size; i++) {
-                    randomQ = r.nextInt((dbQuerys.getMaxAAA_IndustryTextQuestion() + dbQuerys.getMaxAAA_IndustryNumberQuestion() + dbQuerys.getMaxAAA_IndustryImgQuestion() + dbQuerys.getMaxAAA_IndustryImgOpQuestion() + dbQuerys.getMaxAAA_IndustrySoundQuestion() + dbQuerys.getMaxAAA_IndustryVideoQuestion()));
+                 //   randomQ = r.nextInt((dbQuerys.getMaxAAA_IndustryTextQuestion() + dbQuerys.getMaxAAA_IndustryNumberQuestion() + dbQuerys.getMaxAAA_IndustryImgQuestion() + dbQuerys.getMaxAAA_IndustryImgOpQuestion() + dbQuerys.getMaxAAA_IndustrySoundQuestion() + dbQuerys.getMaxAAA_IndustryVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty() == 0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }else if ( c1==false &&  c2==true &&  c3==true){
@@ -65,21 +65,21 @@ public class QuestionDataBase {
 
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ = r.nextInt((dbQuerys.getMaxIndie_IndustryTextQuestion() + dbQuerys.getMaxIndie_IndustryNumberQuestion() + dbQuerys.getMaxIndie_IndustryImgQuestion() + dbQuerys.getMaxIndie_IndustryImgOpQuestion() + dbQuerys.getMaxIndie_IndustrySoundQuestion() + dbQuerys.getMaxIndie_IndustryVideoQuestion()));
+                  //  randomQ = r.nextInt((dbQuerys.getMaxIndie_IndustryTextQuestion() + dbQuerys.getMaxIndie_IndustryNumberQuestion() + dbQuerys.getMaxIndie_IndustryImgQuestion() + dbQuerys.getMaxIndie_IndustryImgOpQuestion() + dbQuerys.getMaxIndie_IndustrySoundQuestion() + dbQuerys.getMaxIndie_IndustryVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else{
                 for (int i = 0; i < size; i++) {
-                    randomQ = r.nextInt((dbQuerys.getMaxIndie_IndustryTextQuestion() + dbQuerys.getMaxIndie_IndustryNumberQuestion() + dbQuerys.getMaxIndie_IndustryImgQuestion() + dbQuerys.getMaxIndie_IndustryImgOpQuestion() + dbQuerys.getMaxIndie_IndustrySoundQuestion() + dbQuerys.getMaxIndie_IndustryVideoQuestion()));
+                    //randomQ = r.nextInt((dbQuerys.getMaxIndie_IndustryTextQuestion() + dbQuerys.getMaxIndie_IndustryNumberQuestion() + dbQuerys.getMaxIndie_IndustryImgQuestion() + dbQuerys.getMaxIndie_IndustryImgOpQuestion() + dbQuerys.getMaxIndie_IndustrySoundQuestion() + dbQuerys.getMaxIndie_IndustryVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty() == 0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }else if ( c1==true &&  c2==false &&  c3==false){
@@ -87,21 +87,22 @@ public class QuestionDataBase {
 
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(0)+dbQuerys.getMaxOnlyThemeNumberQuestion(0)+dbQuerys.getMaxOnlyThemeImgQuestion(0)+dbQuerys.getMaxOnlyThemeImgOpQuestion(0)+dbQuerys.getMaxOnlyThemeSoundQuestion(0)+dbQuerys.getMaxOnlyThemeVideoQuestion(0)));
+                   // randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(0)+dbQuerys.getMaxOnlyThemeNumberQuestion(0)+dbQuerys.getMaxOnlyThemeImgQuestion(0)+dbQuerys.getMaxOnlyThemeImgOpQuestion(0)+dbQuerys.getMaxOnlyThemeSoundQuestion(0)+dbQuerys.getMaxOnlyThemeVideoQuestion(0)));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else{
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(0)+dbQuerys.getMaxOnlyThemeNumberQuestion(0)+dbQuerys.getMaxOnlyThemeImgQuestion(0)+dbQuerys.getMaxOnlyThemeImgOpQuestion(0)+dbQuerys.getMaxOnlyThemeSoundQuestion(0)+dbQuerys.getMaxOnlyThemeVideoQuestion(0)));
+//                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(0)+dbQuerys.getMaxOnlyThemeNumberQuestion(0)+dbQuerys.getMaxOnlyThemeImgQuestion(0)+dbQuerys.getMaxOnlyThemeImgOpQuestion(0)+dbQuerys.getMaxOnlyThemeSoundQuestion(0)+dbQuerys.getMaxOnlyThemeVideoQuestion(0)));
+                    randomQ=r.nextInt(questionListAux.size());
+
                     if (questionListAux.get(randomQ).getDificulty() == 0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }else if ( c1==false &&  c2==true &&  c3==false){
@@ -109,21 +110,21 @@ public class QuestionDataBase {
 
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(1)+dbQuerys.getMaxOnlyThemeNumberQuestion(1)+dbQuerys.getMaxOnlyThemeImgQuestion(1)+dbQuerys.getMaxOnlyThemeImgOpQuestion(1)+dbQuerys.getMaxOnlyThemeSoundQuestion(1)+dbQuerys.getMaxOnlyThemeVideoQuestion(1)));
+  //                  randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(1)+dbQuerys.getMaxOnlyThemeNumberQuestion(1)+dbQuerys.getMaxOnlyThemeImgQuestion(1)+dbQuerys.getMaxOnlyThemeImgOpQuestion(1)+dbQuerys.getMaxOnlyThemeSoundQuestion(1)+dbQuerys.getMaxOnlyThemeVideoQuestion(1)));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                     }
                 }else{
                        for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(1)+dbQuerys.getMaxOnlyThemeNumberQuestion(1)+dbQuerys.getMaxOnlyThemeImgQuestion(1)+dbQuerys.getMaxOnlyThemeImgOpQuestion(1)+dbQuerys.getMaxOnlyThemeSoundQuestion(1)+dbQuerys.getMaxOnlyThemeVideoQuestion(1)));
-                    if (questionListAux.get(randomQ).getDificulty() == 0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                    //randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(1)+dbQuerys.getMaxOnlyThemeNumberQuestion(1)+dbQuerys.getMaxOnlyThemeImgQuestion(1)+dbQuerys.getMaxOnlyThemeImgOpQuestion(1)+dbQuerys.getMaxOnlyThemeSoundQuestion(1)+dbQuerys.getMaxOnlyThemeVideoQuestion(1)));
+                           randomQ=r.nextInt(questionListAux.size());
+                           if (questionListAux.get(randomQ).getDificulty() == 0) {
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }else if ( c1==false &&  c2==false &&  c3==true){
@@ -131,41 +132,44 @@ public class QuestionDataBase {
 
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(2)+dbQuerys.getMaxOnlyThemeNumberQuestion(2)+dbQuerys.getMaxOnlyThemeImgQuestion(2)+dbQuerys.getMaxOnlyThemeImgOpQuestion(2)+dbQuerys.getMaxOnlyThemeSoundQuestion(2)+dbQuerys.getMaxOnlyThemeVideoQuestion(2)));
-                    if (questionListAux.get(randomQ).getDificulty()==1){if (questionList.size()>0) {
-                        if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                    }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                    //randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(2)+dbQuerys.getMaxOnlyThemeNumberQuestion(2)+dbQuerys.getMaxOnlyThemeImgQuestion(2)+dbQuerys.getMaxOnlyThemeImgOpQuestion(2)+dbQuerys.getMaxOnlyThemeSoundQuestion(2)+dbQuerys.getMaxOnlyThemeVideoQuestion(2)));
+                    randomQ=r.nextInt(questionListAux.size());
+                    if (questionListAux.get(randomQ).getDificulty()==1){
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else{
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(2)+dbQuerys.getMaxOnlyThemeNumberQuestion(2)+dbQuerys.getMaxOnlyThemeImgQuestion(2)+dbQuerys.getMaxOnlyThemeImgOpQuestion(2)+dbQuerys.getMaxOnlyThemeSoundQuestion(2)+dbQuerys.getMaxOnlyThemeVideoQuestion(2)));
+                //    randomQ=r.nextInt((dbQuerys.getMaxOnlyThemeTextQuestion(2)+dbQuerys.getMaxOnlyThemeNumberQuestion(2)+dbQuerys.getMaxOnlyThemeImgQuestion(2)+dbQuerys.getMaxOnlyThemeImgOpQuestion(2)+dbQuerys.getMaxOnlyThemeSoundQuestion(2)+dbQuerys.getMaxOnlyThemeVideoQuestion(2)));
+                    randomQ=r.nextInt(questionListAux.size());
+
                     if (questionListAux.get(randomQ).getDificulty() == 0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }else{
             questionListAux=dbQuerys.getAll();
             if ( d==1){
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxTextQuestion()+dbQuerys.getMaxNumberQuestion()+dbQuerys.getMaxImageQuestion()+dbQuerys.getMaxImageOpQuestion()+dbQuerys.getMaxSoundQuestion()+dbQuerys.getMaxVideoQuestion()));
+                  //  randomQ=r.nextInt((dbQuerys.getMaxTextQuestion()+dbQuerys.getMaxNumberQuestion()+dbQuerys.getMaxImageQuestion()+dbQuerys.getMaxImageOpQuestion()+dbQuerys.getMaxSoundQuestion()+dbQuerys.getMaxVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
+
                     if (questionListAux.get(randomQ).getDificulty()==1){
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }else{
                 for (int i = 0; i < size; i++) {
-                    randomQ=r.nextInt((dbQuerys.getMaxTextQuestion()+dbQuerys.getMaxNumberQuestion()+dbQuerys.getMaxImageQuestion()+dbQuerys.getMaxImageOpQuestion()+dbQuerys.getMaxSoundQuestion()+dbQuerys.getMaxVideoQuestion()));
+                   // randomQ=r.nextInt((dbQuerys.getMaxTextQuestion()+dbQuerys.getMaxNumberQuestion()+dbQuerys.getMaxImageQuestion()+dbQuerys.getMaxImageOpQuestion()+dbQuerys.getMaxSoundQuestion()+dbQuerys.getMaxVideoQuestion()));
+                    randomQ=r.nextInt(questionListAux.size());
                     if (questionListAux.get(randomQ).getDificulty()==0) {
-                        if (questionList.size()>0) {
-                            if (questionList.contains(questionListAux.get(randomQ))) { i--; } else {questionList.add(questionListAux.get(randomQ)); }
-                        }else{ questionList.add(questionListAux.get(randomQ)); }
-                    } else{ i--;}
+                        questionList.add(questionListAux.get(randomQ));
+                        questionListAux.remove(randomQ);
+                    } else{ i--;questionListAux.remove(randomQ);}
                 }
             }
         }
