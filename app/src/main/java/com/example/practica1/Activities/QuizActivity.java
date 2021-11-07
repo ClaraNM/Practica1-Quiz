@@ -15,6 +15,7 @@ import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.practica1.Data.AccountProfile;
 import com.example.practica1.Data.ImageOptionsQuestion;
 import com.example.practica1.Data.ImageQuestion;
 import com.example.practica1.Data.NumberQuestion;
@@ -25,6 +26,7 @@ import com.example.practica1.Data.SoundQuestion;
 import com.example.practica1.Data.TextQuestion;
 import com.example.practica1.Data.VideoQuestion;
 import com.example.practica1.Data.db.DbQuerys;
+import com.example.practica1.Data.db.DbTables;
 import com.example.practica1.Fragment.ImageOptionsQuestionFragment;
 import com.example.practica1.Fragment.ImageQuestionFragment;
 import com.example.practica1.Fragment.NumberQuestionFragment;
@@ -125,12 +127,21 @@ private String chosenOpQ=null;
         if(currentQuestion >= questionList.size() || currentQuestion >= poolSize){
             long elapsedMillis = SystemClock.elapsedRealtime() - chronometer.getBase();
             System.out.println(elapsedMillis + "");
+
             DbQuerys dbQuerys = new DbQuerys(this);
             Profile profile=Communicator.getNewProfile();
             //La puntuacion tambien depende del tiempo
-            profile.setScore((Communicator.getHits()*1000)/((int)elapsedMillis/1000));
+            int score = (Communicator.getHits()*1000)/((int)elapsedMillis/1000);
+            profile.setScore(score);
             profile.setTime(chronometer.getText().toString());
             dbQuerys.insertProfile(profile);
+
+            DbTables dbHelper = new DbTables(this);
+            AccountProfile accountProfile = Communicator.getAccountProfile();
+            accountProfile.setTotal_games(accountProfile.getTotal_games() + 1);
+            int max_score = Math.max(score, accountProfile.getMaxScore());
+            dbHelper.UpdateAccountProfileData(accountProfile.getName(), accountProfile.getTotal_games(), max_score);
+            accountProfile.setMaxScore(max_score);
             finish();
             startActivity(new Intent(QuizActivity.this, ResultsActivity.class));
         }

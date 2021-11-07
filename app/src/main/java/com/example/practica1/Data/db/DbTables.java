@@ -1,6 +1,8 @@
 package com.example.practica1.Data.db;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -135,5 +137,37 @@ public class DbTables extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_SOUND_QUESTIONS);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_VIDEO_QUESTIONS);
         onCreate(sqLiteDatabase);
+    }
+
+    public boolean UpdateAccountProfileData(String name, int num_games, int maxScore){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("profile_total_games", num_games);
+        values.put("profile_max_score", maxScore);
+        Cursor cursor = db.rawQuery("Select * from " + TABLE_PROFILES + " where profile_name = ?", new String[] { name} );
+        if(cursor.getCount() > 0) {
+            long res = db.update(TABLE_PROFILES, values, "profile_name=?", new String[]{name});
+            if (res == -1)
+                return false;
+            else
+                return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean DeleteAccountProfileData(String name){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("Select * from " + TABLE_PROFILES + " where name = ?", new String[] { name} );
+        if(cursor.getCount() > 0) {
+            long res = db.delete(TABLE_PROFILES, "profile_name=?", new String[]{name});
+            if (res == -1)
+                return false;
+            else
+                return true;
+        }
+        else
+            return false;
     }
 }
