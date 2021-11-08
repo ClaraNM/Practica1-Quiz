@@ -86,10 +86,10 @@ private String chosenOpQ=null;
         // Carga la lista de preguntas
         try {
             //Asegura que sale una lista con el tamaño pedido de preguntas
-            do {
+            //do {
                 settings();
                 questionList = QuestionDataBase.getQuestionPool(poolSize,hardmode_int,tAAA,indie,industry, QuizActivity.this);
-            }while(questionList.size()<poolSize);
+            //}while(questionList.size()<poolSize);
             Communicator.setList(questionList);
         } catch (Exception e) {
             e.printStackTrace();
@@ -180,7 +180,7 @@ private String chosenOpQ=null;
                 Communicator.addFragment(currentFragment);
             }
         }
-        tv_questionNumber.setText("" + (currentQuestion + 1) + "/" + poolSize);
+        tv_questionNumber.setText("" + (currentQuestion + 1) + "/" + questionList.size());
     }
 
     // Remplaza el fragmento de layout de la pregunta

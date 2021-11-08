@@ -525,6 +525,130 @@ public class DbQuerys extends DbTables {
         return ranking;
     }
 
+    public List<Question> getQuestionsWithDifficulty(int diff){
+        Cursor cursor;
+        List<Question> questionList = new ArrayList<>();
+
+        TextQuestion q_T=new TextQuestion(0,null,null,null,null,null,0,0,0);
+        cursor = db.rawQuery("SELECT * FROM "+TABLE_TEXT_QUESTIONS+" WHERE (textQ_dificulty='"+diff+"')", null);
+        if(cursor.moveToFirst()){
+            do{
+                q_T.setId(cursor.getInt(0));
+                q_T.setQuestion(cursor.getString(1));
+                q_T.setOp1(cursor.getString(2));
+                q_T.setOp2(cursor.getString(3));
+                q_T.setOp3(cursor.getString(4));
+                q_T.setOp4(cursor.getString(5));
+                q_T.setCorrectAnswer(cursor.getInt(6));
+                q_T.setDificulty(cursor.getInt(7));
+                q_T.setTheme(cursor.getInt(8));
+                TextQuestion addTQ=new TextQuestion(q_T.getId(),q_T.getQuestion(),q_T.getOp1(),q_T.getOp2(),q_T.getOp3(),q_T.getOp4(),q_T.getCorrectAnswer(),q_T.getDificulty(),q_T.getTheme());
+                questionList.add(addTQ);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        NumberQuestion question_N=new NumberQuestion(0,null,0,0,0);
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_NUMBER_QUESTIONS+" WHERE (numberQ_dificulty='"+diff+"')", null);
+        if (cursor.moveToFirst()){
+            do {
+                question_N.setId(cursor.getInt(0));
+                question_N.setQuestion(cursor.getString(1));
+                question_N.setCorrectAnswer(cursor.getInt(2));
+                question_N.setDificulty(cursor.getInt(3));
+                question_N.setTheme(cursor.getInt(4));
+                questionList.add(question_N);
+                NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
+                questionList.add(addQN);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        ImageOptionsQuestion question_IO=new ImageOptionsQuestion(0,null,0,0,0,0,0,0,0);
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_OP_QUESTIONS+" WHERE (imgOpQ_dificulty='"+diff+"')", null);
+        if (cursor.moveToFirst()){
+            do {
+                question_IO.setId(cursor.getInt(0));
+                question_IO.setQuestion(cursor.getString(1));
+                question_IO.setImageId1(cursor.getInt(2));
+                question_IO.setImageId2(cursor.getInt(3));
+                question_IO.setImageId3(cursor.getInt(4));
+                question_IO.setImageId4(cursor.getInt(5));
+                question_IO.setCorrectAnswer(cursor.getInt(6));
+                question_IO.setDificulty(cursor.getInt(7));
+                question_IO.setTheme(cursor.getInt(8));
+                ImageOptionsQuestion addQIO=new ImageOptionsQuestion(question_IO.getId(),question_IO.getQuestion(),question_IO.getImageId1(),question_IO.getImageId2(),question_IO.getImageId3(),question_IO.getImageId4(),question_IO.getCorrectAnswer(),question_IO.getDificulty(),question_IO.getTheme());
+                questionList.add(addQIO);
+
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        ImageQuestion question_I=new ImageQuestion(0,null,0,null,null,null,null,0,0,0);
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_IMAGE_QUESTIONS+" WHERE (imgQ_dificulty='"+diff+"')", null);
+        if (cursor.moveToFirst()){
+            do {
+                question_I.setId(cursor.getInt(0));
+                question_I.setQuestion(cursor.getString(1));
+                question_I.setImageQuestionId(cursor.getInt(2));
+                question_I.setOp1(cursor.getString(3));
+                question_I.setOp2(cursor.getString(4));
+                question_I.setOp3(cursor.getString(5));
+                question_I.setOp4(cursor.getString(6));
+                question_I.setCorrectAnswer(cursor.getInt(7));
+                question_I.setDificulty(cursor.getInt(8));
+                question_I.setTheme(cursor.getInt(9));
+                ImageQuestion addQI=new ImageQuestion(question_I.getId(),question_I.getQuestion(),question_I.getImageQuestionId(),question_I.getOp1(),question_I.getOp2(),question_I.getOp3(),question_I.getOp4(),question_I.getCorrectAnswer(),question_I.getDificulty(),question_I.getTheme());
+                questionList.add(addQI);
+
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        SoundQuestion question_S=new SoundQuestion(0,null,null,null,null,null,0,0,0,0);
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_SOUND_QUESTIONS+" WHERE (soundQ_dificulty='"+diff+"')", null);
+        if (cursor.moveToFirst()){
+            do {
+                question_S.setId(cursor.getInt(0));
+                question_S.setQuestion(cursor.getString(1));
+                question_S.setSoundQuestionId(cursor.getInt(2));
+                question_S.setOp1(cursor.getString(3));
+                question_S.setOp2(cursor.getString(4));
+                question_S.setOp3(cursor.getString(5));
+                question_S.setOp4(cursor.getString(6));
+                question_S.setCorrectAnswer(cursor.getInt(7));
+                question_S.setDificulty(cursor.getInt(8));
+                question_S.setTheme(cursor.getInt(9));
+                SoundQuestion addQS=new SoundQuestion(question_S.getId(),question_S.getQuestion(),question_S.getOp1(),question_S.getOp2(),question_S.getOp3(),question_S.getOp4(),question_S.getCorrectAnswer(),question_S.getSoundQuestionId(),question_S.getDificulty(),question_S.getTheme());
+                questionList.add(addQS);
+
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        VideoQuestion question_V=new VideoQuestion(0,null,null,null,null,null,0,0,0,0);
+        cursor=db.rawQuery("SELECT * FROM "+TABLE_VIDEO_QUESTIONS+" WHERE (videoQ_dificulty='"+diff+"')", null);
+        if (cursor.moveToFirst()){
+            do {
+                question_V.setId(cursor.getInt(0));
+                question_V.setQuestion(cursor.getString(1));
+                question_V.setVideoQuestionId(cursor.getInt(2));
+                question_V.setOp1(cursor.getString(3));
+                question_V.setOp2(cursor.getString(4));
+                question_V.setOp3(cursor.getString(5));
+                question_V.setOp4(cursor.getString(6));
+                question_V.setCorrectAnswer(cursor.getInt(7));
+                question_V.setDificulty(cursor.getInt(8));
+                question_V.setTheme(cursor.getInt(9));
+                VideoQuestion addQV=new VideoQuestion(question_V.getId(),question_V.getQuestion(),question_V.getOp1(),question_V.getOp2(),question_V.getOp3(),question_V.getOp4(),question_V.getCorrectAnswer(),question_V.getVideoQuestionId(),question_V.getDificulty(),question_V.getTheme());
+                questionList.add(addQV);
+
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return questionList;
+    }
 
     public List<Question> getOnlyAAA(){
         int j=0;

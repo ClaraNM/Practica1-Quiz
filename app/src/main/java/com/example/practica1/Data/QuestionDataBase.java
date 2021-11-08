@@ -1,11 +1,14 @@
 package com.example.practica1.Data;
 
+import static java.util.Collections.shuffle;
+
 import android.content.Context;
 
 import com.example.practica1.Data.db.DbQuerys;
 import com.example.practica1.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +16,30 @@ public class QuestionDataBase {
 
     private static List<Question> questionListAux;
     private static List<Question> questionList;
-    public static List<Question> getQuestionPool(int size, int d,boolean c1,boolean c2,boolean c3,Context context) throws Exception {
+    public static List<Question> getQuestionPool(int size, int d, boolean c1,boolean c2,boolean c3,Context context) throws Exception {
+
+        questionList=new ArrayList<Question>();
+        questionListAux=new ArrayList<Question>();
+        DbQuerys dbQuerys = new DbQuerys(context);
+
+        List<Question> questionListAux2 = dbQuerys.getQuestionsWithDifficulty(d);
+        for(int i = 0; i < questionListAux2.size(); i++){
+            Question question = questionListAux2.get(i);
+            if(c1 && questionListAux2.get(i).getTheme() == 0)
+                questionListAux.add(question);
+            else if(c2 && questionListAux2.get(i).getTheme() == 1)
+                questionListAux.add(question);
+            else if(c3 && questionListAux2.get(i).getTheme() == 2)
+                questionListAux.add(question);
+        }
+
+        questionListAux = SuffleList(questionListAux);
+
+        for (int i = 0; i < Math.min(size, questionListAux.size()); i++){
+            questionList.add(questionListAux.get(i));
+        }
+        return questionList;
+        /*
         questionList=new ArrayList<Question>();
         questionListAux=new ArrayList<Question>();
         DbQuerys dbQuerys = new DbQuerys(context);
@@ -175,7 +201,12 @@ public class QuestionDataBase {
             }
         }
         return questionList;
+        */
+    }
 
+    private static List<Question> SuffleList(List<Question> questions){
+        shuffle(questions);
+        return questions;
     }
 
     public static void InitializeDataBase(Context context){
