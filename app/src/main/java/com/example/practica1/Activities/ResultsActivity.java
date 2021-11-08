@@ -45,7 +45,7 @@ public class ResultsActivity extends AppCompatActivity { private TextView score;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         score=findViewById(R.id.result_score);
-        score.setText(String.valueOf(Communicator.getHits()));
+        score.setText(String.valueOf(Communicator.getNewProfile().getScore()));
         recyclerView=findViewById(R.id.result_review_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

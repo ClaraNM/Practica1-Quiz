@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/optionesFragment"
         android:name="com.example.practica1.Fragment.OptionsFragment"
-        android:label="OptionsFragment" >
+        android:label="Opciones" >
         <action
             android:id="@+id/action_optionesFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/profilesFragment"
         android:name="com.example.practica1.Fragment.ProfilesFragment"
-        android:label="OptionsFragment"
+        android:label="Elección de perfil"
         tools:layout="@layout/fragment_profiles">
 
         <action

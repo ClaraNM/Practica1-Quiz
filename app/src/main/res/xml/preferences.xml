@@ -5,7 +5,7 @@
 
     >
     <PreferenceCategory
-        android:title="Cantidad de preguntas"
+        android:title="Preguntas"
         >
 
 
@@ -26,20 +26,17 @@
         <CheckBoxPreference
             android:key="pref_checkbox1"
             android:title="TripleAAA"
-            android:summary="TripleAAA"
             android:defaultValue="true"
             />
         <CheckBoxPreference
             android:key="pref_checkbox2"
             android:title="Indie"
             android:defaultValue="true"
-            android:summary="Indie"
 
             />
         <CheckBoxPreference
             android:key="pref_checkbox3"
             android:title="Industria"
-            android:summary="Industria"
             android:defaultValue="true"
             />
 
@@ -50,8 +47,7 @@
 
         <SwitchPreferenceCompat
             android:key="pref_change_dificulty"
-            android:title="Cambiar la dificultad"
-            android:summary="Permite activar el modo dificil"
+            android:title="Modo Difícil"
             android:defaultValue="false"
             />
 

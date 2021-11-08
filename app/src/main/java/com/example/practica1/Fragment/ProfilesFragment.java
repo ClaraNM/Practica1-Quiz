@@ -58,11 +58,9 @@ public class ProfilesFragment extends Fragment {
 
     String currentPicturePath;
 
-    public ProfilesFragment(/*List<AccountProfile> list*/){
+    public ProfilesFragment(){
 
-      /*  DbQuerys dbQuerys = new DbQuerys(this.getActivity());
-        List<AccountProfile> listaRanking= dbQuerys.getAccountList();
-        this.profileList=listaRanking;*/
+     //Vacio para que funcione el Navigation
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

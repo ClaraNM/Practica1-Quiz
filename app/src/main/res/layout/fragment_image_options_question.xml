@@ -19,6 +19,7 @@
             android:layout_marginVertical="10dp"
             android:background="@drawable/question"
             android:text="@string/question_placeholder"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

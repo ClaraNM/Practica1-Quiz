@@ -28,7 +28,7 @@ public class RankingAdapter extends RecyclerView.Adapter<RankingAdapter.ViewHold
     }
 
     public void onBindViewHolder(@NonNull ViewHolder_Rank holder, int position) {
-        holder.name.setText(rankingofProfiles.get(position).getName());
+        holder.name.setText(Integer.toString(position)+".- "+rankingofProfiles.get(position).getName());
         holder.score.setText(Integer.toString(rankingofProfiles.get(position).getScore()) );
         holder.time.setText(rankingofProfiles.get(position).getTime());
     }

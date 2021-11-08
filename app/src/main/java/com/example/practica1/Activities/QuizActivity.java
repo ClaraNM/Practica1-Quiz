@@ -130,6 +130,7 @@ private String chosenOpQ=null;
             System.out.println(elapsedMillis + "");
             DbQuerys dbQuerys = new DbQuerys(this);
             Profile profile=Communicator.getNewProfile();
+            if (profile.getName()==null){profile.setName("Anónimo");}
             //La puntuacion tambien depende del tiempo
             int score = (Communicator.getHits()*1000)/((int)elapsedMillis/1000);
             profile.setScore(score);

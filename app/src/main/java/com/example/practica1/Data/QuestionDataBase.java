@@ -12,8 +12,9 @@ import java.util.Random;
 public class QuestionDataBase {
 
     private static List<Question> questionListAux;
-    private static List<Question> questionList=new ArrayList<Question>();
+    private static List<Question> questionList;
     public static List<Question> getQuestionPool(int size, int d,boolean c1,boolean c2,boolean c3,Context context) throws Exception {
+        questionList=new ArrayList<Question>();
         questionListAux=new ArrayList<Question>();
         DbQuerys dbQuerys = new DbQuerys(context);
         Random r=new Random();
@@ -207,49 +208,49 @@ public class QuestionDataBase {
         dbQuerys.insertImageQuestion(new ImageQuestion(1,"¿Cuál es el color característico de este personaje de Sonic?", R.drawable.image_question_amy_bnw, "Rosa", "Naranja", "Morado", "Amarillo", 0,0,0));
         dbQuerys.insertImageQuestion(new ImageQuestion(2,"¿Cómo se llama este jefe del Dark Souls III?", R.drawable.image_question_vigilantes, "Campeón Gundyr", "Caballero esclavo Gael", "Alma de Cenizas", "Los vigilantes del Abismo", 3,0,0));
         dbQuerys.insertImageQuestion(new ImageQuestion(3,"¿Quién es este personaje del Animal Crossing?", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,0,0));
-        dbQuerys.insertImageQuestion(new ImageQuestion(4,"Pregunta5", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,0,2));
-        dbQuerys.insertImageQuestion(new ImageQuestion(5,"Pregunta6", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,1,2));
-        dbQuerys.insertImageQuestion(new ImageQuestion(6,"Pregunta7", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,1,2));
-        dbQuerys.insertImageQuestion(new ImageQuestion(7,"Pregunta8", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,0,1));
-        dbQuerys.insertImageQuestion(new ImageQuestion(8,"Pregunta9", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,1,1));
-        dbQuerys.insertImageQuestion(new ImageQuestion(9,"Pregunta10", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,0,1));
-        dbQuerys.insertImageQuestion(new ImageQuestion(10,"Pregunta11", R.drawable.image_question_soponcio, "Calabazo", "Soponcio", "Zapirón", "Rufino", 1,1,0));
+        dbQuerys.insertImageQuestion(new ImageQuestion(4,"¿Qué cargo tiene la persona del foto?", R.drawable.image_question_soponcio, "CEO de The Game Kitchen", "CEO de Mercury Steam", "Presidenta de DEV", "Presidenta de AEVI", 2,1,2));
+        dbQuerys.insertImageQuestion(new ImageQuestion(5,"¿En cuál de los siguientes juegos NO ha participado esta persona?", R.drawable.image_question_soponcio, "Kindred Spirits", "Dark Souls", "Deraciné", "Armored Core 4", 0,0,2));
+        dbQuerys.insertImageQuestion(new ImageQuestion(6,"¿Para qué empresa NO trabajó esta persona?", R.drawable.image_question_soponcio, "Capcom", "Tango Gameworks", "Platinum Games", "Crystal Dynamics", 3,1,2));
+        dbQuerys.insertImageQuestion(new ImageQuestion(7,"¿Cómo se llama este personaje de Hades?", R.drawable.image_question_soponcio, "Zagreus", "Perseo", "Hades", "Patroclo", 0,0,1));
+        dbQuerys.insertImageQuestion(new ImageQuestion(8,"¿Cuál es la bebida favorita de este personaje ed VA-11 Hall-A?", R.drawable.image_question_soponcio, "Cobalt Velvet", "Brandtini", "Piano Woman", "Moonblast", 1,1,1));
+        dbQuerys.insertImageQuestion(new ImageQuestion(9,"¿Quién es este personaje de Undertale?", R.drawable.image_question_soponcio, "Camilla", "Susie", "Alphys", "Toriel", 3,0,1));
+        dbQuerys.insertImageQuestion(new ImageQuestion(10,"¿Cómo se llama este enemigo de la saga The Legend of Zelda?", R.drawable.image_question_soponcio, "Mummian", "Keese", "Gibdo", "ReDead", 2,1,0));
 
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(0,"¿Cuál de estos pokemon tiene más defensa?", R.drawable.image_op_question_shuckle, R.drawable.image_op_question_celesteela, R.drawable.image_op_question_bastiodon, R.drawable.image_op_question_galarianstunkfish, 0,1,0));
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(1,"¿Quién sale en Resident Evil 2?", R.drawable.image_op_question_jill, R.drawable.image_op_question_adawong, R.drawable.image_op_question_mia, R.drawable.image_op_question_sheva,  1,0,0));
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(2,"¿Quién es Apollo Justice de la saga Ace Attorney?", R.drawable.image_op_question_godot, R.drawable.image_op_question_edgeworth, R.drawable.image_op_question_apollo, R.drawable.image_op_question_phoenix,  2,1,0));
         dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(3,"¿Quién de estos personajes de Nier Automata es A2?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3,0,0));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(4,"Pregunta4", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3,1,1));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(5,"Pregunta5", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  0,0,1));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(6,"Pregunta7", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  1,1,1));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(7,"Pregunta8", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  2,0,1));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(8,"Pregunta9", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3,1,2));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(9,"Pregunta10", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  1,0,2));
-        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(10,"Pregunta11", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  2,0,2));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(4,"¿Quién de estos personajes es Kim Kitsuragi?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3,1,1));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(5,"¿Quién es Azazel (Binding of Isaac)?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  0,0,1));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(6,"¿Quién es Altasgracias (Blasphemous)?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  1,1,1));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(7,"¿Quién es Beidou?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  2,0,0));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(8,"¿Quién trabaja en Deconstructeam?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  3,1,2));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(9,"¿Quién es el jefe de la marca Xbox?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  1,0,2));
+        dbQuerys.insertImageOptionsQuestion(new ImageOptionsQuestion(10,"¿Quién es el creador de Bayonetta?", R.drawable.image_op_question_eve, R.drawable.image_op_question_nines, R.drawable.image_op_question_commander, R.drawable.image_op_question_a2,  2,0,2));
 
         dbQuerys.insertSoundQuestion(new SoundQuestion(0,"¿A qué videojuego pertenece esta canción?", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,1));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(1,"Pregunta2", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,0));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(2,"Pregunta3", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,2));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(3,"Pregunta4", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,1,0));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(4,"Pregunta5", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,1,1));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(5,"Pregunta6", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,1,2));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(6,"Pregunta7", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,0));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(7,"Pregunta8", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,1));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(8,"Pregunta9", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,1,2));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(9,"Pregunta10", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,0));
-        dbQuerys.insertSoundQuestion(new SoundQuestion(10,"Pregunta11", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,0,2));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(1,"¿A qué videojuego pertenece esta canción?", "Nioh", "Bloodborne", "Diablo 3", "Below", 1, R.raw.song,0,0));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(2,"¿Quién está hablando?", "Sakurai", "Miyamoto", "Miyazaki", "Kamiya", 2, R.raw.song,0,2));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(3,"¿Qué personaje del LoL es el que está hablando?", "Diana", "Jynx", "Irelia", "Fiora", 3, R.raw.song,1,0));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(4,"¿Cuál es esta canción del Sayonara Wild Hearts?", "Mine", "Begin Again", "Inside", "Doki Doki Rush", 0, R.raw.song,1,1));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(5,"¿A qué empresa pertenece esta canción?", "Chibig Studio", "Brainwash Gang", "Platonic Games", "Team 7", 1, R.raw.song,1,2));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(6,"¿A qué videojuego pertenece esta canción?", "Shin Megami Tensei V", "Final Fantasy XV", "Persona 5", "Yakuza Like a Dragon", 2, R.raw.song,0,0));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(7,"¿A qué videojuego pertenece la siguiente canción?", "Pyre", "Transistor", "Bastion", "Hades", 3, R.raw.song,0,1));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(8,"¿Quién está hablando?", "Hollow Knight", "Dark Souls", "Bloodstain", "Deaths Door", 0, R.raw.song,1,2));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(9,"¿En qué videojuego se escucha esta canción?", "We happy few", "Fallout 3", "Rage 2", "Bioshock Infinite", 1, R.raw.song,0,0));
+        dbQuerys.insertSoundQuestion(new SoundQuestion(10,"¿Quién está hablando?", "Swery", "Shinji Mikami", "Kojima", "Suda51", 2, R.raw.song,0,2));
 
         dbQuerys.insertVideoQuestion(new VideoQuestion(0,"¿Este trailer a que juego pertenece?", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,0));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(1,"Pregunta2", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,1));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(2,"Pregunta3", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,2));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(3,"Pregunta4", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,1,0));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(4,"Pregunta5", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,1,1));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(5,"Pregunta6", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,1,2));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(6,"Pregunta7", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,1,1));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(7,"Pregunta8", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,0));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(8,"Pregunta9", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,1));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(9,"Pregunta10", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,1,2));
-        dbQuerys.insertVideoQuestion(new VideoQuestion(10,"Pregunta11", "Elden Ring", "Dark Souls 3", "New World", "Drakengard", 0, R.raw.video,0,0));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(1,"¿Cuál es este videojuego?", "Super Meatboy", "The End is Nigh", "Jump King", "Bloody Scope", 0, R.raw.video,0,1));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(2,"¿Qué feria de videojuegos es la del video?", "Fun&Serious", "Tokyo Game Show", "Gamescom", "E3", 3, R.raw.video,0,2));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(3,"¿En qué videojuego aparece esta pelea?", "Pillars of Eternity", "Nier Replicant", "Drakengard 3", "Final Fantasy XV", 1, R.raw.video,1,0));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(4,"¿Cuál es este videojuego?", "The Hex", "Hearstone", "Inscryption", "Voice of Cards", 2, R.raw.video,1,1));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(5,"¿Quién es la persona entrevistada?", "Naoki Yoshida", "Swery", "Takenobu Mitsuyoshi", "Toshigiro Nagoshi", 3, R.raw.video,1,2));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(6,"¿Cuál es este videojuego?", "Nightcity", "Cloudpunk", "Cyberpunk 2033", "Taxi Night", 1, R.raw.video,1,1));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(7,"¿Este gameplay a que juego pertenece?", "Uncharted", "Mirrors Edge Catalyst", "Horizon Zero Down", "Rise of the Tomb Raider", 2, R.raw.video,0,0));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(8,"¿De qué videojuego es este gameplay?", "Jump Queen", "Moonwalk", "Canavalt", "Celeste", 3, R.raw.video,0,1));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(9,"¿Quién es la persona del video?", "Yoko Taro", "Tetsuya Nomura", "Eiji Aonuma", "Yuji Naka", 0, R.raw.video,0,2));
+        dbQuerys.insertVideoQuestion(new VideoQuestion(10,"¿Esta CGI a que juego pertenece?", "Xbox All Stars", "Mass Efect 4", "Halo Infinite", "Jedi Fallen Order", 2, R.raw.video,0,0));
 
     }
 

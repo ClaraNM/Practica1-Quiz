@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/secondaryLightColor_Light</item>
         <item name="colorOnSecondary">@color/secondaryDarkColor_Light</item>
         <!--    Text Color    -->
-        <item name="android:textColor">@color/primaryTextColor_Light</item>
+        <item name="android:textColor">#9B55AA</item>
         <!--    Background Color    -->
         <item name="colorOnBackground">@color/onBackgroundColor_Light</item>
         <!-- Status bar color. -->

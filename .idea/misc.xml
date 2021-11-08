@@ -54,14 +54,17 @@
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Prac1_Quiz/app/src/main/res/layout/result_view_text_question.xml" value="0.6" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/activity_results.xml" value="0.12916666666666668" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_image_options_question.xml" value="0.15625" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_image_question.xml" value="0.15625" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_main_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_number_question.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_options.xml" value="0.1" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_profiles.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_sound_question.xml" value="0.15625" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_text_question.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/fragment_video_question.xml" value="0.15625" />
-        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/ranking_view_profile.xml" value="0.15555555555555556" />
+        <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/ranking_view_profile.xml" value="0.4" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_image_options_question.xml" value="0.15625" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_sound_question.xml" value="0.15625" />
         <entry key="..\:/Users/Clara/AndroidStudioProjects/Practica2-Quiz/app/src/main/res/layout/result_view_text_question.xml" value="0.15625" />
