@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean theme=false; //false->Light true-> Dark
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this);
@@ -139,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
         NavHostFragment navHostFragment = (NavHostFragment) manager.findFragmentById(R.id.fragmentContainerView);
-         NavController navController = navHostFragment.getNavController();
+        NavController navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupActionBarWithNavController(this, navController);
 
@@ -152,13 +153,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadProfilesFragment(){
-        DbQuerys dbQuerys = new DbQuerys(this);
+       /* DbQuerys dbQuerys = new DbQuerys(this);
         List<AccountProfile> listaRanking= dbQuerys.getAccountList();
         ProfilesFragment fragment = new ProfilesFragment(listaRanking);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction ft = manager.beginTransaction();
         ft.replace(R.id.fragmentContainerView, fragment);
-        ft.commit();
+
+        ft.commit();*/
     }
 
     public void ChangeTheme(boolean b){

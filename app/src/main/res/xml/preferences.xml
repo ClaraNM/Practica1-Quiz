@@ -14,6 +14,7 @@
     android:title="Cantidad de preguntas"
     android:entries="@array/array_QCuantity"
     android:entryValues="@array/array_QCuantity"
+    android:defaultValue="10"
     android:summary="Selecciona cuantas preguntas quieres que tenga el quiz"
     />
 
@@ -51,6 +52,7 @@
             android:key="pref_change_dificulty"
             android:title="Cambiar la dificultad"
             android:summary="Permite activar el modo dificil"
+            android:defaultValue="false"
             />
 
 
@@ -61,6 +63,7 @@
             android:key="pref_change_theme"
             android:title="Cambiar de tema"
             android:summary="Permite alternar entre el tema clro y el oscuro"
+            android:defaultValue="false"
             />
     </PreferenceCategory>
 

@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavGraph;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
@@ -46,6 +48,7 @@ int contador=0;
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -56,6 +59,7 @@ int contador=0;
         // Cambiar imagen de inicio según el tema:
         ImageView img_title= root.findViewById(R.id.main_title_img);
         MainActivity activity = ((MainActivity)getActivity());
+       //activity.loadOptionsNav();
 
         SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(this.getActivity());
         activity.ChangeTheme(sp.getBoolean("pref_change_theme",false));
@@ -88,15 +92,18 @@ contador=1;
 
         option_button.setOnClickListener(
                 new View.OnClickListener() {
-            @Override public void onClick(View view) {activity.loadOptionsNav();
-
+            @Override public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_optionesFragment);
 
             }
         }
         );
         profiles_button.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {activity.loadProfilesFragment(); }
+            @Override public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_profilesFragment);
+
+               // activity.loadProfilesFragment();
+            }
         });
         DbQuerys dbQuerys = new DbQuerys(this.getActivity());
         ranking_button.setOnClickListener(new View.OnClickListener() {

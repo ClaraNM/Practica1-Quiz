@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_optionesFragment"
             app:destination="@id/optionesFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_profilesFragment"
+            app:destination="@id/profilesFragment" />
     </fragment>
     <fragment
         android:id="@+id/optionesFragment"
@@ -20,6 +23,16 @@
         android:label="OptionsFragment" >
         <action
             android:id="@+id/action_optionesFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilesFragment"
+        android:name="com.example.practica1.Fragment.ProfilesFragment"
+        android:label="OptionsFragment"
+        tools:layout="@layout/fragment_profiles">
+
+        <action
+            android:id="@+id/action_profilesFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
 </navigation>

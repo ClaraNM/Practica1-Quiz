@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,8 +58,11 @@ public class ProfilesFragment extends Fragment {
 
     String currentPicturePath;
 
-    public ProfilesFragment(List<AccountProfile> list){
-        this.profileList=list;
+    public ProfilesFragment(/*List<AccountProfile> list*/){
+
+      /*  DbQuerys dbQuerys = new DbQuerys(this.getActivity());
+        List<AccountProfile> listaRanking= dbQuerys.getAccountList();
+        this.profileList=listaRanking;*/
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,7 +73,9 @@ public class ProfilesFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profiles, container, false);
 
         iv_profile = v.findViewById(R.id.iv_profile);
-
+        DbQuerys dbQuerys = new DbQuerys(this.getActivity());
+        List<AccountProfile> listaRanking= dbQuerys.getAccountList();
+        this.profileList=listaRanking;
         //  BOTÓN DE ACTIVAR LA CAMARA
         Button btn_camera = v.findViewById(R.id.btn_camera);
         btn_camera.setOnClickListener(new View.OnClickListener() {
@@ -96,8 +102,9 @@ public class ProfilesFragment extends Fragment {
         btn_atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_profilesFragment_to_mainMenuFragment);
 
-                activity.loadMainMenuFragment();
+                //activity.loadMainMenuFragment();
             }
         });
 
@@ -237,4 +244,8 @@ public class ProfilesFragment extends Fragment {
         currentPicturePath = img.getAbsolutePath();
         return img;
     }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
 }
