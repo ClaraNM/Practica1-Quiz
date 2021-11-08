@@ -557,7 +557,6 @@ public class DbQuerys extends DbTables {
                 question_N.setCorrectAnswer(cursor.getInt(2));
                 question_N.setDificulty(cursor.getInt(3));
                 question_N.setTheme(cursor.getInt(4));
-                questionList.add(question_N);
                 NumberQuestion addQN=new NumberQuestion(question_N.getId(),question_N.getQuestion(),question_N.getCorrectAnswer(),question_N.getDificulty(),question_N.getTheme());
                 questionList.add(addQN);
             }while (cursor.moveToNext());
