@@ -41,5 +41,5 @@
     <color name="primaryTextColor_Light">#ffffff</color>
     <color name="secondaryTextColor_Light">#ffffff</color>
     <color name="onPrimaryColor_Light">#F5D7F7</color>
-    <color name="onBackgroundColor_Light">#f3e5f5</color>
+    <color name="onBackgroundColor_Light">#EFC1F3</color>
 </resources>

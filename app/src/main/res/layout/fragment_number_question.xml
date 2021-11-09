@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
+    android:background="@drawable/background_questions"
     android:orientation="vertical">
 
     <TextView
@@ -62,6 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            app:strokeColor="?attr/colorOnPrimary"
+            app:strokeWidth="3dp"
             android:text="Comprobar" />
     </LinearLayout>
 

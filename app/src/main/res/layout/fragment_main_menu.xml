@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="?attr/colorOnBackground"
+    android:background="@drawable/background_controllers"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".Fragment.MainMenuFragment">
@@ -23,19 +23,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingVertical="15dp"
+        app:strokeColor="?attr/colorSecondaryVariant"
+        app:strokeWidth="7dp"
         android:backgroundTint="?attr/colorPrimaryVariant"
         android:text="@string/jugar"
         android:textSize="28sp" />
+
 
     <Button
         android:id="@+id/button_opciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button_startQuiz"
+        app:strokeColor="?attr/colorSecondaryVariant"
+        app:strokeWidth="7dp"
         android:layout_marginVertical="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:paddingVertical="15dp"
+
         android:backgroundTint="?attr/colorPrimaryVariant"
         android:text="@string/opciones"
         android:textSize="28sp" />
@@ -44,10 +53,14 @@
         android:id="@+id/button_perfiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button_opciones"
+        android:paddingVertical="15dp"
         android:layout_marginVertical="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:backgroundTint="?attr/colorPrimaryVariant"
+        app:strokeColor="?attr/colorSecondaryVariant"
+        app:strokeWidth="7dp"
         android:text="@string/perfiles"
         android:textSize="28sp" />
 
@@ -55,11 +68,17 @@
         android:id="@+id/button_clasificacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/button_perfiles"
+        android:paddingVertical="15dp"
         android:layout_marginVertical="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
         android:backgroundTint="?attr/colorPrimaryVariant"
+        app:rippleColor="#33AAAAAA"
+        app:strokeColor="?attr/colorSecondaryVariant"
+        app:strokeWidth="7dp"
         android:text="@string/clasificaci_n"
         android:textSize="26sp" />
+
 
 </LinearLayout>

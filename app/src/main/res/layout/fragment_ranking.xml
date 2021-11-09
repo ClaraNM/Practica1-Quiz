@@ -13,21 +13,48 @@
         tools:ignore="MissingConstraints"
         android:background="?attr/colorPrimaryVariant"
         android:orientation="vertical">
-<TextView
-    android:id="@+id/ranking_title"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="RANKING"
-    android:layout_gravity="center_horizontal"
-    android:textSize="38sp"
-    />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/crown_1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ranking_title_crown" />
+
+            <TextView
+                android:id="@+id/ranking_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@+id/crown_2"
+                android:layout_toEndOf="@+id/crown_1"
+                android:gravity="center_horizontal"
+                android:text="RANKING"
+                android:textSize="38sp" />
+
+            <ImageView
+                android:id="@+id/crown_2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ranking_title_crown" />
+        </RelativeLayout>
+
+
         <View
             android:id="@+id/ranking_line_1"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-          android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="45dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
             android:layout_alignBottom="@id/ranking_title"
-            android:background="?attr/colorOnSecondary"/>
+            android:background="?attr/colorOnPrimary"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ranking_recycler"
             android:scrollbars="vertical"

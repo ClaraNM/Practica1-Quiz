@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.example.practica1.Fragment.MainMenuFragment"
-        android:label="MainMenuFragment"
+        android:label="Quiz"
         tools:layout="@layout/fragment_main_menu" >
         <action
             android:id="@+id/action_mainMenuFragment_to_optionesFragment"

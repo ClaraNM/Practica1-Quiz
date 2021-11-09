@@ -13,7 +13,6 @@ import java.sql.Date;
 public class DbTables extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
     private static final String DATABASE_NOMBRE="quiz_database.db";
-  // public static final String TABLE_QUESTIONS="t_questions";
     public static final String TABLE_TEXT_QUESTIONS="t_text_questions";
     public static final String TABLE_NUMBER_QUESTIONS="t_number_questions";
     public static final String TABLE_IMAGE_OP_QUESTIONS="t_image_op_questions";
@@ -30,17 +29,7 @@ public class DbTables extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        /*sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_QUESTIONS+"("+
-                "id INTEGER PRIMARY KEY,"+
-                "FtextQ_ID,"+
-                "FnumberQ_ID,"+
-                "FimgOpQ_ID,"+
-                "FimgQ_ID,"+
-                "FOREIGN KEY (FtextQ_ID) REFERENCES " + TABLE_TEXT_QUESTIONS+"(textQ_ID),"+
-                "FOREIGN KEY (FnumberQ_ID) REFERENCES " + TABLE_TEXT_QUESTIONS+"(numberQ_ID),"+
-                "FOREIGN KEY (FimgOpQ_ID) REFERENCES " + TABLE_TEXT_QUESTIONS+"(imgOpQ_ID),"+
-                "FOREIGN KEY (FimgQ_ID) REFERENCES " + TABLE_TEXT_QUESTIONS+"(imgQ_ID))"
-                );*/
+
         sqLiteDatabase.execSQL("CREATE TABLE "+ TABLE_TEXT_QUESTIONS+"("+
                 "textQ_ID INTEGER PRIMARY KEY ,"+
                 "textQ_statement STRING NOT NULL,"+
